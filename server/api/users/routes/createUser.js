@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt')
 const Boom = require('boom')
 const User = require('../model/User')
 const createUserSchema = require('../schemas/createUser')
-const checkUserExists = require('../util/userFunctions').checkUserExists
+const verifyUniqueUser = require('../util/userFunctions').verifyUniqueUser
 const createToken = require('../util/token')
 
 async function hashPasword(password) {
@@ -15,13 +15,8 @@ module.exports = {
     method: 'POST',
     path: '/api/users',
     handler: async (request, h) => {
-        let user = await checkUserExists(request)
-
-        if (user) {
-            return Boom.badRequest('User exists!')
-        }
-
-        user = new User()
+        
+        let user = new User()
         user.email = request.payload.email
         user.admin = false
 
@@ -32,6 +27,9 @@ module.exports = {
         return { token: createToken(user) }        
     },
     options: {
+        pre: [
+            { method: verifyUniqueUser }
+        ],
         validate: {
             payload: createUserSchema
         }
