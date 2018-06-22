@@ -1,4 +1,4 @@
-<app-banner title="Login"></app-banner>
+<app-banner title="Signup"></app-banner>
 
 <div [hidden]="!err">
   <article class="message is-danger">
@@ -10,9 +10,9 @@
       {{ err.message }}
     </div>
   </article>
-</div>    
+</div>  
 
-<form #loginForm="ngForm" (submit)="onSubmit()">
+<form #signupForm="ngForm" (submit)="onSubmit()">
   <section class="section">
     <div class="container">
 
@@ -62,8 +62,8 @@
 
           <div class="field">
             <p class="control">
-              <button class="button is-primary" type="submit" [disabled]="!loginForm.form.valid">
-                Login
+              <button class="button is-primary" type="submit" [disabled]="!signupForm.form.valid">
+                Signup
               </button>
             </p>
           </div>

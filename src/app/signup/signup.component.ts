@@ -3,21 +3,19 @@ import { User } from '../user';
 import { UserService } from '../user.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
-export class LoginComponent implements OnInit {
+export class SignupComponent implements OnInit {
 
-  user = new User('', '');
+  user = new User('rp@rp.com', 'rohit1234');
   err = false;
-
-  submitted = false;
 
   onSubmit() {
     this.err = false;
 
-    this.userService.userLogin(this.user)
+    this.userService.userSignup(this.user)
       .subscribe(
         (res) => console.log(res),
         (err) => this.err = err.error
