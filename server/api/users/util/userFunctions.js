@@ -28,7 +28,7 @@ async function verifyCredentials(request) {
             return Boom.badRequest('Incorrect password!')
         }
     } else {
-        return Boom.badRequest('Incorrect email')
+        return Boom.badRequest('User does not exist!')
     }
 
     return user
