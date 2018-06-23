@@ -26,6 +26,9 @@ module.exports = {
         },
         validate: {
             payload: createBookingSchema
-        }
+        },
+        description: 'Create booking',
+        notes: 'Creates booking and associates users with it (requires authentication)',
+        tags: ['api', 'booking']
     }
 }

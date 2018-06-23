@@ -25,6 +25,9 @@ module.exports = {
         ],
         validate: {
             payload: createRoomSchema
-        }
+        },
+        description: 'Create room',
+        notes: 'Creates a room. Requires user to be admin',
+        tags: ['api', 'room', 'admin']
     }
 }

@@ -8,6 +8,9 @@ module.exports = {
             const rooms = Room.find().select('-__v -_id')
 
             return rooms
-        }
+        },
+        description: `Get all rooms' details`,
+        notes: 'Returns details of all rooms',
+        tags: ['api', 'room']
     }
 }

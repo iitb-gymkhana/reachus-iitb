@@ -17,6 +17,9 @@ module.exports = {
         },
         validate: {
             payload: authenticateUserSchema
-        }
+        },
+        description: 'User login',
+        notes: 'Returns a token on correct user credentials',
+        tags: ['api', 'user']
     }
 }

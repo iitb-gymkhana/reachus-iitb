@@ -14,24 +14,27 @@ async function hashPasword(password) {
 module.exports = {
     method: 'POST',
     path: '/api/users',
-    handler: async (request, h) => {
-        
-        let user = new User()
-        user.email = request.payload.email
-        user.admin = false
-
-        user.password = await hashPasword(request.payload.password)
-
-        await user.save()
-
-        return { token: createToken(user) }        
-    },
     options: {
+        handler: async (request, h) => {
+        
+            let user = new User()
+            user.email = request.payload.email
+            user.admin = false
+    
+            user.password = await hashPasword(request.payload.password)
+    
+            await user.save()
+    
+            return { token: createToken(user) }        
+        },
         pre: [
             { method: verifyUniqueUser }
         ],
         validate: {
             payload: createUserSchema
-        }
+        },
+        description: 'User signup',
+        notes: 'Returns a token on successful signup',
+        tags: ['api', 'user']
     }    
 }

@@ -21,6 +21,9 @@ module.exports = {
         },
         auth: {
             strategy: 'jwt'
-        }
+        },
+        description: 'Get bookings of a user',
+        notes: 'Returns all bookings made by a user',
+        tags: ['api', 'booking']
     }
 }

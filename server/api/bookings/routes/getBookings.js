@@ -13,6 +13,9 @@ module.exports = {
                 bookings[i] = await addRoomDetailsToBooking(bookings[i])
             }
             return bookings
-        }
+        },
+        description: 'Get all bookings',
+        notes: 'Returns all bookings made by every all users',
+        tags: ['api', 'booking']
     }
 }

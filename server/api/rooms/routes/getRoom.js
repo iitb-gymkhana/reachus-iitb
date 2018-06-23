@@ -10,6 +10,9 @@ module.exports = {
         ],
         handler: async (request, h) => {
             return request.pre.room
-        }
+        },
+        description: 'Get room details',
+        notes: 'Return room details by the paramter number provided in the path',
+        tags: ['api', 'room']
     }
 }
