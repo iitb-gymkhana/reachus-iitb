@@ -29,6 +29,18 @@ export class AuthService {
       );
   }
 
+  signup(user: User): Observable<boolean> {
+    return this.http.post<{token: string}>(
+      `${this.apiBaseUrl}/users`,
+      { email: user.email, password: user.password })
+      .pipe(
+        map(result => {
+          localStorage.setItem('token', result.token);
+          return true;
+        })
+      )
+  }
+
   logout() {
     localStorage.removeItem('token');
     this.router.navigate(['']);
