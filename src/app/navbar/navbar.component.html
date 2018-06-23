@@ -3,7 +3,7 @@
     <a class="navbar-item" routerLink="/">
       SAC Room Booking Portal
     </a>
-    <div class="navbar-burger burger" data-target="sac-navbar">
+    <div class="navbar-burger burger" id="navbar-burger" data-target="sac-navbar">
       <span></span>
       <span></span>
       <span></span>
@@ -12,17 +12,28 @@
 
   <div id="sac-navbar" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item" routerLink="/">
+      <a class="navbar-item" routerLink="/" *ngIf="auth.loggedIn">
         Home
       </a>
-      <a class="navbar-item" routerLink="/login">
+      <a class="navbar-item" routerLink="/login" *ngIf="!auth.loggedIn">
         Login
       </a>
-      <a class="navbar-item" routerLink="/signup">
+      <a class="navbar-item" routerLink="/signup" *ngIf="!auth.loggedIn">
         Signup
+      </a>
+      <a class="navbar-item" routerLink="/bookings" *ngIf="auth.loggedIn">
+        Bookings
+      </a>
+      <a class="navbar-item" routerLink="/rooms" *ngIf="auth.loggedIn && auth.isAdmin">
+        Rooms
       </a>
     </div>
 
+    <div class="navbar-end">
+      <a class="navbar-item" (click)="auth.logout()" *ngIf="auth.loggedIn">
+        Logout
+      </a>
+    </div>
 
   </div>
 </nav>

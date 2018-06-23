@@ -1,4 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-navbar',
@@ -7,30 +10,33 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  constructor(
+    private auth: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
 
   ngAfterViewInit() {
-    document.addEventListener('DOMContentLoaded', function () {
 
-      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+    $('.navbar-item').each(function(e) {
+      $(this).click(function() {
+        if ($('#navbar-burger').hasClass('is-active')) {
+          $('#navbar-burger').removeClass('is-active');
+          $('#sac-navbar').removeClass('is-active');
+        }
+      });
+    });
 
-      if ($navbarBurgers.length > 0) {
-
-        $navbarBurgers.forEach(function ($el) {
-          $el.addEventListener('click', function () {
-
-            const target = $el.dataset.target;
-            const $target = document.getElementById(target);
-
-            $el.classList.toggle('is-active');
-            $target.classList.toggle('is-active');
-          });
-        });
+    $('#navbar-burger').click(function () {
+      if ($('#navbar-burger').hasClass('is-active')) {
+        $('#navbar-burger').removeClass('is-active');
+        $('#sac-navbar').removeClass('is-active');
+      } else {
+        $('#navbar-burger').addClass('is-active');
+        $('#sac-navbar').addClass('is-active');
       }
     });
   }
-
 }
