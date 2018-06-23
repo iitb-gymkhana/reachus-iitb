@@ -1,7 +1,7 @@
 const Joi = require('joi')
 
 const createRoomSchema = Joi.object().keys({
-    number: Joi.string().required(),
+    number: Joi.number().required(),
     name: Joi.string().required()
 })
 
