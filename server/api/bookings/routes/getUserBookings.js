@@ -14,7 +14,7 @@ module.exports = {
             .lean()
 
             for (let i = 0; i < bookings.length; i++) {
-                bookings[i] = await addRoomDetailsToBooking(bookings[i])
+                bookings[i] = await addRoomDetailsToBooking(request, bookings[i])
             }
 
             return bookings

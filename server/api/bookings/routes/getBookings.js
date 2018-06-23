@@ -10,7 +10,7 @@ module.exports = {
             const bookings = await Booking.find().select('-_id -__v').lean()
 
             for (let i = 0; i < bookings.length; i++) {
-                bookings[i] = await addRoomDetailsToBooking(bookings[i])
+                bookings[i] = await addRoomDetailsToBooking(request, bookings[i])
             }
             return bookings
         },
