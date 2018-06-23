@@ -11,6 +11,15 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
 import { BannerComponent } from './banner/banner.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
+import { BookingsComponent } from './bookings/bookings.component';
+import { RoomsComponent } from './rooms/rooms.component';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -19,16 +28,28 @@ import { BannerComponent } from './banner/banner.component';
     CalendarComponent,
     NavbarComponent,
     SignupComponent,
-    BannerComponent
+    BannerComponent,
+    BookingsComponent,
+    RoomsComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: [''],
+        blacklistedRoutes: ['']
+      }
+    })
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
