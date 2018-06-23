@@ -5,8 +5,10 @@ const Boom = require('boom');
 const mongoose = require('mongoose');
 const glob = require('glob');
 const path = require('path');
-
-
+const Inert = require('inert');
+const Vision = require('vision');
+const HapiSwagger = require('hapi-swagger');
+const Pack = require('./package');
 
 require('dotenv').config();
 
@@ -33,7 +35,23 @@ const init = async () => {
         }
     });
 
+    const swaggerOptions = {
+        info: {
+            title: 'API Documentation',
+            version: Pack.version,
+        },
+    };
+
     await server.register(require('hapi-auth-jwt2'));
+
+    await server.register([
+        Inert,
+        Vision,
+        {
+            plugin: HapiSwagger,
+            options: swaggerOptions
+        }
+    ])
     
     const options = {
         ops: {
