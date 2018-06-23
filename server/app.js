@@ -1,7 +1,6 @@
 'use strict';
 
 const Hapi = require('hapi');
-const Boom = require('boom');
 const mongoose = require('mongoose');
 const glob = require('glob');
 const path = require('path');
@@ -9,6 +8,7 @@ const Inert = require('inert');
 const Vision = require('vision');
 const HapiSwagger = require('hapi-swagger');
 const Pack = require('./package');
+const User = require('./api/users/model/User')
 
 require('dotenv').config();
 
@@ -21,7 +21,13 @@ const DB_PORT = process.env.DB_PORT;
 const dbUrl = `mongodb://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/SAC`;
 
 const validate = async function (decoded, request) {
-    return { isValid: true };
+    console.log(decoded)
+    const user = await User.findOne({_id: decoded.id})
+    if (user) {
+        return { isValid: true }
+    } 
+
+    return { isValid: false }
 };
 
 const init = async () => {
