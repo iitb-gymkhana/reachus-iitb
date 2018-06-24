@@ -15,7 +15,7 @@ export class RoomService {
 
   apiBaseUrl = environment.apiBaseUrl;
 
-  createRoom(room: Room) {
+  public createRoom(room: Room) {
     return this.http.post(
       `${this.apiBaseUrl}/rooms`,
       room)
@@ -24,5 +24,22 @@ export class RoomService {
           return result;
         })
       );
+  }
+
+  public getAllRooms() {
+    return this.http.get<[Room]>(
+      `${this.apiBaseUrl}/rooms`,
+    );
+  }
+
+  public deleteRoom(number) {
+    return this.http.delete<{ message: string }>(
+      `${this.apiBaseUrl}/rooms/${number}`
+    );
+  }
+
+  public updateRoom(room) {
+    return this.http.put<{ message: string }>(
+      `${this.apiBaseUrl}/rooms`, room);
   }
 }
