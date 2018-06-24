@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-content">
+    <p class="title" *ngIf="!isEditable">
+      {{ room.number }}
+    </p>
+    <p class="subtitle" *ngIf="!isEditable">
+      {{ room.name }}
+    </p>
+    <form *ngIf="isEditable" #roomForm="ngForm" (submit)="updateRoom()">
+      <div class="field">
+        <div class="control">
+          <input class="input" [ngClass]="{'is-primary': number.valid, 'is-danger': !number.valid}" type="number" placeholder="Room number"
+            [(ngModel)]="room.number" #number="ngModel" name="number" required>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <input class="input" [ngClass]="{'is-primary': name.valid, 'is-danger': !name.valid}" type="text" placeholder="Room name"
+            [(ngModel)]="room.name" #name="ngModel" name="name" required>
+        </div>
+      </div>
+    </form>
+  </div>
+  <footer class="card-footer" *ngIf="!isEditable">
+    <p class="card-footer-item has-text-info" (click)="editRoom()">
+      <span>
+        <i class="fa fa-edit"></i>
+      </span>
+    </p>
+    <p class="card-footer-item has-text-danger" (click)="deleteRoom()">
+      <span>
+        <i class="fa fa-trash-alt"></i>
+      </span>
+    </p>
+  </footer>
+  <footer class="card-footer" *ngIf="isEditable">
+    <p class="card-footer-item has-text-success" (click)="updateRoom()">
+      <span>
+        <i class="fa fa-check"></i>
+      </span>
+    </p>
+    <p class="card-footer-item has-text-grey" (click)="undoRoomEdit()">
+      <span>
+        <i class="fa fa-times"></i>
+      </span>
+    </p>
+  </footer>
+</div>

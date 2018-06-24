@@ -1,56 +1,11 @@
 <app-banner title="Rooms"></app-banner>
 
-<form #roomForm="ngForm" (submit)="onSubmit()">
-  <section class="section">
-    <div class="container">
-
-      <div class="columns">
-        <div class="column is-5">
-          <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label">Number</label>
-            </div>
-            <div class="field-body">
-              <div class="field">
-                <p class="control">
-                  <input class="input" 
-                          type="number" 
-                          placeholder="Room number" 
-                          required
-                          [(ngModel)]="room.number"
-                          name="number">
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label">Name</label>
-            </div>
-            <div class="field-body">
-              <div class="field">
-                <p class="control">
-                  <input class="input" 
-                          type="text"
-                          placeholder="Room name" 
-                          required
-                          [(ngModel)]="room.name" 
-                          name="name">
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="field">
-            <p class="control">
-              <button class="button is-primary" type="submit" [disabled]="!roomForm.form.valid">
-                Submit
-              </button>
-            </p>
-          </div>
-        </div>
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+      <div class="column is-3" *ngFor="let room of rooms">
+        <app-room-card [room]="room" (deleteRoomFromArr)="deleteRoomFromArr($event)"></app-room-card>
       </div>
     </div>
-  </section>
-</form>
+  </div>
+</section>

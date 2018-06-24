@@ -9,16 +9,10 @@ import { AlertService } from '../_services/alert.service';
   styleUrls: ['./rooms.component.css']
 })
 export class RoomsComponent implements OnInit {
-  room = new Room(null, '');
+  rooms: Room[];
 
-  onSubmit() {
-    this.roomService.createRoom(this.room)
-      .subscribe(
-        (res) => this.alertService.success(res['message']),
-        (err) => this.alertService.error(err)
-      );
-
-    this.room = new Room(null, '');
+  public deleteRoomFromArr(number) {
+    this.rooms = this.rooms.filter(x => x.number !== number);
   }
 
   constructor(
@@ -27,6 +21,11 @@ export class RoomsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.roomService.getAllRooms()
+      .subscribe(
+      (res) => this.rooms = res,
+      (err) => this.alertService.error(err)
+    );
   }
 
 }

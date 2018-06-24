@@ -21,6 +21,8 @@ import { AlertComponent } from './alert/alert.component';
 import { AlertService } from './_services/alert.service';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { ScopeGuard } from './_guards/scope.guard';
+import { RoomCardComponent } from './rooms/room-card/room-card.component';
+import { RoomCreateComponent } from './rooms/room-create/room-create.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -36,7 +38,9 @@ export function tokenGetter() {
     BannerComponent,
     BookingsComponent,
     RoomsComponent,
-    AlertComponent
+    AlertComponent,
+    RoomCardComponent,
+    RoomCreateComponent
   ],
   imports: [
     BrowserModule,
