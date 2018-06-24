@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
 
@@ -9,6 +9,10 @@ import * as $ from 'jquery';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit, AfterViewInit {
+
+  logout() {
+    this.router.navigate(['']);
+  }
 
   constructor(
     private auth: AuthService,

@@ -8,14 +8,16 @@ import { LoginComponent } from './login/login.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
 import { BannerComponent } from './banner/banner.component';
 import { JwtModule } from '@auth0/angular-jwt';
-import { AuthService } from './auth.service';
+import { AuthService } from './_services/auth.service';
 import { AuthGuard } from './auth.guard';
 import { BookingsComponent } from './bookings/bookings.component';
 import { RoomsComponent } from './rooms/rooms.component';
+import { ErrorComponent } from './error/error.component';
+import { JwtInterceptor } from './_helpers/jwt.incterceptor';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -30,7 +32,8 @@ export function tokenGetter() {
     SignupComponent,
     BannerComponent,
     BookingsComponent,
-    RoomsComponent
+    RoomsComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ export function tokenGetter() {
   ],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
