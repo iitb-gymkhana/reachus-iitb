@@ -1,14 +1,15 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { RoomService } from '../../_services/room.service';
 import { AlertService } from '../../_services/alert.service';
 import { Room } from '../../room';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-room-card',
   templateUrl: './room-card.component.html',
   styleUrls: ['./room-card.component.css']
 })
-export class RoomCardComponent implements OnInit {
+export class RoomCardComponent implements OnInit, AfterViewInit {
   @Input() room: Room;
   @Output() deleteRoomFromArr = new EventEmitter<number>();
 
@@ -51,6 +52,13 @@ export class RoomCardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    $('.tab').click(function () {
+      $('.tab').removeClass('is-active');
+      $(this).addClass('is-active');
+    });
   }
 
 }

@@ -10,6 +10,7 @@ import { AlertService } from '../_services/alert.service';
 })
 export class RoomsComponent implements OnInit {
   rooms: Room[];
+  tab = 0;
 
   public deleteRoomFromArr(number) {
     this.rooms = this.rooms.filter(x => x.number !== number);

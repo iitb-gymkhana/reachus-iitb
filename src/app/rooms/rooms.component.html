@@ -1,11 +1,19 @@
 <app-banner title="Rooms"></app-banner>
 
+<div class="tabs is-centered">
+    <ul>
+      <li class="tab is-active" (click)="tab = 0"><a>Rooms</a></li>
+      <li class="tab" (click)="tab = 1"><a>Create Room</a></li>
+    </ul>
+  </div>
+
 <section class="section">
   <div class="container">
-    <div class="columns is-multiline">
+    <div class="columns is-multiline" *ngIf="tab === 0">
       <div class="column is-3" *ngFor="let room of rooms">
         <app-room-card [room]="room" (deleteRoomFromArr)="deleteRoomFromArr($event)"></app-room-card>
       </div>
     </div>
   </div>
+  <app-room-create *ngIf="tab === 1"></app-room-create>
 </section>
