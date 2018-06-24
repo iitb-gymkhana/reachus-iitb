@@ -1,0 +1,11 @@
+<div [hidden]="!err">
+  <article class="message is-danger">
+    <div class="message-header">
+      <p>Error</p>
+      <button class="delete" aria-label="delete"></button>
+    </div>
+    <div class="message-body">
+      {{ err.message }}
+    </div>
+  </article>
+</div>  
