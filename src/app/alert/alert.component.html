@@ -1,0 +1,12 @@
+<div *ngIf="message">
+  <article [ngClass]="{'message': message, 'is-danger': message.type === 'error', 'is-success': message.type === 'success'}">
+    <div class="message-header">
+      <p *ngIf="message.type === 'error'">Error</p>
+      <p *ngIf="message.type === 'success'">Success</p>
+      <button class="delete" aria-label="delete"></button>
+    </div>
+    <div class="message-body">
+      {{ message.text }}
+    </div>
+  </article>
+</div>
