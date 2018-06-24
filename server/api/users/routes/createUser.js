@@ -25,7 +25,11 @@ module.exports = {
     
             await user.save()
     
-            return { token: createToken(user) }        
+            return { user: {
+                email: user.email,
+                admin: user.admin,
+                token: createToken(user)
+            } }        
         },
         pre: [
             { method: verifyUniqueUser }

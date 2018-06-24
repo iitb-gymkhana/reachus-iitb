@@ -13,7 +13,10 @@ module.exports = {
             { method: verifyCredentials, assign: 'user' }
         ],
         handler: async (request, h) => {
-            return { token: createToken(request.pre.user) }
+            const user = request.pre.user
+            delete user.password
+            user.token = createToken(user)
+            return { user }
         },
         validate: {
             payload: authenticateUserSchema

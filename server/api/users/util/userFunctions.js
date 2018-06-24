@@ -17,7 +17,7 @@ async function verifyUniqueUser(request, h) {
 async function verifyCredentials(request) {
     const user = await User.findOne({
         email: request.payload.email
-    })
+    }).select('-__v').lean()
 
     if (user) {
         const isValid = await bcrypt.compare(request.payload.password, user.password)
@@ -30,8 +30,6 @@ async function verifyCredentials(request) {
     } else {
         return Boom.badRequest('User does not exist!')
     }
-
-    return user
 }
 
 module.exports = {

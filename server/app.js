@@ -21,8 +21,8 @@ const DB_PORT = process.env.DB_PORT;
 const dbUrl = `mongodb://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/SAC`;
 
 const validate = async function (decoded, request) {
-    console.log(decoded)
     const user = await User.findOne({_id: decoded.id})
+
     if (user) {
         return { isValid: true }
     } 
