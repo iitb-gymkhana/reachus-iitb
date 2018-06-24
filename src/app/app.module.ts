@@ -13,13 +13,14 @@ import { SignupComponent } from './signup/signup.component';
 import { BannerComponent } from './banner/banner.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthService } from './_services/auth.service';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './_guards/auth.guard';
 import { BookingsComponent } from './bookings/bookings.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { JwtInterceptor } from './_helpers/jwt.incterceptor';
 import { AlertComponent } from './alert/alert.component';
 import { AlertService } from './_services/alert.service';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
+import { ScopeGuard } from './_guards/scope.guard';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -54,6 +55,7 @@ export function tokenGetter() {
   providers: [
     AuthService,
     AuthGuard,
+    ScopeGuard,
     AlertService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }

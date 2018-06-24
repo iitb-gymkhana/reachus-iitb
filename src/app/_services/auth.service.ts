@@ -15,7 +15,7 @@ export class AuthService {
 
   apiBaseUrl = environment.apiBaseUrl;
 
-  login(user: User): Observable<boolean> {
+  public login(user: User): Observable<boolean> {
     return this.http.post<{token: string}>(
       `${this.apiBaseUrl}/users/authenticate`,
       {email: user.email, password: user.password})
@@ -27,7 +27,7 @@ export class AuthService {
       );
   }
 
-  signup(user: User): Observable<boolean> {
+  public signup(user: User): Observable<boolean> {
     return this.http.post<{token: string}>(
       `${this.apiBaseUrl}/users`,
       { email: user.email, password: user.password })
@@ -39,8 +39,14 @@ export class AuthService {
       );
   }
 
-  logout() {
+  public logout() {
     localStorage.removeItem('user');
+  }
+
+  public isAuthenticated(): Boolean {
+    const token = JSON.parse(localStorage.getItem('user')).token;
+
+    return !this.jwtHelper.isTokenExpired(token);
   }
 
   public get loggedIn(): boolean {

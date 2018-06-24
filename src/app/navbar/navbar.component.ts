@@ -11,6 +11,7 @@ import * as $ from 'jquery';
 export class NavbarComponent implements OnInit, AfterViewInit {
 
   logout() {
+    this.auth.logout();
     this.router.navigate(['']);
   }
 
