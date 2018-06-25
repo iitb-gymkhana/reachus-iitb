@@ -1,0 +1,57 @@
+<section class="section">
+  <div class="container">
+    <form (submit)="onSubmit(startDateInput.value, startTimeInput.value, endDateInput.value, endTimeInput.value)">
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">From</label>
+        </div>
+        <div class="field-body">
+          <div class="field is-narrow">
+            <p class="control is-expanded">
+              <input id="datepicker" class="input" type="date" required #startDateInput>
+            </p>
+          </div>
+          <div class="field is-narrow">
+            <p class="control is-expanded">
+              <input class="input" type="time" atp-time-picker arrowStyle="{'background': 'hsl(171, 100%, 41%)', 'color': 'white'}" required
+                #startTimeInput>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">To</label>
+        </div>
+        <div class="field-body">
+          <div class="field is-narrow">
+            <p class="control is-expanded">
+              <input id="datepicker" class="input" type="date" required #endDateInput>
+            </p>
+          </div>
+          <div class="field is-narrow">
+            <p class="control is-expanded">
+              <input class="input" type="time" atp-time-picker arrowStyle="{'background': 'hsl(171, 100%, 41%)', 'color': 'white'}" required
+                #endTimeInput>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+        </div>
+        <div class="field-body">
+          <div class="field is-narrow">
+            <div class="control">
+              <button class="button is-primary" type="submit">
+                Create booking
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
