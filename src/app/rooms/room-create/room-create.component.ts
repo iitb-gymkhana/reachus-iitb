@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Room } from '../../room';
 import { RoomService } from '../../_services/room.service';
 import { AlertService } from '../../_services/alert.service';

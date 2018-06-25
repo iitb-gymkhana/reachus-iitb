@@ -18,12 +18,7 @@ export class RoomService {
   public createRoom(room: Room) {
     return this.http.post(
       `${this.apiBaseUrl}/rooms`,
-      room)
-      .pipe(
-        map(result => {
-          return result;
-        })
-      );
+      room);
   }
 
   public getAllRooms() {

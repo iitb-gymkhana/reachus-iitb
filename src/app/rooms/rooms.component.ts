@@ -16,17 +16,21 @@ export class RoomsComponent implements OnInit {
     this.rooms = this.rooms.filter(x => x.number !== number);
   }
 
+  public fetchAllRooms() {
+    this.roomService.getAllRooms()
+      .subscribe(
+      (res) => this.rooms = res,
+      (err) => this.alertService.error(err)
+    );
+  }
+
   constructor(
     private roomService: RoomService,
     private alertService: AlertService
   ) { }
 
   ngOnInit() {
-    this.roomService.getAllRooms()
-      .subscribe(
-      (res) => this.rooms = res,
-      (err) => this.alertService.error(err)
-    );
+    this.fetchAllRooms();
   }
 
 }
