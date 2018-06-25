@@ -19,7 +19,7 @@ module.exports = {
 
             await booking.save()
             
-            return booking
+            return { message: 'Booking created'}
         },
         auth: {
             strategy: 'jwt'
