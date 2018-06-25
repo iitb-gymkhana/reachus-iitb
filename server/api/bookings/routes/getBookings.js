@@ -7,11 +7,12 @@ module.exports = {
     path: '/api/bookings',
     options: {
         handler: async (request, h) => {
-            const bookings = await Booking.find().select('-_id -__v').lean()
+            const bookings = await Booking.find().select('-__v').lean()
 
             for (let i = 0; i < bookings.length; i++) {
                 bookings[i] = await addRoomDetailsToBooking(request, bookings[i])
             }
+
             return bookings
         },
         description: 'Get all bookings',
