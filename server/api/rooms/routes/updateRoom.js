@@ -32,6 +32,10 @@ module.exports = {
             )
 
             return { message: 'Successfully updated'}
+        },
+        auth: {
+            strategy: 'jwt',
+            scope: ['admin']
         }
     }
 }

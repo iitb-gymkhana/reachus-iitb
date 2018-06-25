@@ -15,6 +15,10 @@ module.exports = {
             await Room.deleteOne({ number: room.number})
 
             return { message: message }
+        },
+        auth: {
+            strategy: 'jwt',
+            scope: ['admin']
         }
     }
 }
