@@ -1,6 +1,6 @@
 <section class="section">
   <div class="container">
-    <form (submit)="onSubmit(startDateInput.value, startTimeInput.value, endDateInput.value, endTimeInput.value)">
+    <form (submit)="onSubmit(startDateInput.value, startTimeInput.value, endDateInput.value, endTimeInput.value, roomSelect.value)">
       <div class="field is-horizontal">
         <div class="field-label is-normal">
           <label class="label">From</label>
@@ -35,6 +35,24 @@
               <input class="input" type="time" atp-time-picker arrowStyle="{'background': 'hsl(171, 100%, 41%)', 'color': 'white'}" required
                 #endTimeInput>
             </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Room</label>
+        </div>
+
+        <div class="field-body">
+          <div class="field is-narrow">
+            <div class="control">
+              <div class="select">
+                <select #roomSelect>
+                  <option *ngFor="let room of rooms" [value]="room._id">{{room.number}} - {{room.name}}</option>
+                </select>
+              </div>
+            </div>
           </div>
         </div>
       </div>
