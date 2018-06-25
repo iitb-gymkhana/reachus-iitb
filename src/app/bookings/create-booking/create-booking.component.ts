@@ -11,23 +11,20 @@ import { AlertService } from '../../_services/alert.service';
 export class CreateBookingComponent implements AfterViewInit {
 
   onSubmit(startDate, startTime, endDate, endTime) {
-    console.log(startDate);
-    console.log(startTime);
-    console.log(endDate);
-    console.log(endTime);
-
     if (startDate && startTime && endDate && endTime) {
-      const startDateTime = moment(`${startDate} ${startTime}`, 'yyyy-mm-dd hh:mm');
-      const endDateTime = moment(`${endDate} ${endTime}`, 'yyyy-mm-dd hh:mm');
+      const startDateTime = moment.utc(`${startDate} ${startTime}`, 'YYYY-MM-DD HH:mm');
+      const endDateTime = moment.utc(`${endDate} ${endTime}`, 'YYYY-MM-DD HH:mm');
 
-      console.log(startDateTime < endDateTime);
-      console.log(startDateTime);
-      console.log(endDateTime);
+      console.log(startDateTime.format());
+      console.log(endDateTime.format());
+
+      if (startDateTime.isAfter(endDateTime)) {
+        this.alertService.error('The starting date/time of booking cannot be after end date/time of booking');
+      }
+
     } else {
       this.alertService.error('All inputs required');
     }
-    
-    
   }
 
   constructor(
@@ -36,8 +33,9 @@ export class CreateBookingComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     document.addEventListener('DOMContentLoaded', function () {
-      const datePickers = bulmaCalendar.attach('[type="date"]');
-      // datePickers now contains an Array of all datePicker instances
+      const datePickers = bulmaCalendar.attach('[type="date"]', {
+        overlay: true
+      });
     });
   }
 
