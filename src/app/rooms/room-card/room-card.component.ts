@@ -35,7 +35,10 @@ export class RoomCardComponent implements OnInit, AfterViewInit {
     this.roomService.updateRoom(this.room)
       .subscribe(
         (res) => this.alertService.success(res.message),
-        (err) => this.alertService.error(err)
+        (err) => {
+          this.undoRoomEdit();
+          this.alertService.error(err);
+        }
       );
     this.isEditable = false;
   }
