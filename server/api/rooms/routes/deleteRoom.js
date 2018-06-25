@@ -19,6 +19,9 @@ module.exports = {
         auth: {
             strategy: 'jwt',
             scope: ['admin']
-        }
+        },
+        description: 'Delete room',
+        notes: 'Deletes the room with number provided in path',
+        tags: ['api', 'room', 'admin']
     }
 }
