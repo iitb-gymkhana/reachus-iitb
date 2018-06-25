@@ -23,6 +23,9 @@ import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { ScopeGuard } from './_guards/scope.guard';
 import { RoomCardComponent } from './rooms/room-card/room-card.component';
 import { RoomCreateComponent } from './rooms/room-create/room-create.component';
+import { AmazingTimePickerModule } from 'amazing-time-picker';
+import { UserBookingsComponent } from './bookings/user-bookings/user-bookings.component';
+import { CreateBookingComponent } from './bookings/create-booking/create-booking.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -40,7 +43,9 @@ export function tokenGetter() {
     RoomsComponent,
     AlertComponent,
     RoomCardComponent,
-    RoomCreateComponent
+    RoomCreateComponent,
+    UserBookingsComponent,
+    CreateBookingComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +59,8 @@ export function tokenGetter() {
         whitelistedDomains: [''],
         blacklistedRoutes: ['']
       }
-    })
+    }),
+    AmazingTimePickerModule
   ],
   providers: [
     AuthService,
