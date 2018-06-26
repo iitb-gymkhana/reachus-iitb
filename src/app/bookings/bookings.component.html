@@ -1,3 +1,24 @@
 <app-banner title="Bookings"></app-banner>
 
-<app-create-booking></app-create-booking>
+<div class="tabs is-centered">
+  <ul>
+    <li class="tab" [ngClass]="{'is-active': tab === 0}" (click)="tab = 0; fetchAllBookings()">
+      <a>Bookings</a>
+    </li>
+    <li class="tab" (click)="tab = 1" [ngClass]="{'is-active': tab === 1}">
+      <a>Create Booking</a>
+    </li>
+  </ul>
+</div>
+<section class="section">
+  <div class="container">
+    <app-create-booking [hidden]="tab !== 1"></app-create-booking>
+
+    <div class="columns is-multiline">
+      <div class="column is-4" *ngFor="let booking of bookings">
+        <app-booking-card [booking]="booking" [hidden]="tab !== 0" (deleteBookingFromArr)="deleteBookingFromArr($event)"></app-booking-card>
+      </div>
+    </div>
+
+  </div>
+</section>

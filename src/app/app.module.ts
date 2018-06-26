@@ -24,8 +24,8 @@ import { ScopeGuard } from './_guards/scope.guard';
 import { RoomCardComponent } from './rooms/room-card/room-card.component';
 import { RoomCreateComponent } from './rooms/room-create/room-create.component';
 import { AmazingTimePickerModule } from 'amazing-time-picker';
-import { UserBookingsComponent } from './bookings/user-bookings/user-bookings.component';
 import { CreateBookingComponent } from './bookings/create-booking/create-booking.component';
+import { BookingCardComponent } from './bookings/booking-card/booking-card.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -44,8 +44,8 @@ export function tokenGetter() {
     AlertComponent,
     RoomCardComponent,
     RoomCreateComponent,
-    UserBookingsComponent,
-    CreateBookingComponent
+    CreateBookingComponent,
+    BookingCardComponent
   ],
   imports: [
     BrowserModule,

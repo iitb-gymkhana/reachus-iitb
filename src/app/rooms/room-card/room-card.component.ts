@@ -58,10 +58,6 @@ export class RoomCardComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    $('.tab').click(function () {
-      $('.tab').removeClass('is-active');
-      $(this).addClass('is-active');
-    });
   }
 
 }

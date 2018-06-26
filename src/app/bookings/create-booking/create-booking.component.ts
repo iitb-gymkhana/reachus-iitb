@@ -16,8 +16,8 @@ export class CreateBookingComponent implements OnInit, AfterViewInit {
 
   onSubmit(startDate, startTime, endDate, endTime, roomId) {
     if (startDate && startTime && endDate && endTime) {
-      const startDateTime = moment.utc(`${startDate} ${startTime}`, 'YYYY-MM-DD HH:mm');
-      const endDateTime = moment.utc(`${endDate} ${endTime}`, 'YYYY-MM-DD HH:mm');
+      const startDateTime = moment(`${startDate} ${startTime}`, 'YYYY-MM-DD HH:mm');
+      const endDateTime = moment(`${endDate} ${endTime}`, 'YYYY-MM-DD HH:mm');
 
       if (startDateTime.isAfter(endDateTime)) {
         this.alertService.error('The starting date/time of booking cannot be after end date/time of booking');

@@ -1,11 +1,15 @@
 <app-banner title="Rooms"></app-banner>
 
 <div class="tabs is-centered">
-    <ul>
-      <li class="tab is-active" (click)="tab = 0; fetchAllRooms()"><a>Rooms</a></li>
-      <li class="tab" (click)="tab = 1"><a>Create Room</a></li>
-    </ul>
-  </div>
+  <ul>
+    <li class="tab" [ngClass]="{'is-active': tab === 0}" (click)="tab = 0; fetchAllRooms()">
+      <a>Rooms</a>
+    </li>
+    <li class="tab" [ngClass]="{'is-active': tab === 1}" (click)="tab = 1">
+      <a>Create Room</a>
+    </li>
+  </ul>
+</div>
 
 <section class="section">
   <div class="container">
