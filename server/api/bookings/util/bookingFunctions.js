@@ -1,6 +1,7 @@
 const Booking = require('../model/Booking')
 const Room = require('../../rooms/model/Room')
 const User = require('../../users/model/User')
+const Boom = require('boom')
 
 async function addRoomDetailsToBooking(request, booking) {
     const room = await Room.findOne({ _id: booking.room })
@@ -12,6 +13,24 @@ async function addRoomDetailsToBooking(request, booking) {
     return booking
 }
 
+async function checkPrivileges(request, h) {
+    const booking = await Booking.findOne({ _id: request.params.id })
+
+    if (!booking) {
+        return Boom.badRequest('Booking does not exist')
+    }
+
+    const credentials = request.auth.credentials
+
+    if (credentials.scope === 'admin' ||
+        credentials.id === booking.user) {
+            return booking
+        }
+
+    return Boom.badRequest('Not enough previleges')
+}
+
 module.exports = {
-    addRoomDetailsToBooking: addRoomDetailsToBooking
+    addRoomDetailsToBooking: addRoomDetailsToBooking,
+    checkPrivileges: checkPrivileges
 }
