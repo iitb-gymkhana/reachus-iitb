@@ -13,6 +13,19 @@ export class BookingService {
       `${this.apiBaseUrl}/bookings`,
       booking);
   }
+
+  public getAllBookings() {
+    return this.http.get(
+      `${this.apiBaseUrl}/bookings`
+    );
+  }
+
+  public getUserBookings() {
+    return this.http.get(
+      `${this.apiBaseUrl}/bookings/user`
+    );
+  }
+
   constructor(
     private http: HttpClient
   ) { }
