@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../_services/auth.service';
+import { BookingService } from '../../_services/booking.service';
+import { AlertService } from '../../_services/alert.service';
 
 @Component({
   selector: 'app-booking-card',
@@ -18,11 +20,17 @@ export class BookingCardComponent implements OnInit {
   }
 
   deleteBooking() {
-    console.log('delete');
+    this.bookingService.deleteBooking(this.booking._id)
+      .subscribe(
+        (res) => this.alertService.success(res['message']),
+        (err) => this.alertService.error(err)
+      );
   }
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private bookingService: BookingService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {

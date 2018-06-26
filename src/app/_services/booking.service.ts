@@ -26,6 +26,12 @@ export class BookingService {
     );
   }
 
+  public deleteBooking(_id) {
+    return this.http.delete(
+      `${this.apiBaseUrl}/bookings/${_id}`
+    );
+  }
+
   constructor(
     private http: HttpClient
   ) { }
