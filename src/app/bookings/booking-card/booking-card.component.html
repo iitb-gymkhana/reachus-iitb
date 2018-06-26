@@ -1,0 +1,31 @@
+<div class="card">
+  <div class="card-content">
+    <p class="title" *ngIf="!isEditable">
+      {{ booking.roomNumber }} - {{ booking.roomName }}
+    </p>
+    <div class="content" *ngIf="!isEditable">
+      <span class="has-text-info">From:</span> {{ booking.from | date:'medium' }}
+      <br>
+      <span class="has-text-info">To:</span> {{ booking.to | date:'medium' }}
+      <br>
+      <span>{{ booking.userEmail }}</span>
+    </div>
+  </div>
+  <footer class="card-footer">
+    <p class="card-footer-item has-text-success" *ngIf="authService.isAdmin" (click)="approveBooking()">
+      <span>
+        <i class="fa fa-check"></i>
+      </span>
+    </p>
+    <p class="card-footer-item has-text-info" *ngIf="authService.isAdmin" (click)="rejectBooking()">
+      <span>
+        <i class="fa fa-times"></i>
+      </span>
+    </p>
+    <p class="card-footer-item has-text-danger" (click)="deleteBooking()">
+      <span>
+        <i class="fa fa-trash-alt"></i>
+      </span>
+    </p>
+  </footer>
+</div>
