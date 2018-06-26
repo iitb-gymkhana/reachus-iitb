@@ -4,13 +4,13 @@ const addRoomDetailsToBooking = require('../util/bookingFunctions').addRoomDetai
 
 module.exports = {
     method: 'GET',
-    path: '/api/user/bookings',
+    path: '/api/bookings/user',
     options: {
         handler: async (request, h) => {
             const bookings = await Booking.find(
                 { user: request.auth.credentials.id }
             )
-            .select('-_id -__v')
+            .select('-__v')
             .lean()
 
             for (let i = 0; i < bookings.length; i++) {
