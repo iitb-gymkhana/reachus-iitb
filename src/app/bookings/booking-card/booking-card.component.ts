@@ -12,11 +12,19 @@ export class BookingCardComponent implements OnInit {
   @Input() booking: any;
 
   approveBooking() {
-    console.log('approve');
+    this.bookingService.approveBooking(this.booking._id)
+      .subscribe(
+        (res) => this.alertService.success(res['message']),
+        (err) => this.alertService.error(err)
+      );
   }
 
   rejectBooking() {
-    console.log('reject');
+    this.bookingService.rejectBooking(this.booking._id)
+      .subscribe(
+        (res) => this.alertService.success(res['message']),
+        (err) => this.alertService.error(err)
+      );
   }
 
   deleteBooking() {

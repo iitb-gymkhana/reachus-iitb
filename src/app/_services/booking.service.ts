@@ -32,6 +32,20 @@ export class BookingService {
     );
   }
 
+  public approveBooking(_id) {
+    return this.http.patch(
+      `${this.apiBaseUrl}/bookings/${_id}/status`,
+      { status: 'Approved' }
+    );
+  }
+
+  public rejectBooking(_id) {
+    return this.http.patch(
+      `${this.apiBaseUrl}/bookings/${_id}/status`,
+      { status: 'Rejected' }
+    )
+  }
+
   constructor(
     private http: HttpClient
   ) { }
