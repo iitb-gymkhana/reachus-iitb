@@ -16,6 +16,7 @@ module.exports = {
             booking.to = moment(request.payload.to).tz(TZ)
             booking.room = request.payload.room
             booking.user = request.auth.credentials.id
+            booking.status = 'Pending Approval'
 
             await booking.save()
             

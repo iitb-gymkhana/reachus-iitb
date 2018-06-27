@@ -30,7 +30,18 @@ async function checkPrivileges(request, h) {
     return Boom.badRequest('Not enough previleges')
 }
 
+async function verifyBookingExists(request, h) {
+    const booking = await Booking.findOne({_id: request.params.id})
+
+    if (!booking) {
+        return Boom.badRequest('Booking does not exist')
+    }
+    
+    return booking
+}
+
 module.exports = {
     addRoomDetailsToBooking: addRoomDetailsToBooking,
-    checkPrivileges: checkPrivileges
+    checkPrivileges: checkPrivileges,
+    verifyBookingExists: verifyBookingExists
 }
