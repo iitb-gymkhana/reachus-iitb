@@ -27,7 +27,9 @@ export class AlertService {
         this.subject.next({ type: 'success', text: message });
     }
 
-    error(message: string, keepAfterNavigationChange = false) {
+    error(err: any, keepAfterNavigationChange = false) {
+        const message = err.error.message || err.statusText;
+
         this.keepAfterNavigationChange = keepAfterNavigationChange;
         this.subject.next({ type: 'error', text: message });
     }
