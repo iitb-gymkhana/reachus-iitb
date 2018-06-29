@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
 
   constructor(
-    private auth: AuthService,
+    public auth: AuthService,
     private router: Router
   ) { }
 

@@ -55,7 +55,7 @@ export class BookingCardComponent implements OnInit {
   }
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private bookingService: BookingService,
     private alertService: AlertService
   ) { }

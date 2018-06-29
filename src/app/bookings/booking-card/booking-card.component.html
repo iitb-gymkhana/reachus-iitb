@@ -1,9 +1,9 @@
 <div class="card">
   <div class="card-content">
-    <p class="title" *ngIf="!isEditable">
+    <p class="title">
       {{ booking.roomNumber }} - {{ booking.roomName }}
     </p>
-    <div class="content" *ngIf="!isEditable">
+    <div class="content">
       <span class="has-text-info">From:</span> {{ booking.from | date:'medium' }}
       <br>
       <span class="has-text-info">To:</span> {{ booking.to | date:'medium' }}
