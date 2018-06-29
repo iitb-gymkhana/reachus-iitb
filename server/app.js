@@ -89,6 +89,7 @@ const init = async () => {
         root: __dirname
     }).forEach(file => {
         const route = require(path.join(__dirname, file))
+        route.path = '/sac/booking' + route.path
         server.route(route);
     });
     
