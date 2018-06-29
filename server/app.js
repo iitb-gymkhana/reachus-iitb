@@ -48,6 +48,7 @@ const init = async () => {
             title: 'API Documentation',
             version: Pack.version,
         },
+        documentationPath: '/sac/booking/api/documentation'
     };
 
     await server.register(require('hapi-auth-jwt2'));
