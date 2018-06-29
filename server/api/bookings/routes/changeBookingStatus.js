@@ -1,12 +1,14 @@
 const Booking = require('../model/Booking')
 const verifyBookingExists = require('../util/bookingFunctions').verifyBookingExists
+const checkForConflictedBooking = require('../util/bookingFunctions').checkForConflictedBooking
 
 module.exports = {
     method: 'PATCH',
     path: '/api/bookings/{id}/status',
     options: {
         pre: [
-            { method: verifyBookingExists, assign: 'booking' }
+            { method: verifyBookingExists, assign: 'booking' },
+            { method: checkForConflictedBooking, assign: 'conflictedBooking' }
         ],
         handler: async (request, h) => {
             await Booking.updateOne(
@@ -14,7 +16,10 @@ module.exports = {
                 { status: request.payload.status }
             )
 
-            return { message: 'Booking approved' }
+            return { 
+                message: `Booking ${request.payload.status}`,
+                booking: { status: request.payload.status }
+            }
         },
         auth: {
             strategy: 'jwt',
