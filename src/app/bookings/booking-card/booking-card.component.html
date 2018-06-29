@@ -14,12 +14,12 @@
     </div>
   </div>
   <footer class="card-footer">
-    <p class="card-footer-item has-text-success" *ngIf="authService.isAdmin" (click)="approveBooking()">
+    <p class="card-footer-item has-text-success" *ngIf="authService.isAdmin && booking.status !== 'Approved'" (click)="approveBooking()">
       <span>
         <i class="fa fa-check"></i>
       </span>
     </p>
-    <p class="card-footer-item has-text-info" *ngIf="authService.isAdmin" (click)="rejectBooking()">
+    <p class="card-footer-item has-text-info" *ngIf="authService.isAdmin && booking.status !== 'Rejected'" (click)="rejectBooking()">
       <span>
         <i class="fa fa-times"></i>
       </span>
