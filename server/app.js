@@ -17,6 +17,7 @@ const DB_HOST = process.env.DB_HOST;
 const DB_USER = process.env.DB_USER;
 const DB_PASS = process.env.DB_PASS;
 const DB_PORT = process.env.DB_PORT;
+const PORT = process.env.PORT || 3000
 
 const dbUrl = `mongodb://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/SAC`;
 
@@ -32,7 +33,7 @@ const validate = async function (decoded, request) {
 
 const init = async () => {
     const server = new Hapi.Server({
-        port: 3000,
+        port: PORT,
         host: 'localhost',
         routes: {
             cors: {
