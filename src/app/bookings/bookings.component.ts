@@ -10,6 +10,9 @@ import { AlertService } from '../_services/alert.service';
 export class BookingsComponent implements OnInit, AfterViewInit {
   bookings: any;
   tab = 0;
+  conflictedBookings: any;
+  hasConflict = false;
+
 
   fetchAllBookings() {
     this.bookingService.getUserBookings()
@@ -17,6 +20,11 @@ export class BookingsComponent implements OnInit, AfterViewInit {
         (res) => this.bookings = res,
         (err) => this.alertService.error(err)
       );
+  }
+
+  handleConflict(conflictedBookings) {
+    this.conflictedBookings = conflictedBookings;
+    this.hasConflict = true;
   }
 
   constructor(
