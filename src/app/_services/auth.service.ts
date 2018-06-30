@@ -33,7 +33,7 @@ export class AuthService {
       { email: user.email, password: user.password })
       .pipe(
         map(result => {
-          localStorage.setItem('user', result['user']);
+          localStorage.setItem('user', JSON.stringify(result['user']));
           return true;
         })
       );
@@ -55,6 +55,7 @@ export class AuthService {
 
   public get isAdmin(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
+
     return user.admin;
   }
 }
