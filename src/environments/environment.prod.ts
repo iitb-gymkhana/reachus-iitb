@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'http://gymkhanna.iitb.ac.in/sac/booking/api'
+  apiBaseUrl: 'https://gymkhana.iitb.ac.in/sac/booking/api'
 };
