@@ -3,7 +3,7 @@
     <div class="message-header">
       <p *ngIf="message.type === 'error'">Error</p>
       <p *ngIf="message.type === 'success'">Success</p>
-      <button class="delete" aria-label="delete"></button>
+      <button class="delete" aria-label="delete" (click)="message = false" ></button>
     </div>
     <div class="message-body">
       {{ message.text }}
