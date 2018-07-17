@@ -33,6 +33,7 @@
     "bulma-divider": "^2.0.1",
     "jquery": "^3.3.1",
     "moment": "^2.22.2",
+    "nodemailer": "^4.6.7",
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.2.1",
     "yarn": "^1.7.0",
