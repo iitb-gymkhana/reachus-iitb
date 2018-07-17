@@ -12,25 +12,25 @@
 
   <div id="sac-navbar" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item" routerLink="/" *ngIf="auth.loggedIn">
+      <a class="navbar-item" routerLink="/" *ngIf="auth.isAuthenticated()">
         Home
       </a>
-      <a class="navbar-item" routerLink="/login" *ngIf="!auth.loggedIn">
+      <a class="navbar-item" routerLink="/login" *ngIf="!auth.isAuthenticated()">
         Login
       </a>
-      <a class="navbar-item" routerLink="/signup" *ngIf="!auth.loggedIn">
+      <a class="navbar-item" routerLink="/signup" *ngIf="!auth.isAuthenticated()">
         Signup
       </a>
-      <a class="navbar-item" routerLink="/bookings" *ngIf="auth.loggedIn">
+      <a class="navbar-item" routerLink="/bookings" *ngIf="auth.isAuthenticated()">
         Bookings
       </a>
-      <a class="navbar-item" routerLink="/rooms" *ngIf="auth.loggedIn && auth.isAdmin">
+      <a class="navbar-item" routerLink="/rooms" *ngIf="auth.isAuthenticated() && auth.isAdmin">
         Rooms
       </a>
     </div>
 
     <div class="navbar-end">
-      <a class="navbar-item" (click)="logout()" *ngIf="auth.loggedIn">
+      <a class="navbar-item" (click)="logout()" *ngIf="auth.isAuthenticated()">
         Logout
       </a>
     </div>

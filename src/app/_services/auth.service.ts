@@ -49,10 +49,6 @@ export class AuthService {
     return !this.jwtHelper.isTokenExpired(token);
   }
 
-  public get loggedIn(): boolean {
-    return (localStorage.getItem('user') !== null);
-  }
-
   public get isAdmin(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
 
