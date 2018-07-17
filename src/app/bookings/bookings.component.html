@@ -15,7 +15,6 @@
   [booking1]="conflictedBookings?.booking1" 
   [booking2]="conflictedBookings?.booking2" 
   (conflictResolvedBookings)="changeBookingsStatus($event)"
-  *ngIf="hasConflict"
   [(hasConflict)]="hasConflict">
 </app-booking-conflict-modal>
 

@@ -1,4 +1,4 @@
-<div class="modal bookings-conflict" [ngClass]="{'is-active': hasConflict}">
+<div class="modal bookings-conflict" *ngIf="hasConflict" [ngClass]="{'is-active': hasConflict}">
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">

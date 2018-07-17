@@ -2,7 +2,6 @@ import { Component, AfterViewInit, Input, Output, EventEmitter } from '@angular/
 import { AuthService } from '../../_services/auth.service';
 import { BookingService } from '../../_services/booking.service';
 import { AlertService } from '../../_services/alert.service';
-import * as $ from 'jquery';
 
 @Component({
   selector: 'app-booking-conflict-modal',
