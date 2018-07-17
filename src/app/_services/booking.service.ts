@@ -43,7 +43,17 @@ export class BookingService {
     return this.http.patch(
       `${this.apiBaseUrl}/bookings/${_id}/status`,
       { status: 'Rejected' }
-    )
+    );
+  }
+
+  public resolveConflict(approveId, rejectId) {
+    return this.http.patch(
+      `${this.apiBaseUrl}/bookings/conflict`,
+      {
+        approveId: approveId,
+        rejectId: rejectId
+      }
+    );
   }
 
   constructor(

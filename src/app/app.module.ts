@@ -26,6 +26,7 @@ import { RoomCreateComponent } from './rooms/room-create/room-create.component';
 import { AmazingTimePickerModule } from 'amazing-time-picker';
 import { CreateBookingComponent } from './bookings/create-booking/create-booking.component';
 import { BookingCardComponent } from './bookings/booking-card/booking-card.component';
+import { BookingConflictModalComponent } from './bookings/booking-conflict-modal/booking-conflict-modal.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -45,7 +46,8 @@ export function tokenGetter() {
     RoomCardComponent,
     RoomCreateComponent,
     CreateBookingComponent,
-    BookingCardComponent
+    BookingCardComponent,
+    BookingConflictModalComponent
   ],
   imports: [
     BrowserModule,

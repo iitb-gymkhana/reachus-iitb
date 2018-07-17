@@ -11,21 +11,12 @@
   </ul>
 </div>
 
-<div class="modal" *ngIf="hasConflict" [ngClass]="{'is-active': hasConflict}">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Conflict: Choose one</p>
-      <button class="delete" aria-label="close"></button>
-    </header>
-    <section class="modal-card-body">
-      <app-booking-card [booking]="conflictedBookings.booking1"></app-booking-card>
-      <div class="is-divider" data-content="OR"></div>
-      <app-booking-card [booking]="conflictedBookings.booking2"></app-booking-card>
-
-    </section>
-  </div>
-</div>
+<app-booking-conflict-modal
+  [booking1]="conflictedBookings?.booking1" 
+  [booking2]="conflictedBookings?.booking2" 
+  (conflictResolvedBookings)="changeBookingsStatus($event)"
+  [(hasConflict)]="hasConflict">
+</app-booking-conflict-modal>
 
 <section class="section">
   <div class="container">

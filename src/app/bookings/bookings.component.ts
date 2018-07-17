@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { BookingService } from '../_services/booking.service';
 import { AlertService } from '../_services/alert.service';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-bookings',
@@ -15,11 +16,19 @@ export class BookingsComponent implements OnInit, AfterViewInit {
 
 
   fetchAllBookings() {
-    this.bookingService.getUserBookings()
-      .subscribe(
-        (res) => this.bookings = res,
-        (err) => this.alertService.error(err)
-      );
+    if (this.authService.isAdmin) {
+      this.bookingService.getAllBookings()
+        .subscribe(
+          (res) => this.bookings = res,
+          (err) => this.alertService.error(err)
+        );
+    } else {
+      this.bookingService.getUserBookings()
+        .subscribe(
+          (res) => this.bookings = res,
+          (err) => this.alertService.error(err)
+        );
+      }
   }
 
   handleConflict(conflictedBookings) {
@@ -27,7 +36,20 @@ export class BookingsComponent implements OnInit, AfterViewInit {
     this.hasConflict = true;
   }
 
+  changeBookingsStatus(changedBookings) {
+    for (let i = 0; i < this.bookings.length; i++) {
+      if (this.bookings[i]._id === changedBookings.approveId) {
+        this.bookings[i].status = 'Approved';
+      }
+
+      if (this.bookings[i]._id === changedBookings.rejectId) {
+        this.bookings[i].status = 'Rejected';
+      }
+    }
+  }
+
   constructor(
+    private authService: AuthService,
     private bookingService: BookingService,
     private alertService: AlertService
   ) { }
