@@ -1,7 +1,10 @@
 <div class="card">
   <div class="card-content">
     <p class="title">
-      {{ booking.roomNumber }} - {{ booking.roomName }}
+      {{ booking.roomNumber }}
+    </p>
+    <p class="subtitle">
+      {{ booking.roomName }}
     </p>
     <div class="content">
       <span class="has-text-info">From:</span> {{ booking.from | date:'medium' }}
