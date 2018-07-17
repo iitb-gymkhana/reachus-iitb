@@ -13,7 +13,19 @@ export class BookingsComponent implements OnInit, AfterViewInit {
   tab = 0;
   conflictedBookings: any;
   hasConflict = false;
+  approvedBookingsCheckbox = true;
+  rejectedBookingsCheckbox = true;
+  pendingApprovalBookingsCheckbox = true;
 
+  isBookingVisible(booking) {
+    if (booking.status === 'Approved') {
+      return this.approvedBookingsCheckbox;
+    } else if (booking.status === 'Rejected') {
+      return this.rejectedBookingsCheckbox;
+    }
+
+    return this.pendingApprovalBookingsCheckbox;
+  }
 
   fetchAllBookings() {
     if (this.authService.isAdmin) {
