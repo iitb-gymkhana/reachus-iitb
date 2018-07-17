@@ -2,8 +2,7 @@ const bcrypt = require('bcrypt')
 const boom = require('boom')
 const authenticateUserSchema = require('../schemas/authenticateUser')
 const verifyCredentials = require('../util/userFunctions').verifyCredentials
-const User = require('../model/User')
-const createToken = require('../util/token')
+const getUserDetails = require('../util/userFunctions').getUserDetails
 
 module.exports = {
     method: 'POST',
@@ -13,10 +12,7 @@ module.exports = {
             { method: verifyCredentials, assign: 'user' }
         ],
         handler: async (request, h) => {
-            const user = request.pre.user
-            delete user.password
-            user.token = createToken(user)
-            return { user }
+            return getUserDetails(request.pre.user);
         },
         validate: {
             payload: authenticateUserSchema

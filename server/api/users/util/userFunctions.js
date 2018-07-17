@@ -1,6 +1,7 @@
 const Boom = require('boom')
 const User = require('../model/User')
 const bcrypt = require('bcrypt')
+const createToken = require('../util/token')
 
 async function verifyUniqueUser(request, h) {
     const user = await User.findOne({
@@ -32,7 +33,19 @@ async function verifyCredentials(request) {
     }
 }
 
+async function getUserDetails(user) {
+    return {
+        user: {
+            email: user.email,
+            admin: user.admin,
+            active: user.active,
+            token: createToken(user)
+        }
+    }
+}
+
 module.exports = {
     verifyUniqueUser: verifyUniqueUser,
-    verifyCredentials: verifyCredentials
+    verifyCredentials: verifyCredentials,
+    getUserDetails: getUserDetails
 }
