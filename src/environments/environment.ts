@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://localhost:3000/sac/booking/api'
+  apiBaseUrl: 'http://localhost:3000/portal/sac/api'
 };
 
 /*

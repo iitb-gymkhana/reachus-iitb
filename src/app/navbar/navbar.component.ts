@@ -11,12 +11,12 @@ import * as $ from 'jquery';
 export class NavbarComponent implements OnInit, AfterViewInit {
 
   logout() {
-    this.auth.logout();
+    this.authService.logout();
     this.router.navigate(['']);
   }
 
   constructor(
-    public auth: AuthService,
+    public authService: AuthService,
     private router: Router
   ) { }
 
