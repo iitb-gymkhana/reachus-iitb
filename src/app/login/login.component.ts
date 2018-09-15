@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
 import { AuthService } from '../_services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../_services/alert.service';
 
 @Component({
@@ -11,26 +10,25 @@ import { AlertService } from '../_services/alert.service';
 })
 export class LoginComponent implements OnInit {
 
-  user = new User('', '');
-
-  submitted = false;
-
-  onSubmit() {
-    this.auth.login(this.user)
-      .subscribe(
-        (res) => this.router.navigate(['']),
-        (err) => this.alertService.error(err)
-      );
-  }
-
   constructor(
-    private auth: AuthService,
+    private authService: AuthService,
     private router: Router,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.auth.logout();
+    this.authService.logout();
+    this.route.queryParams.subscribe(params => {
+      if (!('code' in params)) {
+        this.router.navigate(['']);
+      } else {
+        this.authService.login(params.code).subscribe(
+          (res) => this.router.navigate(['']),
+          (err) => this.alertService.error(err)
+        );
+      }
+    });
   }
 
 }

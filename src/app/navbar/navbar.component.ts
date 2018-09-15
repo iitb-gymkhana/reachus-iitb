@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-navbar',
@@ -9,6 +10,7 @@ import * as $ from 'jquery';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit, AfterViewInit {
+  loginUrl = environment.loginUrl;
 
   logout() {
     this.authService.logout();

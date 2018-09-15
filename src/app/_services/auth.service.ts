@@ -15,10 +15,10 @@ export class AuthService {
 
   apiBaseUrl = environment.apiBaseUrl;
 
-  public login(user: User): Observable<boolean> {
+  public login(code: String): Observable<boolean> {
     return this.http.post<{token: string}>(
       `${this.apiBaseUrl}/users/authenticate`,
-      {email: user.email, password: user.password})
+      {code: code})
       .pipe(
         map(result => {
           localStorage.setItem('user', JSON.stringify(result['user']));

@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt')
 const boom = require('boom')
 const authenticateUserSchema = require('../schemas/authenticateUser')
-const verifyCredentials = require('../util/userFunctions').verifyCredentials
+const verifySSOCode = require('../util/userFunctions').verifySSOCode
 const getUserDetails = require('../util/userFunctions').getUserDetails
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
     path: '/api/users/authenticate',
     options: {
         pre: [
-            { method: verifyCredentials, assign: 'user' }
+            { method: verifySSOCode, assign: 'user' }
         ],
         handler: async (request, h) => {
             return getUserDetails(request.pre.user);

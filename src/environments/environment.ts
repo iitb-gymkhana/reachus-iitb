@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://localhost:3000/portal/sac/api'
+  apiBaseUrl: 'http://localhost:3000/portal/sac/api',
+  loginUrl: 'https://gymkhana.iitb.ac.in/sso/oauth/authorize/?client_id=lBLyJ8bH5ac4oayzPWNYkEllwpacZAM2nHAkKWKk&response_type=code&scope=profile%20ldap%20send_mail'
 };
 
 /*

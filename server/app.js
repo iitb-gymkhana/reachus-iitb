@@ -96,7 +96,8 @@ const init = async () => {
         root: __dirname
     }).forEach(file => {
         const route = require(path.join(__dirname, file))
-        route.path = '/sac/booking' + route.path
+        // TODO: Use env variable for base url
+        route.path = '/portal/sac' + route.path
         server.route(route);
     });
     
