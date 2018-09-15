@@ -72,9 +72,20 @@ async function checkForConflictedBooking(request, h) {
 
 }
 
+async function checkRoomExists(request, h) {
+    const room = await Room.findOne({ _id: request.payload.room })
+
+    if (!room) {
+        return Boom.badRequest('Room does not exist')
+    }
+
+    return room
+}
+
 module.exports = {
     addRoomDetailsToBooking: addRoomDetailsToBooking,
     checkPrivileges: checkPrivileges,
     verifyBookingExists: verifyBookingExists,
-    checkForConflictedBooking: checkForConflictedBooking
+    checkForConflictedBooking: checkForConflictedBooking,
+    checkRoomExists: checkRoomExists
 }
