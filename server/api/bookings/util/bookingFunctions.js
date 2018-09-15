@@ -8,7 +8,7 @@ async function addRoomDetailsToBooking(booking) {
     booking.roomNumber = room.number 
     booking.roomName = room.name
 
-    const user = await User.findOne({_id: booking.user})
+    const user = await User.findOne({_id: booking.user_id})
     booking.userEmail = user.email
     return booking
 }
@@ -23,7 +23,7 @@ async function checkPrivileges(request, h) {
     const credentials = request.auth.credentials
 
     if (credentials.scope === 'admin' ||
-        credentials.id === booking.user) {
+        credentials.id === booking.user_id) {
             return booking
         }
 

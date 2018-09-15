@@ -8,7 +8,7 @@ module.exports = {
     options: {
         handler: async (request, h) => {
             const bookings = await Booking.find(
-                { user: request.auth.credentials.id }
+                { user_id: request.auth.credentials.id }
             )
             .select('-__v')
             .lean()
