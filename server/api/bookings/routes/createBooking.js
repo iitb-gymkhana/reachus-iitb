@@ -2,6 +2,7 @@ const Booking = require('../model/Booking')
 const Room = require('../../rooms/model/Room')
 const createBookingSchema = require('../schemas/createBooking')
 const moment = require('moment-timezone')
+const checkRoomExists = require('../util/bookingFunctions').checkRoomExists
 
 const TZ = 'Asia/Kolkata'
 
@@ -9,6 +10,9 @@ module.exports = {
     method: 'POST',
     path: '/api/bookings',
     options: {
+        pre: [
+            { method: checkRoomExists }
+        ],
         handler: async (request, h) => {
             const booking = new Booking()
 
