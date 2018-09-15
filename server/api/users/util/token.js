@@ -11,6 +11,10 @@ function createToken(user) {
         scopes = 'admin'
     }
 
+    if (user.superuser) {
+        scopes = 'superuser'
+    }
+
     return jwt.sign(
         {
             id: user._id, 
