@@ -79,24 +79,27 @@ async function verifySSOCode(req) {
             return Boom.badImplementation('Failed to get details from SSO')
         }
         
-        User.update(
+        const user = await User.findOneAndUpdate(
             { ldap_username: res.username },
             {
-                ldap_username: res.username,
-                email: res.email,
-                first_name: res.first_name,
-                last_name: res.last_name,
-                sso_scope: sso_scope,
-                access_token: access_token,
-                refresh_token: refresh_token
+                $set: {
+                    ldap_username: res.username,
+                    email: res.email,
+                    first_name: res.first_name,
+                    last_name: res.last_name,
+                    sso_scope: sso_scope,
+                    access_token: access_token,
+                    refresh_token: refresh_token    
+                }
             },
             {
+                new: true,
                 upsert: true,
                 setDefaultsOnInsert: true
             }
         )
 
-        return await User.findOne({ ldap_username: res.username })
+        return user
     } catch {
         return Boom.badImplementation('Issues while connecting to SSO')
     }
