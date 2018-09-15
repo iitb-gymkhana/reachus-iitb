@@ -18,7 +18,7 @@ module.exports = {
         },
         auth: {
             strategy: 'jwt',
-            scope: ['admin']
+            scope: ['superuser']
         },
         pre: [
             { method: verifyUniqueRoom }

@@ -24,7 +24,7 @@
       <a class="navbar-item" routerLink="/bookings" *ngIf="authService.isAuthenticated()">
         Bookings
       </a>
-      <a class="navbar-item" routerLink="/rooms" *ngIf="authService.isAuthenticated() && authService.isAdmin">
+      <a class="navbar-item" routerLink="/rooms" *ngIf="authService.isAuthenticated() && authService.isSuperuser">
         Rooms
       </a>
     </div>
