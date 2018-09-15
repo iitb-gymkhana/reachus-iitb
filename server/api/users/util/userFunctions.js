@@ -111,6 +111,7 @@ async function getUserDetails(user) {
             email: user.email,
             ldap_username: user.ldap_username,
             admin: user.admin,
+            superuser: user.superuser,
             token: createToken(user)
         }
     }

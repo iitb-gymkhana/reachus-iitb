@@ -22,7 +22,7 @@ async function checkPrivileges(request, h) {
 
     const credentials = request.auth.credentials
 
-    if (credentials.scope === 'admin' ||
+    if (credentials.scope === 'superuser' ||
         credentials.id === booking.user_id) {
             return booking
         }

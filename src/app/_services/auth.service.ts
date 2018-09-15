@@ -55,4 +55,10 @@ export class AuthService {
 
     return user.admin;
   }
+
+  public get isSuperuser(): Boolean {
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    return user.superuser;
+  }
 }
