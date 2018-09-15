@@ -36,10 +36,10 @@ async function verifyCredentials(request) {
 
 async function verifySSOCode(req) {
     const code = req.payload.code
-    const client_id = 'lBLyJ8bH5ac4oayzPWNYkEllwpacZAM2nHAkKWKk'
-    const client_secret = 'vjwMRBd6VtFoDAJQCQo94idrDTI3U8S8vAZv9MlqeAo8dtYiRN9SOiFvntaoFvQJY5QPPuEn5FOVDSAEFMbsqxmCgevoaVrBUK04iv8ezLVmiGaAafAzXOMqChhRw5rI'
+    const client_id = process.env.CLIENT_ID
+    const client_secret = process.env.CLIENT_SECRET
     const authorization_token = Buffer.from(`${client_id}:${client_secret}`).toString('base64')
-    const REDIRECT_URI = 'http://localhost:4200/login'
+    const REDIRECT_URI = process.env.SSO_REDIRECT_URI
     
     try {
         let options = {
