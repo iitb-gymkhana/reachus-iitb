@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../../_services/auth.service';
 import { BookingService } from '../../_services/booking.service';
 import { AlertService } from '../../_services/alert.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-booking-card',
@@ -11,6 +12,7 @@ import { AlertService } from '../../_services/alert.service';
 export class BookingCardComponent implements OnInit {
   @Input() booking: any;
   @Output() handleConflict = new EventEmitter<any>();
+  TZ = 'Asia/Kolkata';
 
   approveBooking() {
     this.bookingService.approveBooking(this.booking._id)

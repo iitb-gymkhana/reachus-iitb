@@ -23,7 +23,6 @@ import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { ScopeGuard } from './_guards/scope.guard';
 import { RoomCardComponent } from './rooms/room-card/room-card.component';
 import { RoomCreateComponent } from './rooms/room-create/room-create.component';
-import { AmazingTimePickerModule } from 'amazing-time-picker';
 import { CreateBookingComponent } from './bookings/create-booking/create-booking.component';
 import { BookingCardComponent } from './bookings/booking-card/booking-card.component';
 import { BookingConflictModalComponent } from './bookings/booking-conflict-modal/booking-conflict-modal.component';
@@ -66,7 +65,6 @@ export function tokenGetter() {
         blacklistedRoutes: ['']
       }
     }),
-    AmazingTimePickerModule,
     MatButtonModule,
     MatIconModule,
     XunkCalendarModule

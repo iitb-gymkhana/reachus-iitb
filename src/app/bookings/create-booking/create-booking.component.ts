@@ -1,10 +1,10 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
-import bulmaCalendar from 'node_modules/bulma-calendar/dist/js/bulma-calendar.min.js';
 import * as moment from 'moment';
 import { AlertService } from '../../_services/alert.service';
-import { Room } from '../../room';
 import { RoomService } from '../../_services/room.service';
 import { BookingService } from '../../_services/booking.service';
+import flatpickr from 'flatpickr';
+import rangePlugin from 'flatpickr/dist/plugins/rangePlugin';
 
 @Component({
   selector: 'app-create-booking',
@@ -13,15 +13,19 @@ import { BookingService } from '../../_services/booking.service';
 })
 export class CreateBookingComponent implements OnInit, AfterViewInit {
   rooms: any;
+  TZ = 'Asia/Kolkata';
+  booking_datetime: any;
 
-  onSubmit(startDate, startTime, endDate, endTime, roomId) {
-    if (startDate && startTime && endDate && endTime) {
-      const startDateTime = moment(`${startDate} ${startTime}`, 'YYYY-MM-DD HH:mm');
-      const endDateTime = moment(`${endDate} ${endTime}`, 'YYYY-MM-DD HH:mm');
+  onSubmit(roomId) {
+    const selectedDates = this.booking_datetime.selectedDates;
+    console.log(selectedDates);
+    if (selectedDates.length !== 0) {
+      const startDateTime = moment(selectedDates[0]);
+      const endDateTime = moment(selectedDates[1]);
 
       if (startDateTime.isAfter(endDateTime)) {
-        this.alertService.error('The starting date/time of booking cannot be after end date/time of booking');
-      } else {
+        this.alertService.errorWithMessage('The starting date/time of booking cannot be after end date/time of booking');
+        } else {
         this.bookingService.createBooking(
           {
             from: startDateTime.format(),
@@ -36,7 +40,7 @@ export class CreateBookingComponent implements OnInit, AfterViewInit {
       }
 
     } else {
-      this.alertService.error('All inputs required');
+      this.alertService.errorWithMessage('All inputs required');
     }
   }
 
@@ -55,11 +59,15 @@ export class CreateBookingComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    document.addEventListener('DOMContentLoaded', function () {
-      const datePickers = bulmaCalendar.attach('[type="date"]', {
-        overlay: true
-      });
+    this.booking_datetime = flatpickr('#from-datetime-picker', {
+      dateFormat: 'Y-m-d h:i K',
+      altFormat: 'F j, Y, h:i K',
+      altInput: true,
+      minDate: 'today',
+      enableTime: true,
+      plugins: [rangePlugin({ input: '#to-datetime-picker' })]
     });
+
   }
 
 }

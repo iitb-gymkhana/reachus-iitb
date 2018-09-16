@@ -1,22 +1,20 @@
 <section class="section">
   <div class="container">
-    <form (submit)="onSubmit(startDateInput.value, startTimeInput.value, endDateInput.value, endTimeInput.value, roomSelect.value)">
+    <form (submit)="onSubmit(roomSelect.value)">
       <div class="field is-horizontal">
         <div class="field-label is-normal">
           <label class="label">From</label>
         </div>
         <div class="field-body">
-          <div class="field is-narrow">
-            <p class="control is-expanded">
-              <input id="datepicker" class="input" type="date" required #startDateInput>
-            </p>
-          </div>
-          <div class="field is-narrow">
-            <p class="control is-expanded">
-              <input class="input" type="time" atp-time-picker arrowStyle="{'background': 'hsl(171, 100%, 41%)', 'color': 'white'}" required
-                #startTimeInput>
-            </p>
-          </div>
+          <p class="control has-icons-left has-icons-right">
+            <input class="input" type="text" required placeholder="From" id="from-datetime-picker" data-input>
+            <span class="icon is-small is-left" title="toggle" data-toggle>
+              <i class="fas fa-calendar-alt"></i>
+            </span>
+            <!-- <span class="icon is-small is-right" title="clear" data-clear>
+              <i class="fas fa-times"></i>
+            </span> -->
+          </p>
         </div>
       </div>
 
@@ -25,17 +23,15 @@
           <label class="label">To</label>
         </div>
         <div class="field-body">
-          <div class="field is-narrow">
-            <p class="control is-expanded">
-              <input id="datepicker" class="input" type="date" required #endDateInput>
-            </p>
-          </div>
-          <div class="field is-narrow">
-            <p class="control is-expanded">
-              <input class="input" type="time" atp-time-picker arrowStyle="{'background': 'hsl(171, 100%, 41%)', 'color': 'white'}" required
-                #endTimeInput>
-            </p>
-          </div>
+          <p class="control has-icons-left has-icons-right">
+            <input class="input" type="text" required placeholder="To" id="to-datetime-picker" data-input>
+            <span class="icon is-small is-left" title="toggle" data-toggle>
+              <i class="fas fa-calendar-alt"></i>
+            </span>
+            <!-- <span class="icon is-small is-right" title="clear" data-clear>
+              <i class="fas fa-times"></i>
+            </span> -->
+          </p>
         </div>
       </div>
 
@@ -56,6 +52,7 @@
           </div>
         </div>
       </div>
+
 
       <div class="field is-horizontal">
         <div class="field-label is-normal">

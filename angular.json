@@ -25,9 +25,9 @@
             "styles": [
               "src/styles.css",
               "node_modules/bulma/css/bulma.min.css",
-              "node_modules/bulma-calendar/dist/css/bulma-calendar.min.css",
               "node_modules/bulma-divider/dist/css/bulma-divider.min.css",
-              "node_modules/bulma-checkradio/dist/css/bulma-checkradio.min.css"
+              "node_modules/bulma-checkradio/dist/css/bulma-checkradio.min.css",
+              "node_modules/flatpickr/dist/flatpickr.min.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
