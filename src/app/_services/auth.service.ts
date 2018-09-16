@@ -61,4 +61,10 @@ export class AuthService {
 
     return user.superuser;
   }
+
+  public getUsername(): string {
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    return user.ldap_username;
+  }
 }

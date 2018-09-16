@@ -29,11 +29,18 @@
       </a>
     </div>
 
-    <div class="navbar-end">
-      <a class="navbar-item" (click)="logout()" *ngIf="authService.isAuthenticated()">
+    <div class="navbar-end" *ngIf="authService.isAuthenticated()">
+      <a class="navbar-item" (click)="logout()">
         Logout
       </a>
+      <div class="navbar-item">
+        <div class="control">
+          <div class="tags has-addons">
+            <span class="tag is-dark is-medium"><i class="far fa-user"></i></span>
+            <span class="tag is-primary is-medium">{{authService.getUsername()}}</span>
+          </div>
+        </div>
+      </div>
     </div>
-
   </div>
 </nav>
