@@ -4,10 +4,37 @@
   <div class="contianer">
     <div class="columns">
       <div class="column is-8 is-offset-2">
-        <app-xunk-calendar 
-          [selectedDate]="selDate"
-          [heatmap]="getHeatMap()"></app-xunk-calendar>  
+        <app-xunk-calendar [selectedDate]="selDate" [heatmap]="getHeatMap()"></app-xunk-calendar>
       </div>
     </div>
+  </div>
+  <div class="container">
+    <div class="columns is-mobile is-centered">
+      <div class="column is-half has-text-centered">
+          <span class="tag is-medium is-primary">
+            {{getBookingsCount()}}
+          </span>
+      </div>
+    </div>
+  </div>
+  <div class="contianer">
+    <ng-container *ngFor="let booking of getBookings(selDate)">
+      <div class="columns">
+        <div class="column is-8 is-offset-2">
+            <div class="box" *ngIf="booking">
+              <div class="content">
+                <p>
+                  {{booking.roomNumber}} - <strong>{{booking.roomName}}</strong>
+                  <br>
+                  <small>{{booking.userEmail}}</small>
+                  <br>
+                  <small>{{booking.from | date: 'mediumDate' }}, {{booking.from | date: 'shortTime' }} | {{booking.to |
+                    date: 'mediumDate' }}, {{booking.to | date: 'shortTime' }}</small>
+                </p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </ng-container>
   </div>
 </section>
