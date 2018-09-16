@@ -26,7 +26,7 @@ th {
 }
 
 .weekday th {
-    color: #cacaca;
+    color: hsl(0, 0%, 86%);
 }
 
 .xunk-calendar-day {

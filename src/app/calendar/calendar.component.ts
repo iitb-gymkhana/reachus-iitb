@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { XunkCalendarModule } from 'xunk-calendar';
 import { BookingService } from '../_services/booking.service';
 import { AlertService } from '../_services/alert.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-calendar',
@@ -11,7 +12,7 @@ import { AlertService } from '../_services/alert.service';
 export class CalendarComponent implements OnInit {
 
   selDate = XunkCalendarModule.getToday();
-  bookings: any;
+  bookings = [] as any;
 
   constructor(
     private bookingService: BookingService,
@@ -27,7 +28,26 @@ export class CalendarComponent implements OnInit {
   }
 
   getHeatMap() {
-    return { '20180902': 1 };
+    const heatmap = {};
+
+    for (const booking of this.bookings) {
+      const from = moment(booking.from);
+      const year = from.year().toString();
+      const month = XunkCalendarModule.zeroPad((from.month() + 1).toString(), 2);
+      const date = XunkCalendarModule.zeroPad(from.date().toString(), 2);
+
+      const dateStr = year + month + date;
+
+      if (dateStr in heatmap) {
+        heatmap[dateStr] += 0.2;
+      } else {
+        heatmap[dateStr] = 0.5;
+      }
+    }
+
+    console.log(heatmap);
+
+    return heatmap;
   }
 
 }
