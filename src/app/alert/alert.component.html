@@ -1,4 +1,4 @@
-<div *ngIf="message">
+<div *ngIf="message" class="animated fadeIn">
   <article [ngClass]="{'message': message, 'is-danger': message.type === 'error', 'is-success': message.type === 'success'}">
     <div class="message-header">
       <p *ngIf="message.type === 'error'">Error</p>

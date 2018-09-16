@@ -6,12 +6,12 @@ module.exports = {
   path: '/api/users/{user}',
   options: {
     handler: async (request, h) => {
-      const user = User.findOne({ldap_username: request.params.user}).lean()
+      const user = await User.findOne({ldap_username: request.params.user}).lean()
       
       if (!user) {
         return Boom.notFound(`No user with username ${request.params.user} present`)
       }
-      
+
       return user
     },
     auth: {

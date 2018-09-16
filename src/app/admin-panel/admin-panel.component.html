@@ -31,5 +31,35 @@
 
       </div>
     </div>
+
+    <div class="container" *ngIf="user">
+      <div class="is-divider"></div>      
+      <div class="columns is-mobile">
+        <div class="column is-3">
+          {{user.ldap_username}}
+        </div>
+        <div class="column is-3">
+          <div class="field">
+            <input id="admin-switch" type="checkbox" name="admin-switch" class="switch" 
+                  (change)="onChange('admin', adminSwitch.checked)" 
+                  [disabled]="changing_status" 
+                  [checked]="user.admin"
+                  #adminSwitch>
+            <label for="admin-switch">Admin</label>
+          </div>
+        </div>
+
+        <div class="column is-3">
+          <div class="field">
+            <input id="superuser-switch" type="checkbox" name="superuser-switch" class="switch" 
+                  (change)="onChange('superuser', superuserSwitch.checked)" 
+                  [disabled]="changing_status" 
+                  [checked]="user.superuser"
+                  #superuserSwitch>
+            <label for="superuser-switch">Superuser</label>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 </form>

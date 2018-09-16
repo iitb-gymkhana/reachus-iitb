@@ -72,4 +72,11 @@ export class AuthService {
     return this.http.get(
       `${this.apiBaseUrl}/users/${user}`);
   }
+
+  public changeUserPrivilege(username: string, privilege: string, value: boolean): Observable<any> {
+    return this.http.post(
+      `${this.apiBaseUrl}/users/privilege`,
+      { ldap_username: username, privilege: privilege, value: value }
+    );
+  }
 }
