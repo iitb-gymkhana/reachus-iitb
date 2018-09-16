@@ -12,6 +12,7 @@ import * as moment from 'moment';
 export class BookingCardComponent implements OnInit {
   @Input() booking: any;
   @Output() handleConflict = new EventEmitter<any>();
+  @Output() deleteBookingFromArr = new EventEmitter<any>();
   TZ = 'Asia/Kolkata';
 
   approveBooking() {
@@ -51,7 +52,10 @@ export class BookingCardComponent implements OnInit {
   deleteBooking() {
     this.bookingService.deleteBooking(this.booking._id)
       .subscribe(
-        (res) => this.alertService.success(res['message']),
+        (res) => {
+          this.deleteBookingFromArr.emit(this.booking._id);
+          this.alertService.success(res['message']);
+        },
         (err) => this.alertService.error(err)
       );
   }

@@ -18,7 +18,7 @@ export class CreateBookingComponent implements OnInit, AfterViewInit {
 
   onSubmit(roomId) {
     const selectedDates = this.booking_datetime.selectedDates;
-    console.log(selectedDates);
+
     if (selectedDates.length !== 0) {
       const startDateTime = moment(selectedDates[0]);
       const endDateTime = moment(selectedDates[1]);

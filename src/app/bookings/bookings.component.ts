@@ -60,6 +60,15 @@ export class BookingsComponent implements OnInit, AfterViewInit {
     }
   }
 
+  deleteBookingFromArr(booking_id) {
+    for (let i = 0; i < this.bookings.length; i++) {
+      if (booking_id === this.bookings[i]._id) {
+        this.bookings.splice(i, 1);
+        return;
+      }
+    }
+  }
+
   constructor(
     private authService: AuthService,
     private bookingService: BookingService,
