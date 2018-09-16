@@ -67,4 +67,9 @@ export class AuthService {
 
     return user.ldap_username;
   }
+
+  public getUserDetails(user: string): Observable<any> {
+    return this.http.get(
+      `${this.apiBaseUrl}/users/${user}`);
+  }
 }

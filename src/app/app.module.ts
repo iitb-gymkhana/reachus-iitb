@@ -29,6 +29,7 @@ import { BookingConflictModalComponent } from './bookings/booking-conflict-modal
 import { MatButtonModule } from '@angular/material';
 import { XunkCalendarModule } from 'xunk-calendar';
 import { XunkCalendarComponent } from './xunk-calendar/xunk-calendar.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -50,7 +51,8 @@ export function tokenGetter() {
     CreateBookingComponent,
     BookingCardComponent,
     BookingConflictModalComponent,
-    XunkCalendarComponent
+    XunkCalendarComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,

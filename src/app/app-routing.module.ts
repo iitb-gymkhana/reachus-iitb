@@ -7,6 +7,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { BookingsComponent } from './bookings/bookings.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { ScopeGuard } from './_guards/scope.guard';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 const routes: Routes = [
   { path: '', component: CalendarComponent },
@@ -16,6 +17,14 @@ const routes: Routes = [
   {
     path: 'rooms',
     component: RoomsComponent,
+    canActivate: [ScopeGuard],
+    data: {
+      expectedRole: 'superuser'
+    }
+  },
+  {
+    path: 'admin',
+    component: AdminPanelComponent,
     canActivate: [ScopeGuard],
     data: {
       expectedRole: 'superuser'
