@@ -23,7 +23,7 @@ module.exports = {
         },
         auth: {
             strategy: 'jwt',
-            scope: 'admin'
+            scope: ['admin', 'superuser']
         },
         description: 'Approve booking',
         notes: 'Approves the booking',

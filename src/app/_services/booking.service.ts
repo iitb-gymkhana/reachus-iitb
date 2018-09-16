@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -14,9 +14,11 @@ export class BookingService {
       booking);
   }
 
-  public getAllBookings() {
+  public getAllBookings(status: string) {
+    const options = status ?
+      { params: new HttpParams().set('status', status) } : {};
     return this.http.get(
-      `${this.apiBaseUrl}/bookings`
+      `${this.apiBaseUrl}/bookings`, options
     );
   }
 

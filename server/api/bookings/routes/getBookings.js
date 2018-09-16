@@ -7,7 +7,14 @@ module.exports = {
     path: '/api/bookings',
     options: {
         handler: async (request, h) => {
-            const bookings = await Booking.find().select('-__v').lean()
+            const query_status = request.query.status
+            let bookings = []
+
+            if (query_status) {
+                bookings = await Booking.find({status: query_status}).select('-__v').lean()
+            } else {
+                bookings = await Booking.find().select('-__v').lean()
+            }
 
             for (let i = 0; i < bookings.length; i++) {
                 bookings[i] = await addRoomDetailsToBooking(bookings[i])

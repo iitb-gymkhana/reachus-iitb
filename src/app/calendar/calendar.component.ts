@@ -20,7 +20,7 @@ export class CalendarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.bookingService.getAllBookings()
+    this.bookingService.getAllBookings('Approved')
       .subscribe(
         (res) => this.bookings = res,
         (err) => this.alertService.error(err)
