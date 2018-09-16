@@ -1,0 +1,35 @@
+<app-banner title="Admin Panel"></app-banner>
+
+<form (submit)="onSubmit(username.value)">
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-8">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">LDAP Username</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                  <input class="input" type="text" placeholder="Username" #username>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="column is-3">
+          <div class="field">
+            <p class="control">
+              <button class="button is-primary is-outlined" type="submit">
+                Search
+              </button>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</form>
