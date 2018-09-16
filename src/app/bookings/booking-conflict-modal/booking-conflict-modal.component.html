@@ -26,7 +26,7 @@
             </div>
           </div>
           <footer class="card-footer">
-            <p class="card-footer-item has-text-success" *ngIf="authService.isAdmin" (click)="approveBooking(i)">
+            <p class="card-footer-item has-text-success" *ngIf="authService.isAdmin || authService.isSuperuser" (click)="approveBooking(i)">
               <span>
                 <i class="fa fa-check"></i>
               </span>
