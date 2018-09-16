@@ -27,6 +27,9 @@ import { AmazingTimePickerModule } from 'amazing-time-picker';
 import { CreateBookingComponent } from './bookings/create-booking/create-booking.component';
 import { BookingCardComponent } from './bookings/booking-card/booking-card.component';
 import { BookingConflictModalComponent } from './bookings/booking-conflict-modal/booking-conflict-modal.component';
+import { MatButtonModule, MatIconModule } from '@angular/material';
+import { XunkCalendarModule } from 'xunk-calendar';
+import { XunkCalendarComponent } from './xunk-calendar/xunk-calendar.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -47,7 +50,8 @@ export function tokenGetter() {
     RoomCreateComponent,
     CreateBookingComponent,
     BookingCardComponent,
-    BookingConflictModalComponent
+    BookingConflictModalComponent,
+    XunkCalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +66,10 @@ export function tokenGetter() {
         blacklistedRoutes: ['']
       }
     }),
-    AmazingTimePickerModule
+    AmazingTimePickerModule,
+    MatButtonModule,
+    MatIconModule,
+    XunkCalendarModule
   ],
   providers: [
     AuthService,

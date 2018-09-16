@@ -1,1 +1,13 @@
 <app-banner title="Calendar"></app-banner>
+
+<section class="section">
+  <div class="contianer">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <app-xunk-calendar 
+          [selectedDate]="selDate"
+          [heatmap]="getHeatMap()"></app-xunk-calendar>  
+      </div>
+    </div>
+  </div>
+</section>
