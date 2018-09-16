@@ -26,7 +26,7 @@ import { RoomCreateComponent } from './rooms/room-create/room-create.component';
 import { CreateBookingComponent } from './bookings/create-booking/create-booking.component';
 import { BookingCardComponent } from './bookings/booking-card/booking-card.component';
 import { BookingConflictModalComponent } from './bookings/booking-conflict-modal/booking-conflict-modal.component';
-import { MatButtonModule, MatIconModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material';
 import { XunkCalendarModule } from 'xunk-calendar';
 import { XunkCalendarComponent } from './xunk-calendar/xunk-calendar.component';
 
@@ -66,7 +66,6 @@ export function tokenGetter() {
       }
     }),
     MatButtonModule,
-    MatIconModule,
     XunkCalendarModule
   ],
   providers: [
