@@ -14,14 +14,18 @@ import rangePlugin from 'flatpickr/dist/plugins/rangePlugin';
 export class CreateBookingComponent implements OnInit, AfterViewInit {
   rooms: any;
   TZ = 'Asia/Kolkata';
-  booking_datetime: any;
+  booking_date: any;
+  booking_from_time: any;
+  booking_to_time: any;
 
   onSubmit(roomId) {
-    const selectedDates = this.booking_datetime.selectedDates;
+    const selectedDate = this.booking_date.input.value;
+    const fromTime = this.booking_from_time.input.value;
+    const toTime = this.booking_to_time.input.value;
 
-    if (selectedDates.length !== 0) {
-      const startDateTime = moment(selectedDates[0]);
-      const endDateTime = moment(selectedDates[1]);
+    if (selectedDate && fromTime && toTime) {
+      const startDateTime = moment(`${selectedDate} ${fromTime}`);
+      const endDateTime = moment(`${selectedDate} ${toTime}`);
 
       if (startDateTime.isAfter(endDateTime)) {
         this.alertService.errorWithMessage('The starting date/time of booking cannot be after end date/time of booking');
@@ -59,13 +63,27 @@ export class CreateBookingComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.booking_datetime = flatpickr('#from-datetime-picker', {
-      dateFormat: 'Y-m-d h:i K',
-      altFormat: 'F j, Y, h:i K',
+    this.booking_date = flatpickr('#date-picker', {
+      dateFormat: 'Y-m-d',
+      altFormat: 'F j, Y',
       altInput: true,
-      minDate: 'today',
+      minDate: 'today'
+    });
+
+    this.booking_from_time = flatpickr('#from-time-picker', {
+      dateFormat: 'H:i',
       enableTime: true,
-      plugins: [rangePlugin({ input: '#to-datetime-picker' })]
+      noCalendar: true,
+      altInput: true,
+      altFormat: 'h:i K'
+    });
+
+    this.booking_to_time = flatpickr('#to-time-picker', {
+      dateFormat: 'H:i',
+      enableTime: true,
+      noCalendar: true,
+      altInput: true,
+      altFormat: 'h:i K'
     });
 
   }

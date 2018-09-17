@@ -34,11 +34,10 @@ export class CalendarComponent implements OnInit {
       const from = moment(booking.from);
       const to = moment(booking.to);
 
-      for (const m = from; m.diff(to, 'days') <= 0; m.add(1, 'days')) {
+      for (const m = from; m.isSameOrBefore(to); m.add(1, 'days')) {
         const year = m.year().toString();
         const month = XunkCalendarModule.zeroPad((m.month() + 1).toString(), 2);
         const date = XunkCalendarModule.zeroPad(m.date().toString(), 2);
-
         const dateStr = year + month + date;
 
         if (dateStr in heatmap) {

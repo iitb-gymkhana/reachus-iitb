@@ -1,72 +1,105 @@
 <section class="section">
   <div class="container">
     <form (submit)="onSubmit(roomSelect.value)">
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">From</label>
-        </div>
-        <div class="field-body">
-          <p class="control has-icons-left has-icons-right">
-            <input class="input" type="text" required placeholder="From" id="from-datetime-picker" data-input>
-            <span class="icon is-small is-left" title="toggle" data-toggle>
-              <i class="fas fa-calendar-alt"></i>
-            </span>
-            <!-- <span class="icon is-small is-right" title="clear" data-clear>
-              <i class="fas fa-times"></i>
-            </span> -->
-          </p>
-        </div>
-      </div>
-
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">To</label>
-        </div>
-        <div class="field-body">
-          <p class="control has-icons-left has-icons-right">
-            <input class="input" type="text" required placeholder="To" id="to-datetime-picker" data-input>
-            <span class="icon is-small is-left" title="toggle" data-toggle>
-              <i class="fas fa-calendar-alt"></i>
-            </span>
-            <!-- <span class="icon is-small is-right" title="clear" data-clear>
-              <i class="fas fa-times"></i>
-            </span> -->
-          </p>
+      <div class="columns">
+        <div class="column is-4">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Date of booking</label>
+            </div>
+            <div class="field-body">
+              <p class="control has-icons-left has-icons-right">
+                <input class="input" type="text" required placeholder="When do you want to book?" id="date-picker"
+                  data-input>
+                <span class="icon is-small is-left" title="toggle" data-toggle>
+                  <i class="fas fa-calendar-alt"></i>
+                </span>
+                <!-- <span class="icon is-small is-right" title="clear" data-clear>
+                          <i class="fas fa-times"></i>
+                        </span> -->
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Room</label>
+      <div class="columns">
+        <div class="column is-4">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Time</label>
+            </div>
+            <div class="field-body">
+              <p class="control has-icons-left has-icons-right">
+                <input class="input" type="text" required placeholder="From?" id="from-time-picker" data-input>
+                <span class="icon is-small is-left" title="toggle" data-toggle>
+                  <i class="far fa-clock"></i>
+                </span>
+                <!-- <span class="icon is-small is-right" title="clear" data-clear>
+                        <i class="fas fa-times"></i>
+                      </span> -->
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div class="field-body">
-          <div class="field is-narrow">
-            <div class="control">
-              <div class="select">
-                <select #roomSelect>
-                  <option *ngFor="let room of rooms" [value]="room._id">{{room.number}} - {{room.name}}</option>
-                </select>
+        <div class="column is-4">
+            <div class="field is-horizontal">
+              <div class="field-body">
+                <p class="control has-icons-left has-icons-right">
+                  <input class="input" type="text" required placeholder="To?" id="to-time-picker" data-input>
+                  <span class="icon is-small is-left" title="toggle" data-toggle>
+                    <i class="far fa-clock"></i>
+                  </span>
+                  <!-- <span class="icon is-small is-right" title="clear" data-clear>
+                          <i class="fas fa-times"></i>
+                        </span> -->
+                </p>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="columns">
+        <div class="column is-4">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Room</label>
+            </div>
+
+            <div class="field-body">
+              <div class="field is-narrow">
+                <div class="control">
+                  <div class="select">
+                    <select #roomSelect>
+                      <option *ngFor="let room of rooms" [value]="room._id">{{room.number}} - {{room.name}}</option>
+                    </select>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-        </div>
-        <div class="field-body">
-          <div class="field is-narrow">
-            <div class="control">
-              <button class="button is-primary" type="submit">
-                Create booking
-              </button>
+      <div class="columns">
+        <div class="column is-4">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+            </div>
+            <div class="field-body">
+              <div class="field is-narrow">
+                <div class="control">
+                  <button class="button is-primary" type="submit">
+                    Create booking
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
     </form>
   </div>
 </section>
