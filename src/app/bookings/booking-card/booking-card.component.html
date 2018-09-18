@@ -27,7 +27,7 @@
         <i class="fa fa-times"></i>
       </span>
     </p>
-    <p class="card-footer-item has-text-danger" *ngIf="!authService.isAdmin" (click)="deleteBooking()">
+    <p class="card-footer-item has-text-danger" *ngIf="!authService.isAdmin || authService.isSuperuser" (click)="deleteBooking()">
       <span>
         <i class="fa fa-trash-alt"></i>
       </span>
