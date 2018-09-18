@@ -38,7 +38,12 @@ export class CreateBookingComponent implements OnInit, AfterViewInit {
           }
         )
         .subscribe(
-          (res) => this.alertService.success(res.message),
+          (res) => {
+            this.alertService.success(res.message);
+            this.booking_date.clear();
+            this.booking_from_time.clear();
+            this.booking_to_time.clear();
+          },
           (err) => this.alertService.error(err)
         );
       }
