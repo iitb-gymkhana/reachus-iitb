@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
+import * as Noty from 'noty';
 
 @Injectable()
 export class AlertService {
@@ -24,19 +25,40 @@ export class AlertService {
 
   success(message: string, keepAfterNavigationChange = false) {
     this.keepAfterNavigationChange = keepAfterNavigationChange;
-    this.subject.next({ type: 'success', text: message });
+    // this.subject.next({ type: 'success', text: message });
+    new Noty({
+      type: 'success',
+      theme: 'nest',
+      text: message,
+      timeout: 5000,
+      killer: true
+    }).show();
   }
 
   errorWithMessage(message: string, keepAfterNavigationChange = false) {
     this.keepAfterNavigationChange = keepAfterNavigationChange;
-    this.subject.next({ type: 'error', text: message });
+    // this.subject.next({ type: 'error', text: message });
+    new Noty({
+      type: 'error',
+      theme: 'nest',
+      text: message,
+      timeout: 5000,
+      killer: true
+    }).show();
   }
 
   error(err: any, keepAfterNavigationChange = false) {
     const message = err.error.message || err.statusText;
 
     this.keepAfterNavigationChange = keepAfterNavigationChange;
-    this.subject.next({ type: 'error', text: message });
+    // this.subject.next({ type: 'error', text: message });
+    new Noty({
+      type: 'error',
+      theme: 'nest',
+      text: message,
+      timeout: 5000,
+      killer: true
+    }).show();
   }
 
   getMessage(): Observable<any> {
