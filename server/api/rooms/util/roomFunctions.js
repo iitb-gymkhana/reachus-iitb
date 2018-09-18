@@ -14,7 +14,7 @@ async function verifyUniqueRoom(request, h) {
 }
 
 async function checkRoomExists(request, h) {
-    const room = await Room.findOne({ number: request.params.number }).select('-__v -_id')
+    const room = await Room.findOne({ number: request.params.number })
 
     if (!room) {
         return Boom.badRequest('Room does not exist')
