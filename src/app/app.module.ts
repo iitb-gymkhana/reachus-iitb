@@ -30,6 +30,7 @@ import { MatButtonModule } from '@angular/material';
 import { XunkCalendarModule } from 'xunk-calendar';
 import { XunkCalendarComponent } from './xunk-calendar/xunk-calendar.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -68,7 +69,8 @@ export function tokenGetter() {
       }
     }),
     MatButtonModule,
-    XunkCalendarModule
+    XunkCalendarModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [
     AuthService,

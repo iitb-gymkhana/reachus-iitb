@@ -17,20 +17,23 @@
     </div>
   </div>
   <footer class="card-footer">
-    <p class="card-footer-item has-text-success" *ngIf="(authService.isAdmin || authService.isSuperuser) && booking.status !== 'Approved'" (click)="approveBooking()">
-      <span>
-        <i class="fa fa-check"></i>
+    <a class="card-footer-item button is-white" *ngIf="(authService.isAdmin || authService.isSuperuser) && booking.status !== 'Approved'"
+      (click)="approveBooking()">
+      <span class="icon">
+        <i class="fa fa-check has-text-success"></i>
       </span>
-    </p>
-    <p class="card-footer-item has-text-info" *ngIf="(authService.isAdmin || authService.isSuperuser) && booking.status !== 'Rejected'" (click)="rejectBooking()">
-      <span>
-        <i class="fa fa-times"></i>
+    </a>
+    <a class="card-footer-item button is-white" *ngIf="(authService.isAdmin || authService.isSuperuser) && booking.status !== 'Rejected'"
+      (click)="rejectBooking()">
+      <span class="icon">
+        <i class="fa fa-times has-text-info"></i>
       </span>
-    </p>
-    <p class="card-footer-item has-text-danger" *ngIf="!authService.isAdmin || authService.isSuperuser" (click)="deleteBooking()">
-      <span>
-        <i class="fa fa-trash-alt"></i>
+    </a>
+    <a class="card-footer-item button is-white" *ngIf="!authService.isAdmin || authService.isSuperuser" (confirm)="deleteBooking()"
+      [swal]="{ title: 'Are you sure you want to delete booking?', type: 'warning', showCloseButton: true, showCancelButton: true, focusConfirm: false, confirmButtonText: 'Yes, delete it', cancelButtonText: 'No' }">
+      <span class="icon">
+        <i class="fa fa-trash-alt has-text-danger"></i>
       </span>
-    </p>
+    </a>
   </footer>
 </div>
