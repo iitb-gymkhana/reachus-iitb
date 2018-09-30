@@ -25,7 +25,10 @@ export class LoginComponent implements OnInit {
       } else {
         this.authService.login(params.code).subscribe(
           (res) => this.router.navigate(['']),
-          (err) => this.alertService.error(err)
+          (err) => {
+            this.alertService.error(err);
+            this.router.navigate(['']);
+          }
         );
       }
     });

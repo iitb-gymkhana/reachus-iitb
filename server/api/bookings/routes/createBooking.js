@@ -22,6 +22,8 @@ module.exports = {
             booking.user_id = request.auth.credentials.id
             booking.status = 'Pending Approval'
             booking.councilName = request.payload.councilName
+            booking.fullName = request.payload.fullName
+            booking.contactNumber = request.payload.contactNumber
             booking.purposeOfBooking = request.payload.purposeOfBooking
 
             await booking.save()

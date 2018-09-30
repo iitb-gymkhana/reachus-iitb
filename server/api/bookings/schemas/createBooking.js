@@ -5,5 +5,7 @@ module.exports = Joi.object().keys({
     to: Joi.date().required(),
     room: Joi.string().required(),
     councilName: Joi.string().required(),
+    fullName: Joi.string().required(),
+    contactNumber: Joi.string().required(),
     purposeOfBooking: Joi.string().required()
 })

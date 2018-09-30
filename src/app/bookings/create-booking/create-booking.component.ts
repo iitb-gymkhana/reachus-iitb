@@ -17,7 +17,7 @@ export class CreateBookingComponent implements OnInit, AfterViewInit {
   booking_date: any;
   booking_from_time: any;
   booking_to_time: any;
-  booking = new Booking('', '', '');
+  booking = new Booking('', '', '', '', '', '', '');
 
   onSubmit(roomId) {
     const selectedDate = this.booking_date.input.value;
@@ -27,23 +27,20 @@ export class CreateBookingComponent implements OnInit, AfterViewInit {
     if (selectedDate && fromTime && toTime) {
       const startDateTime = moment(`${selectedDate} ${fromTime}`);
       const endDateTime = moment(`${selectedDate} ${toTime}`);
+      
+      this.booking.from = startDateTime.format();
+      this.booking.to = endDateTime.format();
 
       if (startDateTime.isAfter(endDateTime)) {
         this.alertService.errorWithMessage('The starting date/time of booking cannot be after end date/time of booking');
         } else {
         this.bookingService.createBooking(
-          {
-            from: startDateTime.format(),
-            to: endDateTime.format(),
-            room: roomId,
-            councilName: this.booking.councilName,
-            purposeOfBooking: this.booking.purposeOfBooking
-          }
+          this.booking
         )
         .subscribe(
           (res) => {
             this.alertService.success(res.message);
-            this.booking = new Booking('', '', '');
+            this.booking = new Booking('', '', '', '', '', '', '');
             this.booking_date.clear();
             this.booking_from_time.clear();
             this.booking_to_time.clear();

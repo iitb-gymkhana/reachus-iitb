@@ -54,8 +54,44 @@
             <div class="field-body">
               <div class="field">
                 <p class="control">
-                  <input type="text" class="input" required placeholder="Name of council" #councilName 
-                    [(ngModel)]="booking.councilName" [value]="booking.councilName" name="councilName">
+                  <input type="text" class="input" required placeholder="Name of council" #councilName [(ngModel)]="booking.councilName"
+                    [value]="booking.councilName" name="councilName">
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Name</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                  <input type="text" class="input" required placeholder="Full name" #fullName [(ngModel)]="booking.fullName"
+                    [value]="booking.fullName" name="fullName">
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Contact Number</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                  <input type="tel" class="input" required placeholder="Contact number" #contactNumber [(ngModel)]="booking.contactNumber"
+                    [value]="booking.contactNumber" name="contactNumber">
                 </p>
               </div>
             </div>
@@ -73,7 +109,7 @@
               <div class="field">
                 <p class="control">
                   <textarea type="text" class="textarea" required placeholder="What is the purpose of booking?"
-                     [(ngModel)]="booking.purposeOfBooking" [value]="booking.purposeOfBooking" name="purposeOfBooking"></textarea>
+                    [(ngModel)]="booking.purposeOfBooking" [value]="booking.purposeOfBooking" name="purposeOfBooking"></textarea>
                 </p>
               </div>
             </div>
@@ -92,7 +128,7 @@
               <div class="field is-narrow">
                 <div class="control">
                   <div class="select">
-                    <select #roomSelect [(ngModel)]="booking.room" name="room">
+                    <select #roomSelect [(ngModel)]="booking.room" [value]="booking.room" name="room">
                       <option *ngFor="let room of rooms" [value]="room._id">{{room.number}} - {{room.name}}</option>
                     </select>
                   </div>
