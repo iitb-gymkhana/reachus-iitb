@@ -18,7 +18,7 @@ module.exports = {
 
       user.save()
 
-      return { message: `Changed ${user.ldap_username} privilege to ${privilege}`}
+      return { message: `Changed ${user.ldap_username}'s ${privilege} privilege to ${user[privilege]}`}
     },
     auth: {
       strategy: 'jwt',
