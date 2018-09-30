@@ -9,7 +9,7 @@ async function addRoomDetailsToBooking(booking) {
     booking.roomName = room.name
 
     const user = await User.findOne({_id: booking.user_id})
-    booking.userEmail = user.email
+    booking.userLdapUsername = user.ldap_username
     return booking
 }
 

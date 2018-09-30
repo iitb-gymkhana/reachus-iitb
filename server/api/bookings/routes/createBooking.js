@@ -21,6 +21,8 @@ module.exports = {
             booking.room = request.payload.room
             booking.user_id = request.auth.credentials.id
             booking.status = 'Pending Approval'
+            booking.councilName = request.payload.councilName
+            booking.purposeOfBooking = request.payload.purposeOfBooking
 
             await booking.save()
             

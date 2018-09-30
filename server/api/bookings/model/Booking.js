@@ -6,6 +6,8 @@ const bookingModel = new Schema({
     to: { type: Date, required: true },
     room: { type: Schema.Types.ObjectId, ref: 'Room' },
     user_id: { type: Schema.Types.ObjectId, ref: 'User' },
+    councilName: { type: String, required: true },
+    purposeOfBooking: { type: String, required: true },
     status: { type: String, enum: ['Pending Approval', 'Approved', 'Rejected']}
 })
 
