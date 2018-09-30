@@ -15,9 +15,6 @@
       <a class="navbar-item" routerLink="/" *ngIf="authService.isAuthenticated()">
         Home
       </a>
-      <a class="navbar-item" href="{{loginUrl}}" *ngIf="!authService.isAuthenticated()">
-        Login with SSO
-      </a>
       <!-- <a class="navbar-item" routerLink="/signup" *ngIf="!authService.isAuthenticated()">
         Signup
       </a> -->

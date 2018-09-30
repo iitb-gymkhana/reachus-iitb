@@ -2,36 +2,42 @@
 
 <section class="section">
   <div class="contianer">
-    <div class="columns">
-      <div class="column is-8 is-offset-2">
+    <div class="columns is-centered is-vcentered">
+      <div class="column is-6 has-text-centered" *ngIf="!authService.isAuthenticated()">
+        <a class="button is-outlined is-primary" href="{{loginUrl}}">
+          Login with SSO
+        </a>
+      </div>
+      <div class="column" [ngClass]="{'is-8': authService.isAuthenticated()}">
         <app-xunk-calendar [selectedDate]="selDate" [heatmap]="getHeatMap()"></app-xunk-calendar>
       </div>
     </div>
   </div>
+  <br><br>
   <div class="container">
     <div class="columns is-mobile is-centered">
       <div class="column is-half has-text-centered">
-          <span class="tag is-medium is-primary">
-            {{getBookingsCount()}}
-          </span>
+        <span class="tag is-medium is-primary">
+          {{getBookingsCount()}}
+        </span>
       </div>
     </div>
   </div>
   <div class="contianer">
     <ng-container *ngFor="let booking of getBookings(selDate)">
-      <div class="columns">
-        <div class="column is-8 is-offset-2">
-            <div class="box" *ngIf="booking">
-              <div class="content">
-                <p>
-                  {{booking.roomNumber}} - <strong>{{booking.roomName}}</strong>
-                  <br>
-                  <small>{{booking.userEmail}}</small>
-                  <br>
-                  <small>{{booking.from | date: 'mediumDate' }} | {{booking.from | date: 'shortTime' }} - {{booking.to | date: 'shortTime' }}</small>
-                </p>
-              </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="box" *ngIf="booking">
+            <div class="content">
+              <p>
+                {{booking.roomNumber}} - <strong>{{booking.roomName}}</strong>
+                <br>
+                <small>{{booking.userEmail}}</small>
+                <br>
+                <small>{{booking.from | date: 'mediumDate' }} | {{booking.from | date: 'shortTime' }} - {{booking.to | date: 'shortTime' }}</small>
+              </p>
             </div>
+          </div>
         </div>
       </div>
     </ng-container>

@@ -10,8 +10,6 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit, AfterViewInit {
-  loginUrl = environment.loginUrl;
-
   logout() {
     this.authService.logout();
     this.router.navigate(['']);

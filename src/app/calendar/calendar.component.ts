@@ -3,6 +3,8 @@ import { XunkCalendarModule } from 'xunk-calendar';
 import { BookingService } from '../_services/booking.service';
 import { AlertService } from '../_services/alert.service';
 import * as moment from 'moment';
+import { AuthService } from '../_services/auth.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-calendar',
@@ -10,13 +12,14 @@ import * as moment from 'moment';
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
-
+  loginUrl = environment.loginUrl;
   selDate = XunkCalendarModule.getToday();
   bookings = [] as any;
 
   constructor(
     private bookingService: BookingService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    public authService: AuthService
   ) { }
 
   ngOnInit() {
