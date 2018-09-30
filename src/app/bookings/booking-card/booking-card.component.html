@@ -6,6 +6,7 @@
     <p class="subtitle">
       {{ booking.roomName }}
     </p>
+    <span class="has-text-primary">{{ booking.userLdapUsername }}</span>
     <div class="content">
       <small>{{booking.from | date: 'mediumDate' }} | {{booking.from | date: 'shortTime' }} - {{booking.to | date: 'shortTime' }}</small>
       <br>
@@ -18,8 +19,6 @@
       <span class="has-text-info">Contact Number:</span> {{booking.contactNumber}}
       <br>
       <span class="has-text-info">Purpose:</span> {{booking.purposeOfBooking}}
-      <br>
-      <span>{{ booking.userLdapUsername }}</span>
     </div>
   </div>
   <footer class="card-footer">
