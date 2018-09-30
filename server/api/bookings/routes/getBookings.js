@@ -11,9 +11,9 @@ module.exports = {
             let bookings = []
 
             if (query_status) {
-                bookings = await Booking.find({status: query_status}).select('-__v').lean()
+                bookings = await Booking.find({status: query_status}).select('-__v').sort({from: -1}).lean()
             } else {
-                bookings = await Booking.find().select('-__v').lean()
+                bookings = await Booking.find().sort('-from').select('-__v').lean()
             }
 
             for (let i = 0; i < bookings.length; i++) {

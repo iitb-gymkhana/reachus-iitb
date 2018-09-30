@@ -5,7 +5,7 @@ module.exports = {
     path: '/api/rooms',
     options: {
         handler: async (request, h) => {
-            const rooms = Room.find().select('-__v')
+            const rooms = Room.find().select('-__v').sort('number')
 
             return rooms
         },

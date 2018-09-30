@@ -11,6 +11,7 @@ module.exports = {
                 { user_id: request.auth.credentials.id }
             )
             .select('-__v')
+            .sort('-from')
             .lean()
 
             for (let i = 0; i < bookings.length; i++) {
