@@ -128,7 +128,8 @@
               <div class="field is-narrow">
                 <div class="control">
                   <div class="select">
-                    <select #roomSelect [(ngModel)]="booking.room" [value]="booking.room" name="room">
+                    <select required #roomSelect [(ngModel)]="booking.room" name="room">
+                      <option value="" disabled selected>-------</option>
                       <option *ngFor="let room of rooms" [value]="room._id">{{room.number}} - {{room.name}}</option>
                     </select>
                   </div>
