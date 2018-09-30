@@ -1,8 +1,8 @@
 <section class="section">
   <div class="container">
-    <form (submit)="onSubmit(roomSelect.value)">
+    <form (submit)="onSubmit(roomSelect.value)" #bookingForm="ngForm">
       <div class="columns">
-        <div class="column is-4">
+        <div class="column">
           <div class="field is-horizontal">
             <div class="field-label is-normal">
               <label class="label">Date of booking</label>
@@ -14,9 +14,6 @@
                 <span class="icon is-small is-left" title="toggle" data-toggle>
                   <i class="fas fa-calendar-alt"></i>
                 </span>
-                <!-- <span class="icon is-small is-right" title="clear" data-clear>
-                          <i class="fas fa-times"></i>
-                        </span> -->
               </p>
             </div>
           </div>
@@ -24,7 +21,7 @@
       </div>
 
       <div class="columns">
-        <div class="column is-4">
+        <div class="column">
           <div class="field is-horizontal">
             <div class="field-label is-normal">
               <label class="label">Time</label>
@@ -35,33 +32,57 @@
                 <span class="icon is-small is-left" title="toggle" data-toggle>
                   <i class="far fa-clock"></i>
                 </span>
-                <!-- <span class="icon is-small is-right" title="clear" data-clear>
-                        <i class="fas fa-times"></i>
-                      </span> -->
+              </p>
+              &nbsp;&nbsp;
+              <p class="control has-icons-left has-icons-right">
+                <input class="input" type="text" required placeholder="To?" id="to-time-picker" data-input>
+                <span class="icon is-small is-left" title="toggle" data-toggle>
+                  <i class="far fa-clock"></i>
+                </span>
               </p>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="column is-4">
-            <div class="field is-horizontal">
-              <div class="field-body">
-                <p class="control has-icons-left has-icons-right">
-                  <input class="input" type="text" required placeholder="To?" id="to-time-picker" data-input>
-                  <span class="icon is-small is-left" title="toggle" data-toggle>
-                    <i class="far fa-clock"></i>
-                  </span>
-                  <!-- <span class="icon is-small is-right" title="clear" data-clear>
-                          <i class="fas fa-times"></i>
-                        </span> -->
+      <div class="columns">
+        <div class="column">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Council Name</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                  <input type="text" class="input" required placeholder="Name of council" #councilName 
+                    [(ngModel)]="booking.councilName" [value]="booking.councilName" name="councilName">
                 </p>
               </div>
             </div>
           </div>
+        </div>
       </div>
 
       <div class="columns">
-        <div class="column is-4">
+        <div class="column">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Purpose of Booking</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                  <textarea type="text" class="textarea" required placeholder="What is the purpose of booking?"
+                     [(ngModel)]="booking.purposeOfBooking" [value]="booking.purposeOfBooking" name="purposeOfBooking"></textarea>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
           <div class="field is-horizontal">
             <div class="field-label is-normal">
               <label class="label">Room</label>
@@ -71,7 +92,7 @@
               <div class="field is-narrow">
                 <div class="control">
                   <div class="select">
-                    <select #roomSelect>
+                    <select #roomSelect [(ngModel)]="booking.room" name="room">
                       <option *ngFor="let room of rooms" [value]="room._id">{{room.number}} - {{room.name}}</option>
                     </select>
                   </div>
@@ -83,14 +104,14 @@
       </div>
 
       <div class="columns">
-        <div class="column is-4">
+        <div class="column">
           <div class="field is-horizontal">
             <div class="field-label is-normal">
             </div>
             <div class="field-body">
               <div class="field is-narrow">
                 <div class="control">
-                  <button class="button is-primary" type="submit">
+                  <button class="button is-primary" type="submit" [disabled]="!bookingForm.form.valid">
                     Create booking
                   </button>
                 </div>

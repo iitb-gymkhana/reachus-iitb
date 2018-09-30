@@ -4,7 +4,7 @@ import { AlertService } from '../../_services/alert.service';
 import { RoomService } from '../../_services/room.service';
 import { BookingService } from '../../_services/booking.service';
 import flatpickr from 'flatpickr';
-import rangePlugin from 'flatpickr/dist/plugins/rangePlugin';
+import { Booking } from '../../booking';
 
 @Component({
   selector: 'app-create-booking',
@@ -17,6 +17,7 @@ export class CreateBookingComponent implements OnInit, AfterViewInit {
   booking_date: any;
   booking_from_time: any;
   booking_to_time: any;
+  booking = new Booking('', '', '');
 
   onSubmit(roomId) {
     const selectedDate = this.booking_date.input.value;
@@ -34,12 +35,15 @@ export class CreateBookingComponent implements OnInit, AfterViewInit {
           {
             from: startDateTime.format(),
             to: endDateTime.format(),
-            room: roomId
+            room: roomId,
+            councilName: this.booking.councilName,
+            purposeOfBooking: this.booking.purposeOfBooking
           }
         )
         .subscribe(
           (res) => {
             this.alertService.success(res.message);
+            this.booking = new Booking('', '', '');
             this.booking_date.clear();
             this.booking_from_time.clear();
             this.booking_to_time.clear();
