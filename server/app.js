@@ -1,5 +1,3 @@
-'use strict';
-
 const Hapi = require('hapi');
 const mongoose = require('mongoose');
 const glob = require('glob');

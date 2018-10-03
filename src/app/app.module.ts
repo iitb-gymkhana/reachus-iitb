@@ -32,6 +32,8 @@ import { XunkCalendarComponent } from './xunk-calendar/xunk-calendar.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { FooterComponent } from './footer/footer.component';
+import { NgHttpLoaderModule } from 'ng-http-loader';
+import { LoaderComponent } from './loader/loader.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -55,7 +57,8 @@ export function tokenGetter() {
     BookingConflictModalComponent,
     XunkCalendarComponent,
     AdminPanelComponent,
-    FooterComponent
+    FooterComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +66,7 @@ export function tokenGetter() {
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgHttpLoaderModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -82,6 +86,9 @@ export function tokenGetter() {
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    LoaderComponent
+  ]
 })
 export class AppModule { }
