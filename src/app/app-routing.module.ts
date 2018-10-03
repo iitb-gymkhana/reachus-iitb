@@ -10,16 +10,52 @@ import { ScopeGuard } from './_guards/scope.guard';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 const routes: Routes = [
-  { path: '', component: CalendarComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'bookings', component: BookingsComponent, canActivate: [AuthGuard]},
+  { 
+    path: '', 
+    component: CalendarComponent,
+    data: {
+      title: 'Home',
+      metatags: {
+        desciption: 'SAC Room Booking Portal',
+        keywords: 'sac, booking, iitb'
+      }
+    }
+  
+  },
+  { 
+    path: 'login', 
+    component: LoginComponent,
+    data: {
+      title: 'Login',
+      metatags: {
+        desciption: 'SAC Room Booking Portal',
+        keywords: 'sac, booking, iitb'
+      }
+    } 
+  },
+  { 
+    path: 'bookings', 
+    component: BookingsComponent, 
+    canActivate: [AuthGuard],
+    data: {
+      title: 'Bookings',
+      metatags: {
+        desciption: 'SAC Room Booking Portal',
+        keywords: 'sac, booking, iitb'
+      }
+    }
+  },
   {
     path: 'rooms',
     component: RoomsComponent,
     canActivate: [ScopeGuard],
     data: {
-      expectedRole: 'admin'
+      expectedRole: 'admin',
+      title: 'Rooms',
+      metatags: {
+        desciption: 'SAC Room Booking Portal',
+        keywords: 'sac, booking, iitb'
+      }
     }
   },
   {
@@ -27,7 +63,12 @@ const routes: Routes = [
     component: AdminPanelComponent,
     canActivate: [ScopeGuard],
     data: {
-      expectedRole: 'admin'
+      expectedRole: 'admin',
+      title: 'Admin Panel',
+      metatags: {
+        desciption: 'SAC Room Booking Portal',
+        keywords: 'sac, booking, iitb'
+      }
     }
   },
   { path: '**', redirectTo: '' }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoaderComponent } from './loader/loader.component';
+import { SEOService } from './_services/seo.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,11 @@ import { LoaderComponent } from './loader/loader.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
   loader = LoaderComponent;
+
+  constructor(
+    private seoService: SEOService
+  ) {
+    seoService.addSeoData();
+  }
 }
