@@ -1,0 +1,14 @@
+#container {
+  min-height: 100%;
+  position: relative;
+}
+
+#body {
+  position: relative;
+  min-height: 85vh;
+  padding-bottom: 20px;
+}
+
+#footer {
+  padding-bottom: 30px;
+}

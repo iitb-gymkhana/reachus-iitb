@@ -31,6 +31,7 @@ import { XunkCalendarModule } from 'xunk-calendar';
 import { XunkCalendarComponent } from './xunk-calendar/xunk-calendar.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+import { FooterComponent } from './footer/footer.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -53,7 +54,8 @@ export function tokenGetter() {
     BookingCardComponent,
     BookingConflictModalComponent,
     XunkCalendarComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
