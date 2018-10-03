@@ -16,7 +16,7 @@ const userModel = new Schema({
     first_name: { type: String, required: true },
     last_name: { type: String, required: true },
     admin: { type: Boolean, required: true, default: false},
-    superuser: { type: Boolean, required: true, default: false},
+    moderator: { type: Boolean, required: true, default: false},
     sso_scope: { type: String, required: true },
     access_token: { type: String, required: true },
     refresh_token: { type: String, required: true }

@@ -22,7 +22,7 @@ module.exports = {
         },
         auth: {
             strategy: 'jwt',
-            scope: ['admin', 'superuser']
+            scope: ['admin', 'moderator']
         },
         description: 'Resolve booking conflicts',
         notes: 'Resolves booking conflicts',

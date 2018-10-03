@@ -38,6 +38,18 @@
         <div class="column is-3">
           {{user.ldap_username}}
         </div>
+
+        <div class="column is-3">
+          <div class="field">
+            <input id="moderator-switch" type="checkbox" name="moderator-switch" class="switch" 
+                  (change)="onChange('moderator', moderatorSwitch.checked)" 
+                  [disabled]="changing_status" 
+                  [checked]="user.moderator"
+                  #moderatorSwitch>
+            <label for="moderator-switch">Moderator</label>
+          </div>
+        </div>
+        
         <div class="column is-3">
           <div class="field">
             <input id="admin-switch" type="checkbox" name="admin-switch" class="switch" 
@@ -49,16 +61,6 @@
           </div>
         </div>
 
-        <div class="column is-3">
-          <div class="field">
-            <input id="superuser-switch" type="checkbox" name="superuser-switch" class="switch" 
-                  (change)="onChange('superuser', superuserSwitch.checked)" 
-                  [disabled]="changing_status" 
-                  [checked]="user.superuser"
-                  #superuserSwitch>
-            <label for="superuser-switch">Superuser</label>
-          </div>
-        </div>
       </div>
     </div>
   </section>

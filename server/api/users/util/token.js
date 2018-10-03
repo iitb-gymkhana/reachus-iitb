@@ -7,12 +7,12 @@ SECRET = process.env.SECRET
 function createToken(user) {
     let scopes;
 
+    if (user.moderator) {
+        scopes = 'moderator'
+    }
+    
     if (user.admin) {
         scopes = 'admin'
-    }
-
-    if (user.superuser) {
-        scopes = 'superuser'
     }
 
     return jwt.sign(

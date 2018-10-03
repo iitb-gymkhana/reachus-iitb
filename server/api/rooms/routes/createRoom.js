@@ -18,7 +18,7 @@ module.exports = {
         },
         auth: {
             strategy: 'jwt',
-            scope: ['superuser']
+            scope: ['admin']
         },
         pre: [
             { method: verifyUniqueRoom }
@@ -28,6 +28,6 @@ module.exports = {
         },
         description: 'Create room',
         notes: 'Creates a room. Requires user to be admin',
-        tags: ['api', 'room', 'superuser']
+        tags: ['api', 'room', 'admin']
     }
 }

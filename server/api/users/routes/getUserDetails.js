@@ -16,10 +16,10 @@ module.exports = {
     },
     auth: {
       strategy: 'jwt',
-      scope: ['superuser']
+      scope: ['admin']
     },
     description: 'Gets user\'s details',
     notes: 'Gets user\'s details',
-    tags: ['api', 'user', 'superuser']
+    tags: ['api', 'user', 'admin']
   }
 }

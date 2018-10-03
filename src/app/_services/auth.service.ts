@@ -56,10 +56,10 @@ export class AuthService {
     return user.admin;
   }
 
-  public get isSuperuser(): Boolean {
+  public get isModerator(): Boolean {
     const user = JSON.parse(localStorage.getItem('user'));
 
-    return user.superuser;
+    return user.moderator;
   }
 
   public getUsername(): string {

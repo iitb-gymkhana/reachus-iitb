@@ -20,7 +20,7 @@ module.exports = {
         },
         auth: {
             strategy: 'jwt',
-            scope: ['superuser']
+            scope: ['admin']
         },
         description: 'Delete room',
         notes: 'Deletes the room with number provided in path',

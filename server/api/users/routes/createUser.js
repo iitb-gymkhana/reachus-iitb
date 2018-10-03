@@ -19,8 +19,6 @@ module.exports = {
 
       let user = new User()
       user.email = request.payload.email
-      user.admin = false
-      user.active = false;
 
       user.password = await hashPasword(request.payload.password)
 

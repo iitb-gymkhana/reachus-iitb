@@ -21,10 +21,10 @@
       <a class="navbar-item" routerLink="/bookings" *ngIf="authService.isAuthenticated()">
         Bookings
       </a>
-      <a class="navbar-item" routerLink="/rooms" *ngIf="authService.isAuthenticated() && authService.isSuperuser">
+      <a class="navbar-item" routerLink="/rooms" *ngIf="authService.isAuthenticated() && authService.isAdmin">
         Rooms
       </a>
-      <a class="navbar-item" routerLink="/admin" *ngIf="authService.isAuthenticated() && authService.isSuperuser">
+      <a class="navbar-item" routerLink="/admin" *ngIf="authService.isAuthenticated() && authService.isAdmin">
         Admin Panel
       </a>
     </div>

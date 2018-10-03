@@ -12,8 +12,8 @@ module.exports = {
         user.admin = request.payload.value
       }
 
-      if (privilege === 'superuser') {
-        user.superuser = request.payload.value
+      if (privilege === 'moderator') {
+        user.moderator = request.payload.value
       }
 
       user.save()
@@ -22,10 +22,10 @@ module.exports = {
     },
     auth: {
       strategy: 'jwt',
-      scope: ['superuser']
+      scope: ['admin']
     },
     description: 'Change user\' privilege',
     notes: 'Changes user\'s privilege',
-    tags: ['api', 'user', 'superuser']
+    tags: ['api', 'user', 'admin']
   }
 }

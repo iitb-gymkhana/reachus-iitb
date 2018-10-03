@@ -19,7 +19,7 @@ const routes: Routes = [
     component: RoomsComponent,
     canActivate: [ScopeGuard],
     data: {
-      expectedRole: 'superuser'
+      expectedRole: 'admin'
     }
   },
   {
@@ -27,7 +27,7 @@ const routes: Routes = [
     component: AdminPanelComponent,
     canActivate: [ScopeGuard],
     data: {
-      expectedRole: 'superuser'
+      expectedRole: 'admin'
     }
   },
   { path: '**', redirectTo: '' }

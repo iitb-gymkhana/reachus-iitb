@@ -35,7 +35,7 @@ module.exports = {
         },
         auth: {
             strategy: 'jwt',
-            scope: ['superuser']
+            scope: ['admin']
         },
         description: 'Update room',
         notes: 'Updates the room details',

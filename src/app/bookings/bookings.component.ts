@@ -28,7 +28,7 @@ export class BookingsComponent implements OnInit, AfterViewInit {
   }
 
   fetchAllBookings() {
-    if (this.authService.isAdmin || this.authService.isSuperuser) {
+    if (this.authService.isAdmin || this.authService.isModerator) {
       this.bookingService.getAllBookings('')
         .subscribe(
           (res) => this.bookings = res,
