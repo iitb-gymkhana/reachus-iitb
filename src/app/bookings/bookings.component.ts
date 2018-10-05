@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { BookingService } from '../_services/booking.service';
 import { AlertService } from '../_services/alert.service';
 import { AuthService } from '../_services/auth.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-bookings',
@@ -28,19 +29,24 @@ export class BookingsComponent implements OnInit, AfterViewInit {
   }
 
   fetchAllBookings() {
-    if (this.authService.isAdmin || this.authService.isModerator) {
-      this.bookingService.getAllBookings('')
-        .subscribe(
-          (res) => this.bookings = res,
-          (err) => this.alertService.error(err)
-        );
-    } else {
-      this.bookingService.getUserBookings()
-        .subscribe(
-          (res) => this.bookings = res,
-          (err) => this.alertService.error(err)
-        );
-      }
+    const params = {};
+
+    if (this.tab === 0) {
+      params['from'] = moment().toISOString();
+    } else if (this.tab === 1) {
+      params['to'] = moment().toISOString();
+      params['sort'] = 'desc';
+    }
+
+    if (!(this.authService.isAdmin || this.authService.isModerator)) {
+      params['user'] = this.authService.getUsername()
+    }
+
+    this.bookingService.getAllBookings(params)
+      .subscribe(
+        (res) => this.bookings = res,
+        (err) => this.alertService.error(err)
+      );
   }
 
   handleConflict(conflictedBookings) {

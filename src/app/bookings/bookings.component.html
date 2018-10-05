@@ -5,31 +5,34 @@
     <li class="tab" [ngClass]="{'is-active': tab === 0}" (click)="tab = 0; fetchAllBookings()">
       <a>Bookings</a>
     </li>
-    <li class="tab" (click)="tab = 1" [ngClass]="{'is-active': tab === 1}">
+    <li class="tab" (click)="tab = 1; fetchAllBookings()" [ngClass]="{'is-active': tab === 1}">
+      <a>Previous Bookings</a>
+    </li>
+    <li class="tab" (click)="tab = 2" [ngClass]="{'is-active': tab === 2}">
       <a>Create Booking</a>
     </li>
   </ul>
 </div>
 
-<app-booking-conflict-modal [booking1]="conflictedBookings?.booking1" [booking2]="conflictedBookings?.booking2" (conflictResolvedBookings)="changeBookingsStatus($event)"
-  [(hasConflict)]="hasConflict">
+<app-booking-conflict-modal [booking1]="conflictedBookings?.booking1" [booking2]="conflictedBookings?.booking2"
+  (conflictResolvedBookings)="changeBookingsStatus($event)" [(hasConflict)]="hasConflict">
 </app-booking-conflict-modal>
 
 <section class="section">
-  <div class="container" [hidden]="tab !== 1">
-    <app-create-booking></app-create-booking>
-  </div>
-  <div class="container animated fadeIn" [hidden]="tab !== 0">
+
+  <div class="container animated fadeIn" *ngIf="tab === 0 || tab === 1">
     <div class="columns is-mobile is-centered is-multiline">
       <div class="column is-narrow">
         <div class="field">
-          <input class="is-checkradio" id="approvedBookingsCheckbox" type="checkbox" name="approvedBookingsCheckbox" [(ngModel)]="approvedBookingsCheckbox">
+          <input class="is-checkradio" id="approvedBookingsCheckbox" type="checkbox" name="approvedBookingsCheckbox"
+            [(ngModel)]="approvedBookingsCheckbox">
           <label for="approvedBookingsCheckbox">Approved</label>
         </div>
       </div>
       <div class="column is-narrow">
         <div class="field">
-          <input class="is-checkradio" id="rejectedBookingsCheckbox" type="checkbox" name="rejectedBookingsCheckbox" [(ngModel)]="rejectedBookingsCheckbox">
+          <input class="is-checkradio" id="rejectedBookingsCheckbox" type="checkbox" name="rejectedBookingsCheckbox"
+            [(ngModel)]="rejectedBookingsCheckbox">
           <label for="rejectedBookingsCheckbox">Rejected</label>
         </div>
       </div>
@@ -49,5 +52,9 @@
         </div>
       </ng-container>
     </div>
+  </div>
+
+  <div class="container" *ngIf="tab === 2">
+    <app-create-booking></app-create-booking>
   </div>
 </section>

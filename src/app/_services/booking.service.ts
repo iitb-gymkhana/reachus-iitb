@@ -14,17 +14,13 @@ export class BookingService {
       booking);
   }
 
-  public getAllBookings(status: string) {
-    const options = status ?
-      { params: new HttpParams().set('status', status) } : {};
+  public getAllBookings(params) {
+    const options = { 
+      params: params
+    };
+
     return this.http.get(
       `${this.apiBaseUrl}/bookings`, options
-    );
-  }
-
-  public getUserBookings() {
-    return this.http.get(
-      `${this.apiBaseUrl}/bookings/user`
     );
   }
 
