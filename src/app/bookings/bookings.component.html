@@ -47,7 +47,7 @@
     <div class="columns is-multiline">
       <ng-container *ngFor="let booking of bookings">
         <div class="column is-4" *ngIf="isBookingVisible(booking)">
-          <app-booking-card [booking]="booking" (handleConflict)="handleConflict($event)" (deleteBookingFromArr)="deleteBookingFromArr($event)"></app-booking-card>
+          <app-booking-card [booking]="booking" (handleConflict)="handleConflict($event)" (deleteBookingFromArr)="deleteBookingFromArr($event)" [disableActions]="tab === 1"></app-booking-card>
 
         </div>
       </ng-container>

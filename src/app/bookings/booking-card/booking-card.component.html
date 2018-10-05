@@ -21,7 +21,7 @@
       <span class="has-text-info">Purpose:</span> {{booking.purposeOfBooking}}
     </div>
   </div>
-  <footer class="card-footer">
+  <footer class="card-footer" *ngIf="!disableActions">
     <a class="card-footer-item button is-white" *ngIf="(authService.isAdmin || authService.isModerator) && booking.status !== 'Approved'"
       (click)="approveBooking()">
       <span class="icon">

@@ -1,6 +1,7 @@
 const Booking = require('../model/Booking')
 const verifyBookingExists = require('../util/bookingFunctions').verifyBookingExists
 const checkForConflictedBooking = require('../util/bookingFunctions').checkForConflictedBooking
+const checkIfBookingFinished = require('../util/bookingFunctions').checkIfBookingFinished
 const rp = require('request-promise')
 const Room = require('../../rooms/model/Room')
 const User = require('../../users/model/User')
@@ -9,7 +10,11 @@ module.exports = {
   method: 'PATCH',
   path: '/api/bookings/{id}/status',
   options: {
-    pre: [{
+    pre: [
+      {
+        method: checkIfBookingFinished
+      },
+      {
         method: verifyBookingExists,
         assign: 'booking'
       },

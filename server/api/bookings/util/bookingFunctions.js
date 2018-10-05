@@ -2,6 +2,7 @@ const Booking = require('../model/Booking')
 const Room = require('../../rooms/model/Room')
 const User = require('../../users/model/User')
 const Boom = require('boom')
+const moment = require('moment')
 
 async function addRoomDetailsToBooking(booking) {
     const room = await Room.findOne({ _id: booking.room })
@@ -82,10 +83,21 @@ async function checkRoomExists(request, h) {
     return room
 }
 
+async function checkIfBookingFinished(request, h) {
+    const booking = await Booking.findOne({_id: request.params.id})
+
+    if (booking.to < moment()) {
+        return Boom.forbidden('Cannot modify/delete booking after it has finished')
+    }
+
+    return booking
+}
+
 module.exports = {
     addRoomDetailsToBooking: addRoomDetailsToBooking,
     checkPrivileges: checkPrivileges,
     verifyBookingExists: verifyBookingExists,
     checkForConflictedBooking: checkForConflictedBooking,
-    checkRoomExists: checkRoomExists
+    checkRoomExists: checkRoomExists,
+    checkIfBookingFinished: checkIfBookingFinished
 }

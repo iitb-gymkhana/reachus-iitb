@@ -11,6 +11,7 @@ import * as moment from 'moment';
 })
 export class BookingCardComponent implements OnInit {
   @Input() booking: any;
+  @Input() disableActions: boolean;
   @Output() handleConflict = new EventEmitter<any>();
   @Output() deleteBookingFromArr = new EventEmitter<any>();
   TZ = 'Asia/Kolkata';

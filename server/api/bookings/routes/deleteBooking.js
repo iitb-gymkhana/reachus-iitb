@@ -1,5 +1,6 @@
 const Booking = require('../model/Booking')
 const checkPrivileges = require('../util/bookingFunctions').checkPrivileges
+const checkIfBookingFinished = require('../util/bookingFunctions').checkIfBookingFinished
 
 module.exports = {
     method: 'DELETE',
@@ -14,6 +15,7 @@ module.exports = {
             strategy: 'jwt'
         },
         pre: [
+            { method: checkIfBookingFinished },
             { method: checkPrivileges, assign: 'booking' }
         ],
         description: 'Delete booking',
