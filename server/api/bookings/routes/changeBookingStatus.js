@@ -60,7 +60,7 @@ module.exports = {
 
           let res = await rp(options)
           res = JSON.parse(res)
-          console.log(res)
+
           booking_user = await User.findOneAndUpdate(
             { _id: booking_user._id },
             {
@@ -95,8 +95,6 @@ module.exports = {
               },
               json: true
             }
-
-            console.log(options)
 
             rp(options).then(
               (res) => {

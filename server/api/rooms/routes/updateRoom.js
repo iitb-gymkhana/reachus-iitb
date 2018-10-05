@@ -6,7 +6,6 @@ module.exports = {
     path: '/api/rooms',
     options: {
         handler: async (request, h) => {
-            console.log(request.payload)
             let room = await Room.findOne(
                 { _id: request.payload._id }
             )
