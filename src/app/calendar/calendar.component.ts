@@ -1,20 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { XunkCalendarModule } from 'xunk-calendar';
 import { BookingService } from '../_services/booking.service';
 import { AlertService } from '../_services/alert.service';
 import * as moment from 'moment';
 import { AuthService } from '../_services/auth.service';
 import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
-export class CalendarComponent implements OnInit {
+export class CalendarComponent implements OnInit, OnDestroy {
   loginUrl = environment.loginUrl;
   selDate = XunkCalendarModule.getToday();
   bookings = [] as any;
+  getBookingsSubscription: any;
 
   constructor(
     private bookingService: BookingService,
@@ -23,7 +25,17 @@ export class CalendarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.bookingService.getAllBookings('Approved')
+    const params = {
+      from: moment().startOf('year').toISOString(),
+      to: moment().endOf('year').toISOString(),
+      status: 'Approved'
+    };
+
+    this.getBookingsSubscription = Observable
+      .interval(30*1000)
+      .startWith(0)
+      .timeInterval()
+      .flatMap(() => this.bookingService.getAllBookings(params))
       .subscribe(
         (res) => this.bookings = res,
         (err) => this.alertService.error(err)
@@ -83,4 +95,7 @@ export class CalendarComponent implements OnInit {
     return count_str;
   }
 
+  ngOnDestroy() {
+    this.getBookingsSubscription.unsubscribe();
+  }
 }
