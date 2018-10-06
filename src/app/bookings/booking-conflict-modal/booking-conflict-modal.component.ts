@@ -26,19 +26,23 @@ export class BookingConflictModalComponent implements AfterViewInit {
       rejectId = this.booking1._id;
     }
 
-    this.bookingService.resolveConflict(approveId, rejectId)
-      .subscribe(
-        (res) => {
-          this.alertService.success(res['message']);
-          this.conflictResolvedBookings.emit(
-            {
-              approveId: approveId,
-              rejectId: rejectId
-            }
-          );
-        },
-        (err) => this.alertService.error(err)
-      );
+    this.bookingService.rejectBooking(rejectId).subscribe(
+      (res) => {
+        this.bookingService.approveBooking(approveId).subscribe(
+          (res) => {
+            this.alertService.success('Conflict resolved');
+            this.conflictResolvedBookings.emit(
+              {
+                approveId: approveId,
+                rejectId: rejectId
+              }
+            );
+          },
+          (err) => this.alertService.errorWithMessage('Failed to resolve conflict')
+        )
+      },
+      (err) => this.alertService.errorWithMessage('Failed to resolve conflict')
+    )
 
     this.hasConflictChange.emit(false);
   }
