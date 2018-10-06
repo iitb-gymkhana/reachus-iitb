@@ -57,8 +57,8 @@ async function checkForConflictedBooking(request, h) {
             _id: { $ne: booking.id },
             room: booking.room, 
             status: 'Approved',
-            to: { $gte: from },
-            from: { $lte: to }
+            to: { $gt: from },
+            from: { $lt: to }
         }
     ).lean()
 
