@@ -26,7 +26,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     const params = {
-      from: moment().startOf('year').toISOString(),
+      from: moment().startOf('year').subtract(2, 'year').toISOString(),
       to: moment().endOf('year').toISOString(),
       status: 'Approved'
     };
