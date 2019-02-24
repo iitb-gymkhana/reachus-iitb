@@ -1,11 +1,11 @@
-const Booking = require('../model/Booking')
+const Offer = require('../model/Offer')
 const User = require('../../users/model/User')
-const addRoomDetailsToBooking = require('../util/bookingFunctions').addRoomDetailsToBooking
+const addCategoryDetailsToOffer = require('../util/offerFunctions').addCategoryDetailsToOffer
 const moment = require('moment')
 
 module.exports = {
     method: 'GET',
-    path: '/api/bookings',
+    path: '/api/offers',
     options: {
         handler: async (request, h) => {
             const req_query = request.query
@@ -37,18 +37,18 @@ module.exports = {
             
             const sort_order = request.query.sort === 'desc' ? -1 : 1
 
-            let bookings = []
+            let offers = []
 
-            bookings = await Booking.find(query).select('-__v').sort({from: sort_order}).lean()
+            offers = await Offer.find(query).select('-__v').sort({from: sort_order}).lean()
 
-            for (let i = 0; i < bookings.length; i++) {
-                bookings[i] = await addRoomDetailsToBooking(bookings[i])
+            for (let i = 0; i < offers.length; i++) {
+                offers[i] = await addCategoryDetailsToOffer(offers[i])
             }
 
-            return bookings
+            return offers
         },
-        description: 'Get all bookings',
-        notes: 'Returns all bookings made by every all users',
-        tags: ['api', 'booking']
+        description: 'Get all offers',
+        notes: 'Returns all offers made by every all users',
+        tags: ['api', 'offer']
     }
 }

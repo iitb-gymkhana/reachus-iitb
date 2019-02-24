@@ -1,28 +1,28 @@
-const Room = require('../model/Room')
+const Category = require('../model/Category')
 const Boom = require('boom')
 
 module.exports = {
     method: 'PUT',
-    path: '/api/rooms',
+    path: '/api/categories',
     options: {
         handler: async (request, h) => {
-            let room = await Room.findOne(
+            let category = await Category.findOne(
                 { _id: request.payload._id }
             )
 
-            if (!room) {
-                return Boom.badRequest('Room does not exist')
+            if (!category) {
+                return Boom.badRequest('Category does not exist')
             }
 
-            room = await Room.findOne(
+            category = await Category.findOne(
                 { number: request.payload.number }
             )
 
-            if (room && room.id !== request.payload._id) {
-                return Boom.badRequest(`Room number ${request.payload.number} already exists!`)
+            if (category && category.id !== request.payload._id) {
+                return Boom.badRequest(`Category number ${request.payload.number} already exists!`)
             }
 
-            await Room.updateOne(
+            await Category.updateOne(
                 { _id: request.payload._id },
                 { 
                     number: request.payload.number,
@@ -36,8 +36,8 @@ module.exports = {
             strategy: 'jwt',
             scope: ['admin']
         },
-        description: 'Update room',
-        notes: 'Updates the room details',
-        tags: ['api', 'room', 'admin']
+        description: 'Update category',
+        notes: 'Updates the category details',
+        tags: ['api', 'category', 'admin']
     }
 }

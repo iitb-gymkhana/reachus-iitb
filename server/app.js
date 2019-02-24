@@ -15,13 +15,15 @@ const DB_HOST = process.env.DB_HOST;
 const DB_USER = process.env.DB_USER;
 const DB_PASS = process.env.DB_PASS;
 const DB_PORT = process.env.DB_PORT;
+const DB_NAME = process.env.DB_NAME
 const SERVER_PORT = process.env.SERVER_PORT || 3000
 const SERVER_HOST = process.env.SERVER_HOST || 'localhost'
 const SWAGGER_JSON_PATH = process.env.SWAGGER_JSON_PATH || '/swagger.json'
 const SWAGGER_DOCUMENTATION_PATH = process.env.SWAGGER_DOCUMENTATION_PATH || '/documentation'
 const SWAGGER_UI_PATH = process.env.SWAGGER_UI_PATH || '/swaggerui/'
+const API_BASE_URL = process.env.API_BASE_URL || ''
 
-const dbUrl = `mongodb://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/SAC`;
+const dbUrl = `mongodb://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}`;
 
 const validate = async function (decoded, request) {
     const user = await User.findOne({_id: decoded.id})
@@ -95,7 +97,7 @@ const init = async () => {
     }).forEach(file => {
         const route = require(path.join(__dirname, file))
         // TODO: Use env variable for base url
-        route.path = '/portal/sac' + route.path
+        route.path = API_BASE_URL + route.path
         server.route(route);
     });
     
