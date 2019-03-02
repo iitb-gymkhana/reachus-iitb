@@ -5,7 +5,7 @@ module.exports = {
    */
   apps : [
     {
-      name      : 'sac-booking-portal-api',
+      name      : 'reachus-portal-api',
       script    : 'app.js',
       env: {
         COMMON_VARIABLE: 'true'

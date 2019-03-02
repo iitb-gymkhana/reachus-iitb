@@ -19,19 +19,19 @@
   </div>
   <footer class="card-footer" *ngIf="!disableActions">
     <a class="card-footer-item button is-white" *ngIf="(authService.isAdmin || authService.isModerator) && offer.status !== 'Approved'"
-      (click)="approveBooking()">
+      (click)="approveOffer()">
       <span class="icon">
         <i class="fa fa-check has-text-success"></i>
       </span>
     </a>
     <a class="card-footer-item button is-white" *ngIf="(authService.isAdmin || authService.isModerator) && offer.status !== 'Rejected'"
-      (click)="rejectBooking()">
+      (click)="rejectOffer()">
       <span class="icon">
         <i class="fa fa-times has-text-info"></i>
       </span>
     </a>
-    <a class="card-footer-item button is-white" *ngIf="!authService.isModerator || authService.isAdmin" (confirm)="deleteBooking()"
-      [swal]="{ title: 'Are you sure you want to delete booking?', type: 'warning', showCloseButton: true, showCancelButton: true, focusConfirm: false, confirmButtonText: 'Yes, delete it', cancelButtonText: 'No' }">
+    <a class="card-footer-item button is-white" *ngIf="!authService.isModerator || authService.isAdmin" (confirm)="deleteOffer()"
+      [swal]="{ title: 'Are you sure you want to delete the offer?', type: 'warning', showCloseButton: true, showCancelButton: true, focusConfirm: false, confirmButtonText: 'Yes, delete it', cancelButtonText: 'No' }">
       <span class="icon">
         <i class="fa fa-trash-alt has-text-danger"></i>
       </span>

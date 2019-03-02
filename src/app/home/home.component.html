@@ -1,4 +1,4 @@
-<app-banner title="Calendar"></app-banner>
+<app-banner title="Offers for Students"></app-banner>
 
 <section class="section">
   <div class="contianer">
@@ -7,6 +7,13 @@
         <a class="button is-outlined is-primary" href="{{loginUrl}}">
           Login with SSO
         </a>
+      </div>
+      <div class="columns is-multiline">
+        <ng-container *ngFor="let offer of approvedOffers">
+          <div class="column is-4">
+            <app-offer-card [offer]="offer" [disableActions]="true"></app-offer-card>
+          </div>
+        </ng-container>
       </div>
     </div>
   </div>

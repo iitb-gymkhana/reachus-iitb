@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CalendarComponent } from './calendar/calendar.component';
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { OffersComponent } from './offers/offers.component';
@@ -11,11 +11,11 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 const routes: Routes = [
   { 
     path: '', 
-    component: CalendarComponent,
+    component: HomeComponent,
     data: {
       title: 'Home',
       metatags: {
-        desciption: 'Reachus Portal',
+        desciption: 'ReachUs Portal',
         keywords: 'reachus, iitb'
       }
     }
@@ -27,7 +27,7 @@ const routes: Routes = [
     data: {
       title: 'Login',
       metatags: {
-        desciption: 'Reachus Portal',
+        desciption: 'ReachUs Portal',
         keywords: 'reachus, iitb'
       }
     } 
@@ -39,7 +39,7 @@ const routes: Routes = [
     data: {
       title: 'Offers',
       metatags: {
-        desciption: 'Reachus Portal',
+        desciption: 'ReachUs Portal',
         keywords: 'reachus, iitb'
       }
     }
@@ -52,7 +52,7 @@ const routes: Routes = [
       expectedRole: 'admin',
       title: 'Categories',
       metatags: {
-        desciption: 'Reachus Portal',
+        desciption: 'ReachUs Portal',
         keywords: 'reachus, iitb'
       }
     }
@@ -65,7 +65,7 @@ const routes: Routes = [
       expectedRole: 'admin',
       title: 'Admin Panel',
       metatags: {
-        desciption: 'Reachus Portal',
+        desciption: 'ReachUs Portal',
         keywords: 'reachus, iitb'
       }
     }
