@@ -9,26 +9,22 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { SignupComponent } from './signup/signup.component';
 import { BannerComponent } from './banner/banner.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthService } from './_services/auth.service';
 import { AuthGuard } from './_guards/auth.guard';
-import { BookingsComponent } from './bookings/bookings.component';
-import { RoomsComponent } from './rooms/rooms.component';
+import { OffersComponent } from './offers/offers.component';
+import { CategoriesComponent } from './categories/categories.component';
 import { JwtInterceptor } from './_helpers/jwt.incterceptor';
 import { AlertComponent } from './alert/alert.component';
 import { AlertService } from './_services/alert.service';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { ScopeGuard } from './_guards/scope.guard';
-import { RoomCardComponent } from './rooms/room-card/room-card.component';
-import { RoomCreateComponent } from './rooms/room-create/room-create.component';
-import { CreateBookingComponent } from './bookings/create-booking/create-booking.component';
-import { BookingCardComponent } from './bookings/booking-card/booking-card.component';
-import { BookingConflictModalComponent } from './bookings/booking-conflict-modal/booking-conflict-modal.component';
+import { CategoryCardComponent } from './categories/category-card/category-card.component';
+import { CategoryCreateComponent } from './categories/category-create/category-create.component';
+import { CreateOfferComponent } from './offers/create-offer/create-offer.component';
+import { OfferCardComponent } from './offers/offer-card/offer-card.component';
 import { MatButtonModule } from '@angular/material';
-import { XunkCalendarModule } from 'xunk-calendar';
-import { XunkCalendarComponent } from './xunk-calendar/xunk-calendar.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { FooterComponent } from './footer/footer.component';
@@ -45,17 +41,14 @@ export function tokenGetter() {
     LoginComponent,
     CalendarComponent,
     NavbarComponent,
-    SignupComponent,
     BannerComponent,
-    BookingsComponent,
-    RoomsComponent,
+    OffersComponent,
+    CategoriesComponent,
     AlertComponent,
-    RoomCardComponent,
-    RoomCreateComponent,
-    CreateBookingComponent,
-    BookingCardComponent,
-    BookingConflictModalComponent,
-    XunkCalendarComponent,
+    CategoryCardComponent,
+    CategoryCreateComponent,
+    CreateOfferComponent,
+    OfferCardComponent,
     AdminPanelComponent,
     FooterComponent,
     LoaderComponent
@@ -75,7 +68,6 @@ export function tokenGetter() {
       }
     }),
     MatButtonModule,
-    XunkCalendarModule,
     SweetAlert2Module.forRoot()
   ],
   providers: [

@@ -1,0 +1,102 @@
+<section class="section">
+  <div class="container">
+    <form (submit)="onSubmit()" #offerForm="ngForm">
+      <div class="columns">
+        <div class="column">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Valid Till</label>
+            </div>
+            <div class="field-body">
+              <p class="control has-icons-left has-icons-right">
+                <input class="input" type="text" required placeholder="Offer is valid till?" id="date-picker"
+                  data-input>
+                <span class="icon is-small is-left" title="toggle" data-toggle>
+                  <i class="fas fa-calendar-alt"></i>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Company Name</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                  <input type="text" class="input" required placeholder="Name of council" #companyName [(ngModel)]="offer.companyName"
+                    [value]="offer.companyName" name="companyName">
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Offer Details</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                  <input type="text" class="input" required placeholder="Offer Details" #offerDetails [(ngModel)]="offer.offerDetails"
+                    [value]="offer.offerDetails" name="offerDetails">
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Category</label>
+            </div>
+
+            <div class="field-body">
+              <div class="field is-narrow">
+                <div class="control">
+                  <div class="select">
+                    <select required #categorySelect [(ngModel)]="offer.category" name="category">
+                      <option value="" disabled selected>-------</option>
+                      <option *ngFor="let category of categories" [value]="category._id">{{category.number}} - {{category.name}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+            </div>
+            <div class="field-body">
+              <div class="field is-narrow">
+                <div class="control">
+                  <button class="button is-primary" type="submit" [disabled]="!offerForm.form.valid">
+                    Create offer
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</section>

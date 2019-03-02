@@ -1,28 +1,25 @@
 <nav class="navbar has-shadow is-spaced">
   <div class="navbar-brand">
     <a class="navbar-item has-text-primary" routerLink="/">
-      SAC Room Booking Portal
+      Reachus Portal
     </a>
-    <div class="navbar-burger burger" id="navbar-burger" data-target="sac-navbar">
+    <div class="navbar-burger burger" id="navbar-burger" data-target="portal-navbar">
       <span></span>
       <span></span>
       <span></span>
     </div>
   </div>
 
-  <div id="sac-navbar" class="navbar-menu">
+  <div id="portal-navbar" class="navbar-menu">
     <div class="navbar-start">
       <a class="navbar-item" routerLink="/" *ngIf="authService.isAuthenticated()">
         Home
       </a>
-      <!-- <a class="navbar-item" routerLink="/signup" *ngIf="!authService.isAuthenticated()">
-        Signup
-      </a> -->
-      <a class="navbar-item" routerLink="/bookings" *ngIf="authService.isAuthenticated()">
-        Bookings
+      <a class="navbar-item" routerLink="/offers" *ngIf="authService.isAuthenticated()">
+        Offers
       </a>
-      <a class="navbar-item" routerLink="/rooms" *ngIf="authService.isAuthenticated() && authService.isAdmin">
-        Rooms
+      <a class="navbar-item" routerLink="/categories" *ngIf="authService.isAuthenticated() && authService.isAdmin">
+        Categories
       </a>
       <a class="navbar-item" routerLink="/admin" *ngIf="authService.isAuthenticated() && authService.isAdmin">
         Admin Panel

@@ -1,0 +1,55 @@
+<app-banner title="Offers"></app-banner>
+
+<div class="tabs is-centered">
+  <ul>
+    <li class="tab" [ngClass]="{'is-active': tab === 0}" (click)="tab = 0; fetchAllOffers()">
+      <a>Offers</a>
+    </li>
+    <li class="tab" (click)="tab = 1; fetchAllOffers()" [ngClass]="{'is-active': tab === 1}">
+      <a>Previous Offers</a>
+    </li>
+    <li class="tab" (click)="tab = 2" [ngClass]="{'is-active': tab === 2}">
+      <a>Create Offer</a>
+    </li>
+  </ul>
+</div>
+
+<section class="section">
+
+  <div class="container animated fadeIn" *ngIf="tab === 0 || tab === 1">
+    <div class="columns is-mobile is-centered is-multiline">
+      <div class="column is-narrow">
+        <div class="field">
+          <input class="is-checkradio" id="approvedOffersCheckbox" type="checkbox" name="approvedOffersCheckbox"
+            [(ngModel)]="approvedOffersCheckbox">
+          <label for="approvedOffersCheckbox">Approved</label>
+        </div>
+      </div>
+      <div class="column is-narrow">
+        <div class="field">
+          <input class="is-checkradio" id="rejectedOffersCheckbox" type="checkbox" name="rejectedOffersCheckbox"
+            [(ngModel)]="rejectedOffersCheckbox">
+          <label for="rejectedOffersCheckbox">Rejected</label>
+        </div>
+      </div>
+      <div class="column is-narrow">
+        <div class="field">
+          <input class="is-checkradio" id="pendingApprovalOffersCheckbox" type="checkbox" name="pendingApprovalOffersCheckbox"
+            [(ngModel)]="pendingApprovalOffersCheckbox">
+          <label for="pendingApprovalOffersCheckbox">Pending Approval</label>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-multiline">
+      <ng-container *ngFor="let offer of offers">
+        <div class="column is-4" *ngIf="isOfferVisible(offer)">
+          <app-offer-card [offer]="offer" (deleteOfferFromArr)="deleteOfferFromArr($event)" [disableActions]="tab === 1"></app-offer-card>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="container" *ngIf="tab === 2">
+    <app-create-offer></app-create-offer>
+  </div>
+</section>

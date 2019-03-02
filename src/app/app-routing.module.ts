@@ -2,10 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CalendarComponent } from './calendar/calendar.component';
 import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
 import { AuthGuard } from './_guards/auth.guard';
-import { BookingsComponent } from './bookings/bookings.component';
-import { RoomsComponent } from './rooms/rooms.component';
+import { OffersComponent } from './offers/offers.component';
+import { CategoriesComponent } from './categories/categories.component';
 import { ScopeGuard } from './_guards/scope.guard';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
@@ -16,8 +15,8 @@ const routes: Routes = [
     data: {
       title: 'Home',
       metatags: {
-        desciption: 'SAC Room Booking Portal',
-        keywords: 'sac, booking, iitb'
+        desciption: 'Reachus Portal',
+        keywords: 'reachus, iitb'
       }
     }
   
@@ -28,33 +27,33 @@ const routes: Routes = [
     data: {
       title: 'Login',
       metatags: {
-        desciption: 'SAC Room Booking Portal',
-        keywords: 'sac, booking, iitb'
+        desciption: 'Reachus Portal',
+        keywords: 'reachus, iitb'
       }
     } 
   },
   { 
-    path: 'bookings', 
-    component: BookingsComponent, 
+    path: 'offers', 
+    component: OffersComponent, 
     canActivate: [AuthGuard],
     data: {
-      title: 'Bookings',
+      title: 'Offers',
       metatags: {
-        desciption: 'SAC Room Booking Portal',
-        keywords: 'sac, booking, iitb'
+        desciption: 'Reachus Portal',
+        keywords: 'reachus, iitb'
       }
     }
   },
   {
-    path: 'rooms',
-    component: RoomsComponent,
+    path: 'categories',
+    component: CategoriesComponent,
     canActivate: [ScopeGuard],
     data: {
       expectedRole: 'admin',
-      title: 'Rooms',
+      title: 'Categories',
       metatags: {
-        desciption: 'SAC Room Booking Portal',
-        keywords: 'sac, booking, iitb'
+        desciption: 'Reachus Portal',
+        keywords: 'reachus, iitb'
       }
     }
   },
@@ -66,8 +65,8 @@ const routes: Routes = [
       expectedRole: 'admin',
       title: 'Admin Panel',
       metatags: {
-        desciption: 'SAC Room Booking Portal',
-        keywords: 'sac, booking, iitb'
+        desciption: 'Reachus Portal',
+        keywords: 'reachus, iitb'
       }
     }
   },

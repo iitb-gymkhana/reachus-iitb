@@ -8,43 +8,6 @@
           Login with SSO
         </a>
       </div>
-      <div class="column" [ngClass]="{'is-8': authService.isAuthenticated()}">
-        <app-xunk-calendar [selectedDate]="selDate" [heatmap]="getHeatMap()"></app-xunk-calendar>
-      </div>
     </div>
-  </div>
-  <br><br>
-  <div class="container">
-    <div class="columns is-mobile is-centered">
-      <div class="column is-half has-text-centered">
-        <span class="tag is-medium is-primary">
-          {{getBookingsCount()}}
-        </span>
-      </div>
-    </div>
-  </div>
-  <br><br>
-  <div class="contianer">
-    <ng-container *ngFor="let booking of getBookings(selDate)">
-      <div class="columns is-centered">
-        <div class="column is-8">
-          <div class="box" *ngIf="booking">
-            <div class="content">
-              <p>
-                {{booking.roomNumber}} - <strong>{{booking.roomName}}</strong>
-                <br>
-                <small><b>Council: </b>{{booking.councilName}}</small>
-                <br>
-                <small><b>Name: </b>{{booking.fullName}}</small>
-                <br>
-                <small><b>Contact: </b>{{booking.contactNumber}}</small>
-                <br>
-                <small>{{booking.from | date: 'mediumDate' }} | {{booking.from | date: 'shortTime' }} - {{booking.to | date: 'shortTime' }}</small>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </ng-container>
   </div>
 </section>

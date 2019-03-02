@@ -1,0 +1,40 @@
+<form #categoryForm="ngForm" (submit)="onSubmit()" class="is-center">
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Number</label>
+    </div>
+    <div class="field-body">
+      <div class="field is-narrow">
+        <p class="control">
+          <input class="input" type="number" placeholder="Category number" required [(ngModel)]="category.number" name="number">
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Name</label>
+    </div>
+    <div class="field-body">
+      <div class="field is-narrow">
+        <p class="control">
+          <input class="input" type="text" placeholder="Category name" required [(ngModel)]="category.name" name="name">
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label"></div>
+    <div class="field-body">
+      <div class="field">
+        <div class="control">
+          <button class="button is-primary" type="submit" [disabled]="!categoryForm.form.valid">
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

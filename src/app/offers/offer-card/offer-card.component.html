@@ -1,0 +1,40 @@
+<div class="card">
+  <div class="card-content">
+    <p class="title">
+      {{ offer.categoryNumber }}
+    </p>
+    <p class="subtitle">
+      {{ offer.categoryName }}
+    </p>
+    <span class="has-text-primary">{{ offer.userLdapUsername }}</span>
+    <div class="content">
+      <small>Valid till {{offer.validTill | date: 'mediumDate' }} | {{offer.validTill | date: 'shortTime' }}</small>
+      <br>
+      <span class="has-text-info">Status:</span> {{offer.status}}
+      <br>
+      <span class="has-text-info">Name:</span> {{offer.companyName}}
+      <br>
+      <span class="has-text-info">Offer Details:</span> {{offer.offerDetails}}
+    </div>
+  </div>
+  <footer class="card-footer" *ngIf="!disableActions">
+    <a class="card-footer-item button is-white" *ngIf="(authService.isAdmin || authService.isModerator) && offer.status !== 'Approved'"
+      (click)="approveBooking()">
+      <span class="icon">
+        <i class="fa fa-check has-text-success"></i>
+      </span>
+    </a>
+    <a class="card-footer-item button is-white" *ngIf="(authService.isAdmin || authService.isModerator) && offer.status !== 'Rejected'"
+      (click)="rejectBooking()">
+      <span class="icon">
+        <i class="fa fa-times has-text-info"></i>
+      </span>
+    </a>
+    <a class="card-footer-item button is-white" *ngIf="!authService.isModerator || authService.isAdmin" (confirm)="deleteBooking()"
+      [swal]="{ title: 'Are you sure you want to delete booking?', type: 'warning', showCloseButton: true, showCancelButton: true, focusConfirm: false, confirmButtonText: 'Yes, delete it', cancelButtonText: 'No' }">
+      <span class="icon">
+        <i class="fa fa-trash-alt has-text-danger"></i>
+      </span>
+    </a>
+  </footer>
+</div>

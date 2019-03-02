@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "sac-room-booking-portal": {
+    "reachus-portal": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/sac-room-booking-portal",
+            "outputPath": "dist/reachus-portal",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "sac-room-booking-portal:build"
+            "browserTarget": "reachus-portal:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "sac-room-booking-portal:build:production"
+              "browserTarget": "reachus-portal:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "sac-room-booking-portal:build"
+            "browserTarget": "reachus-portal:build"
           }
         },
         "test": {
@@ -108,7 +108,7 @@
         }
       }
     },
-    "sac-room-booking-portal-e2e": {
+    "reachus-portal-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -116,7 +116,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "sac-room-booking-portal:serve"
+            "devServerTarget": "reachus-portal:serve"
           }
         },
         "lint": {
@@ -131,5 +131,5 @@
       }
     }
   },
-  "defaultProject": "sac-room-booking-portal"
+  "defaultProject": "reachus-portal"
 }

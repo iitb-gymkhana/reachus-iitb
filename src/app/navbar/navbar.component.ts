@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       $(this).click(function() {
         if ($('#navbar-burger').hasClass('is-active')) {
           $('#navbar-burger').removeClass('is-active');
-          $('#sac-navbar').removeClass('is-active');
+          $('#portal-navbar').removeClass('is-active');
         }
       });
     });
@@ -37,10 +37,10 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     $('#navbar-burger').click(function () {
       if ($('#navbar-burger').hasClass('is-active')) {
         $('#navbar-burger').removeClass('is-active');
-        $('#sac-navbar').removeClass('is-active');
+        $('#portal-navbar').removeClass('is-active');
       } else {
         $('#navbar-burger').addClass('is-active');
-        $('#sac-navbar').addClass('is-active');
+        $('#portal-navbar').addClass('is-active');
       }
     });
   }

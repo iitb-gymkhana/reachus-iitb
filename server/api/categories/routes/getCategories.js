@@ -11,6 +11,6 @@ module.exports = {
         },
         description: `Get all categories' details`,
         notes: 'Returns details of all categories',
-        tags: ['api', 'room']
+        tags: ['api', 'category']
     }
 }

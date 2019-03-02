@@ -1,0 +1,23 @@
+<app-banner title="Categories"></app-banner>
+
+<div class="tabs is-centered">
+  <ul>
+    <li class="tab" [ngClass]="{'is-active': tab === 0}" (click)="tab = 0; fetchAllCategories()">
+      <a>Categories</a>
+    </li>
+    <li class="tab" [ngClass]="{'is-active': tab === 1}" (click)="tab = 1">
+      <a>Create Category</a>
+    </li>
+  </ul>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline" *ngIf="tab === 0">
+      <div class="column is-3" *ngFor="let category of categories">
+        <app-category-card [category]="category" (deleteCategoryFromArr)="deleteCategoryFromArr($event)"></app-category-card>
+      </div>
+    </div>
+  </div>
+  <app-category-create *ngIf="tab === 1"></app-category-create>
+</section>
