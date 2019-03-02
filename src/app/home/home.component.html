@@ -3,18 +3,18 @@
 <section class="section">
   <div class="contianer">
     <div class="columns is-centered is-vcentered">
-      <div class="column is-6 has-text-centered" *ngIf="!authService.isAuthenticated()">
+      <div class="column has-text-centered" *ngIf="!authService.isAuthenticated()">
         <a class="button is-outlined is-primary" href="{{loginUrl}}">
           Login with SSO
         </a>
       </div>
-      <div class="columns is-multiline">
-        <ng-container *ngFor="let offer of approvedOffers">
-          <div class="column is-4">
-            <app-offer-card [offer]="offer" [disableActions]="true"></app-offer-card>
-          </div>
-        </ng-container>
-      </div>
+    </div>
+    <div class="columns is-multiline">
+      <ng-container *ngFor="let offer of approvedOffers">
+        <div class="column is-4">
+          <app-offer-card [offer]="offer" [disableActions]="true"></app-offer-card>
+        </div>
+      </ng-container>
     </div>
   </div>
 </section>

@@ -22,7 +22,7 @@ export class SEOService {
           if (root.children && root.children.length) {
             root = root.children[0];
           } else if (root.data && root.data['title']) {
-            this.titleService.setTitle(root.data['title'] + ' | ReachUS Portal');
+            this.titleService.setTitle(root.data['title'] + ' | ReachUs Portal');
             const tags = root.data['metatags'];
             for (const tag of Object.keys(tags)) {
               this.metaService.addTag({ name: tag, content: tags[tag] });
