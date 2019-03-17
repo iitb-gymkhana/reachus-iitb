@@ -3,7 +3,7 @@ module.exports = {
   path: '/api/uploads/{file*}',
   handler: {
     directory: {
-      path: __dirname + '/uploads'
+      path: __dirname + '/../uploads'
     }
   }
 }

@@ -3,6 +3,8 @@ const createOfferSchema = require('../schemas/createOffer')
 const moment = require('moment-timezone')
 const checkCategoryExists = require('../util/offerFunctions').checkCategoryExists
 const fs = require('fs')
+const uuidv1 = require('uuid/v1');
+const path = require('path')
 
 const TZ = 'Asia/Kolkata'
 
@@ -24,19 +26,18 @@ module.exports = {
             offer.user_id = request.auth.credentials.id
             offer.status = 'Pending Approval'
 
-            const offerIamgeFileName = request.payload.offerImage.hapi.filename
+            let offerIamgeFileName = request.payload.offerImage.hapi.filename
+            offerIamgeFileName = uuidv1() + path.extname(offerIamgeFileName)
             await request.payload.offerImage.pipe(fs.createWriteStream(__dirname + "/../uploads/" + offerIamgeFileName))
             
-            offer.offerImageUrl = '' 
+            offer.offerImageFileName = offerIamgeFileName
             await offer.save()
-
             
             return { message: 'Offer created'}
         },
         auth: {
             strategy: 'jwt'
         },
-
         description: 'Create offer',
         notes: 'Creates offer and associates users with it (requires authentication)',
         tags: ['api', 'offer']
