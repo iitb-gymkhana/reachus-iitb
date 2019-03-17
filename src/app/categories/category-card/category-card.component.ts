@@ -11,24 +11,24 @@ import * as $ from 'jquery';
 })
 export class CategoryCardComponent implements OnInit, AfterViewInit {
   @Input() category: Category;
-  @Output() deleteCategoryFromArr = new EventEmitter<number>();
+  @Output() deleteCategoryFromArr = new EventEmitter<string>();
 
   isEditable = false;
   categoryValueBackup: Category;
 
   editCategory() {
     this.isEditable = true;
-    this.categoryValueBackup = new Category(this.category.number, this.category.name);
+    this.categoryValueBackup = new Category(this.category.uniqueIdentifier, this.category.name);
   }
 
   deleteCategory() {
-    this.categoryService.deleteCategory(this.category.number)
+    this.categoryService.deleteCategory(this.category.uniqueIdentifier)
       .subscribe(
         (res) => this.alertService.success(res.message),
         (err) => this.alertService.error(err)
       );
 
-    this.deleteCategoryFromArr.emit(this.category.number);
+    this.deleteCategoryFromArr.emit(this.category.uniqueIdentifier);
   }
 
   updateCategory() {
@@ -45,7 +45,7 @@ export class CategoryCardComponent implements OnInit, AfterViewInit {
 
   undoCategoryEdit() {
     this.isEditable = false;
-    this.category.number = this.categoryValueBackup.number;
+    this.category.uniqueIdentifier = this.categoryValueBackup.uniqueIdentifier;
     this.category.name = this.categoryValueBackup.name;
   }
 

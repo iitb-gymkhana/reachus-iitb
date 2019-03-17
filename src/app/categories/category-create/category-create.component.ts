@@ -10,7 +10,7 @@ import { AlertService } from '../../_services/alert.service';
 })
 export class CategoryCreateComponent implements OnInit {
 
-  category = new Category(null, '');
+  category = new Category('', '');
 
   onSubmit() {
     this.categoryService.createCategory(this.category)
@@ -19,7 +19,7 @@ export class CategoryCreateComponent implements OnInit {
         (err) => this.alertService.error(err)
       );
 
-    this.category = new Category(null, '');
+    this.category = new Category('', '');
   }
 
   constructor(

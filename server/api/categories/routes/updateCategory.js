@@ -13,19 +13,20 @@ module.exports = {
             if (!category) {
                 return Boom.badRequest('Category does not exist')
             }
+            console.log(request.payload)
 
             category = await Category.findOne(
-                { number: request.payload.number }
+                { uniqueIdentifier: request.payload.uniqueIdentifier }
             )
 
             if (category && category.id !== request.payload._id) {
-                return Boom.badRequest(`Category number ${request.payload.number} already exists!`)
+                return Boom.badRequest(`Category unique identifier ${request.payload.uniqueIdentifier} already exists!`)
             }
 
             await Category.updateOne(
                 { _id: request.payload._id },
                 { 
-                    number: request.payload.number,
+                    uniqueIdentifier: request.payload.uniqueIdentifier,
                     name: request.payload.name
                 }
             )

@@ -8,6 +8,8 @@ const offerModel = new Schema({
     companyName: { type: String, required: true },
     offerDetails: { type: String, required: true },
     offerImageFileName: { type: String },
+    contact: { type: String, required: true },
+    offerCode: { type: String, required: true },
     status: { type: String, enum: ['Pending Approval', 'Approved', 'Rejected']}
 })
 

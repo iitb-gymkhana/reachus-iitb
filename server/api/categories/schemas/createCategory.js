@@ -1,7 +1,7 @@
 const Joi = require('joi')
 
 const createCategorySchema = Joi.object().keys({
-    number: Joi.number().required(),
+    uniqueIdentifier: Joi.string().required(),
     name: Joi.string().required()
 })
 

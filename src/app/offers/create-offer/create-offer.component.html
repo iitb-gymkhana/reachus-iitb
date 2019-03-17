@@ -29,7 +29,7 @@
             <div class="field-body">
               <div class="field">
                 <p class="control">
-                  <input type="text" class="input" required placeholder="Name of council" #companyName [(ngModel)]="offer.companyName"
+                  <input type="text" class="input" required placeholder="Name of company" #companyName [(ngModel)]="offer.companyName"
                     [value]="offer.companyName" name="companyName">
                 </p>
               </div>
@@ -60,6 +60,42 @@
         <div class="column">
           <div class="field is-horizontal">
             <div class="field-label is-normal">
+              <label class="label">Contact Info</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                  <input type="text" class="input" required placeholder="Contact information" #contact [(ngModel)]="offer.contact"
+                    [value]="offer.contact" name="contact">
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Offer Code</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                  <input type="text" class="input" required placeholder="Offer Code" #offerCode [(ngModel)]="offer.offerCode"
+                    [value]="offer.offerCode" name="offerCode">
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
               <label class="label">Category</label>
             </div>
 
@@ -69,8 +105,7 @@
                   <div class="select">
                     <select required #categorySelect [(ngModel)]="offer.category" name="category">
                       <option value="" disabled selected>-------</option>
-                      <option *ngFor="let category of categories" [value]="category._id">{{category.number}} -
-                        {{category.name}}</option>
+                      <option *ngFor="let category of categories" [value]="category._id">{{category.name}}</option>
                     </select>
                   </div>
                 </div>
@@ -91,7 +126,8 @@
                 <div class="control">
                   <div class="file has-name is-boxed" [ngClass]="{'is-success': offerImage}">
                     <label class="file-label">
-                      <input class="file-input" type="file" name="offerImage" (change)="onOfferImageUploaded($event)" required>
+                      <input class="file-input" type="file" name="offerImage" (change)="onOfferImageUploaded($event)"
+                        required>
                       <span class="file-cta">
                         <span class="file-icon">
                           <i class="fas fa-upload"></i>

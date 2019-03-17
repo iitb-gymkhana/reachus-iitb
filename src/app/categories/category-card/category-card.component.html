@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-content">
     <p class="title" *ngIf="!isEditable">
-      {{ category.number }}
+      {{ category.uniqueIdentifier }}
     </p>
     <p class="subtitle" *ngIf="!isEditable">
       {{ category.name }}
@@ -9,8 +9,8 @@
     <form *ngIf="isEditable" #categoryForm="ngForm" (submit)="updateCategory()">
       <div class="field">
         <div class="control">
-          <input class="input" [ngClass]="{'is-primary': number.valid, 'is-danger': !number.valid}" type="number"
-            placeholder="Category number" [(ngModel)]="category.number" #number="ngModel" name="number" required>
+          <input class="input" pattern="[a-z]+" [ngClass]="{'is-primary': uniqueIdentifier.valid, 'is-danger': !uniqueIdentifier.valid}" type="text"
+            placeholder="Unique Identifier" [(ngModel)]="category.uniqueIdentifier" #uniqueIdentifier="ngModel" name="uniqueIdentifier" required>
         </div>
       </div>
       <div class="field">

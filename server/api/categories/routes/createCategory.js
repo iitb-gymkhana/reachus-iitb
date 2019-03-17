@@ -7,10 +7,7 @@ module.exports = {
     path: '/api/categories',
     options: {
         handler: async (request, h) => {
-            let category = new Category()
-    
-            category.number = request.payload.number
-            category.name = request.payload.name
+            let category = new Category(request.payload)
     
             await category.save()
     

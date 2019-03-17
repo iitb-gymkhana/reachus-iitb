@@ -1,12 +1,20 @@
 <form #categoryForm="ngForm" (submit)="onSubmit()" class="is-center">
   <div class="field is-horizontal">
     <div class="field-label is-normal">
-      <label class="label">Number</label>
+      <label class="label">Unique Identifier</label>
     </div>
     <div class="field-body">
       <div class="field is-narrow">
         <p class="control">
-          <input class="input" type="number" placeholder="Category number" required [(ngModel)]="category.number" name="number">
+          <input class="input" type="text" pattern="[a-z]+" placeholder="Unique Identifier" required [(ngModel)]="category.uniqueIdentifier" #uniqueIdentifier="ngModel"
+          [ngClass]="{'is-primary': uniqueIdentifier.valid, 'is-danger': !uniqueIdentifier.valid && uniqueIdentifier.touched}"
+            name="uniqueIdentifier">
+          <span>
+            <ul>
+              <li>| Only lowercase letters allowed</li>
+              <li>| Should be unique and similar to Name below</li>
+            </ul>
+          </span>
         </p>
       </div>
     </div>

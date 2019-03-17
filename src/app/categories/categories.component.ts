@@ -12,8 +12,8 @@ export class CategoriesComponent implements OnInit {
   categories: Category[];
   tab = 0;
 
-  public deleteCategoryFromArr(number) {
-    this.categories = this.categories.filter(x => x.number !== number);
+  public deleteCategoryFromArr(uniqueIdentifier) {
+    this.categories = this.categories.filter(x => x.uniqueIdentifier !== uniqueIdentifier);
   }
 
   public fetchAllCategories() {
