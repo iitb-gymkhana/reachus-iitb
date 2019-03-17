@@ -7,6 +7,7 @@ const offerModel = new Schema({
     user_id: { type: Schema.Types.ObjectId, ref: 'User' },
     companyName: { type: String, required: true },
     offerDetails: { type: String, required: true },
+    offerImageUrl: { type: String },
     status: { type: String, enum: ['Pending Approval', 'Approved', 'Rejected']}
 })
 

@@ -16,17 +16,26 @@ export class CreateOfferComponent implements OnInit, AfterViewInit {
   TZ = 'Asia/Kolkata';
   validTill: any;
   offer = new Offer('', '', '', '');
+  offerImage: any;
+  offerImageSrc: any;
 
   onSubmit() {
     const selectedDate = this.validTill.input.value;
 
-    if (selectedDate) {
+    if (selectedDate && this.offerImage) {
       const validTillDate = moment(`${selectedDate}`);
 
       this.offer.validTill = validTillDate.format();
+      
+      const uploadData = new FormData();
+      uploadData.append('offerImage', this.offerImage, this.offerImage.name);
 
+      for (const key of Object.keys(this.offer)) {
+        uploadData.append(key, this.offer[key]);
+      }
+      
       this.offerService.createOffer(
-        this.offer
+        uploadData
       ).subscribe(
           (res) => {
             this.alertService.success(res.message);
@@ -40,6 +49,15 @@ export class CreateOfferComponent implements OnInit, AfterViewInit {
     } else {
       this.alertService.errorWithMessage('All inputs required');
     }
+  }
+
+  onOfferImageUploaded(event) {
+    this.offerImage = event.target.files[0];
+    
+    const reader = new FileReader();
+    reader.onload = e => this.offerImageSrc = reader.result;
+
+    reader.readAsDataURL(this.offerImage);
   }
 
   constructor(

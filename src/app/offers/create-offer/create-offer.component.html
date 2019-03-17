@@ -69,13 +69,51 @@
                   <div class="select">
                     <select required #categorySelect [(ngModel)]="offer.category" name="category">
                       <option value="" disabled selected>-------</option>
-                      <option *ngFor="let category of categories" [value]="category._id">{{category.number}} - {{category.name}}</option>
+                      <option *ngFor="let category of categories" [value]="category._id">{{category.number}} -
+                        {{category.name}}</option>
                     </select>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column is-3 is-offset-2">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label"></label>
+            </div>
+            <div class="field-body">
+              <div class="field is-narrow">
+                <div class="control">
+                  <div class="file has-name is-boxed" [ngClass]="{'is-success': offerImage}">
+                    <label class="file-label">
+                      <input class="file-input" type="file" name="offerImage" (change)="onOfferImageUploaded($event)" required>
+                      <span class="file-cta">
+                        <span class="file-icon">
+                          <i class="fas fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                          Upload image
+                        </span>
+                      </span>
+                      <span class="file-name">
+                        {{ offerImage?.name }}
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column is-3">
+          <figure class="image is-256by256">
+            <img src="{{offerImageSrc}}">
+          </figure>
         </div>
       </div>
 
@@ -87,7 +125,7 @@
             <div class="field-body">
               <div class="field is-narrow">
                 <div class="control">
-                  <button class="button is-primary" type="submit" [disabled]="!offerForm.form.valid">
+                  <button class="button is-primary" type="submit" [disabled]="!offerForm.form.valid || !offerImage">
                     Create offer
                   </button>
                 </div>
