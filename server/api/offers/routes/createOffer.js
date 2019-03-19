@@ -26,8 +26,10 @@ module.exports = {
 
             offer.user_id = request.auth.credentials.id
             offer.status = 'Pending Approval'
+            offer.validTill = moment(request.payload.validTill).endOf('day')
 
             let offerIamgeFileName = request.payload.offerImage.hapi.filename
+            
             offerIamgeFileName = uuidv1() + path.extname(offerIamgeFileName)
             await request.payload.offerImage.pipe(fs.createWriteStream(__dirname + "/../uploads/" + offerIamgeFileName))
             

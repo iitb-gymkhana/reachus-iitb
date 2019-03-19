@@ -87,7 +87,7 @@ async function checkCategoryExists(request, h) {
 async function checkIfOfferFinished(request, h) {
     const offer = await Offer.findOne({_id: request.params.id})
 
-    if (offer.validTill < moment()) {
+    if (moment(offer.validTill, 'day').isSameOrBefore(moment('day').endOf('day'))) {
         return Boom.forbidden('Cannot modify/delete offer after it has finished')
     }
 
