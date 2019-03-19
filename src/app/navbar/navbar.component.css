@@ -2,6 +2,19 @@
   z-index: 0;
 }
 
-.navbar-item:hover {
-  border: 1px solid;
+.navbar-brand .navbar-item {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  border: 1px solid grey;
+  border-radius: 5px;
+  opacity: 0.4;
+  margin: 10px;
+  color: black;
+  font-weight: 100;
+  font-size: 0.7em;
+}
+
+.navbar-brand .navbar-item:hover {
+  opacity: 0.8;
+  color: black;
 }

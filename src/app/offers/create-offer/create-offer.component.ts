@@ -23,7 +23,7 @@ export class CreateOfferComponent implements OnInit, AfterViewInit {
     const selectedDate = this.validTill.input.value;
 
     if (selectedDate && this.offerImage) {
-      const validTillDate = moment(`${selectedDate}`);
+      const validTillDate = moment(`${selectedDate}`).endOf('day');
 
       this.offer.validTill = validTillDate.format();
       
