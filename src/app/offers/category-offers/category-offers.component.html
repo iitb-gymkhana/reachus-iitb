@@ -1,0 +1,16 @@
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+      <ng-container>
+        <div class="column is-6" *ngFor="let offer of offers">
+          <app-offer-card [offer]="offer" [disableActions]="true"></app-offer-card>
+        </div>
+      </ng-container>
+      <div class="column is-12 has-text-centered" *ngIf="offers.length === 0">
+        <div class="content">
+          <p class="offers-content">No offers available</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

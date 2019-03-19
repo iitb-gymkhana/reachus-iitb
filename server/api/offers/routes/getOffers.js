@@ -1,5 +1,6 @@
 const Offer = require('../model/Offer')
 const User = require('../../users/model/User')
+const Category = require('../../categories/model/Category')
 const addCategoryDetailsToOffer = require('../util/offerFunctions').addCategoryDetailsToOffer
 const moment = require('moment')
 
@@ -35,12 +36,17 @@ module.exports = {
                 query.to['$lt'] = moment(req_query.to)
             }
             
+            if (req_query.uniqueIdentifier) {
+                const category = await Category.findOne({uniqueIdentifier: req_query.uniqueIdentifier})
+                query['category'] = category._id
+            }
+
             const sort_order = request.query.sort === 'desc' ? -1 : 1
 
             let offers = []
 
-            offers = await Offer.find(query).select('-__v').sort({from: sort_order}).lean()
-
+            offers = await Offer.find(query).select('-__v').sort({validTill: sort_order}).lean()
+            console.log(offers)
             for (let i = 0; i < offers.length; i++) {
                 offers[i] = await addCategoryDetailsToOffer(offers[i])
             }

@@ -7,6 +7,7 @@ import { OffersComponent } from './offers/offers.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { ScopeGuard } from './_guards/scope.guard';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { CategoryOffersComponent } from './offers/category-offers/category-offers.component';
 
 const routes: Routes = [
   { 
@@ -36,6 +37,17 @@ const routes: Routes = [
     path: 'offers', 
     component: OffersComponent, 
     canActivate: [AuthGuard],
+    data: {
+      title: 'Offers',
+      metatags: {
+        desciption: 'ReachUs Portal',
+        keywords: 'reachus, iitb'
+      }
+    }
+  },
+  {
+    path: 'offers/:category', 
+    component: CategoryOffersComponent, 
     data: {
       title: 'Offers',
       metatags: {

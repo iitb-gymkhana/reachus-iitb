@@ -30,6 +30,7 @@ import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { FooterComponent } from './footer/footer.component';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { LoaderComponent } from './loader/loader.component';
+import { CategoryOffersComponent } from './offers/category-offers/category-offers.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -51,7 +52,8 @@ export function tokenGetter() {
     OfferCardComponent,
     AdminPanelComponent,
     FooterComponent,
-    LoaderComponent
+    LoaderComponent,
+    CategoryOffersComponent
   ],
   imports: [
     BrowserModule,
