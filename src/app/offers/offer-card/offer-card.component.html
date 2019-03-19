@@ -1,8 +1,19 @@
-<div class="card">
+<div class="card" [ngClass]="{'is-clipped': offerImageModalActive}">
+  <div class="modal" [ngClass]="{'is-active': offerImageModalActive}">
+    <div class="modal-background" (click)="toggleOfferImageModal()"></div>
+    <div class="modal-content">
+      <p class="image">
+        <img src="{{offerImageUrl}}" alt="">
+      </p>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+  <div class="card-image" (click)="toggleOfferImageModal()">
+    <figure class="image is-2by1">
+      <img src="{{offerImageUrl}}" alt="{{offer.offerDetails}}">
+    </figure>
+  </div>
   <div class="card-content">
-    <p class="title">
-      {{ offer.categoryNumber }}
-    </p>
     <p class="subtitle">
       {{ offer.categoryName }}
     </p>
@@ -10,11 +21,16 @@
     <div class="content">
       <small>Valid till {{offer.validTill | date: 'mediumDate' }} | {{offer.validTill | date: 'shortTime' }}</small>
       <br>
-      <span class="has-text-info">Status:</span> {{offer.status}}
+      <span class="has-text-info" *ngIf="(authService.isAdmin || authService.isModerator)">Status:</span>
+      {{offer.status}}
       <br>
       <span class="has-text-info">Name:</span> {{offer.companyName}}
       <br>
       <span class="has-text-info">Offer Details:</span> {{offer.offerDetails}}
+      <br>
+      <span class="has-text-info">Offer Code:</span> {{offer.offerCode}}
+      <br>
+      <span class="has-text-info">Contact Information:</span> {{offer.contact}}
     </div>
   </div>
   <footer class="card-footer" *ngIf="!disableActions">

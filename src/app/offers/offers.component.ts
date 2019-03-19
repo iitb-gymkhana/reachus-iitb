@@ -11,7 +11,7 @@ import * as moment from 'moment';
 })
 export class OffersComponent implements OnInit, AfterViewInit {
   offers: any;
-  tab = 2;
+  tab = 0;
   approvedOffersCheckbox = true;
   rejectedOffersCheckbox = true;
   pendingApprovalOffersCheckbox = true;

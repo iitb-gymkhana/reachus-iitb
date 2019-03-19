@@ -1,0 +1,25 @@
+.category-name {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: black;
+  opacity: 0.5;
+  color: white;
+  padding: 15px;
+  text-transform: uppercase;
+  width: 90%;
+}
+
+.card-image img {
+  opacity: 0.5;
+}
+
+.card-image img:hover {
+  opacity: 0.8;
+}
+
+.card {
+  cursor: pointer;
+}
+

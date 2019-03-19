@@ -1,7 +1,7 @@
-<app-banner title="Login"></app-banner>
+<app-banner title="Categories"></app-banner>
 
 <section class="section">
-  <div class="contianer">
+  <div class="container">
     <div class="columns is-centered is-vcentered">
       <div class="column has-text-centered" *ngIf="!authService.isAuthenticated()">
         <a class="button is-outlined is-primary" href="{{loginUrl}}">
@@ -9,12 +9,18 @@
         </a>
       </div>
     </div>
-    <!-- <div class="columns is-multiline">
-      <ng-container *ngFor="let offer of approvedOffers">
-        <div class="column is-4">
-          <app-offer-card [offer]="offer" [disableActions]="true"></app-offer-card>
+    <div class="columns is-multiline category-container">
+      <div class="column is-4" *ngFor="let category of categories">
+        <div class="card">
+          <div class="card-image has-text-centered">
+            <figure class="image is-4by3">
+              <img src="https://images.unsplash.com/photo-1524721696987-b9527df9e512?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1490&q=80"
+                alt="Placeholder image">
+              <p class="category-name">{{ category.name }}</p>
+            </figure>
+          </div>
         </div>
-      </ng-container>
-    </div> -->
+      </div>
+    </div>
   </div>
 </section>

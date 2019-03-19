@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { environment } from '../../environments/environment';
-import { OfferService } from '../_services/offer.service';
 import { AlertService } from '../_services/alert.service';
+import { CategoryService } from '../_services/category.service';
 
 @Component({
   selector: 'app-home',
@@ -11,19 +11,17 @@ import { AlertService } from '../_services/alert.service';
 })
 export class HomeComponent implements OnInit {
   loginUrl = environment.loginUrl;
-  approvedOffers: any = [];
+  categories: any = [];
 
   constructor(
     public authService: AuthService,
-    private offerService: OfferService,
+    private categoryService: CategoryService,
     private alertService: AlertService
   ) { }
 
   ngOnInit() {
-    this.offerService.getAllOffers(
-      { status: 'Approved' }
-    ).subscribe(
-      (res) => this.approvedOffers = res,
+    this.categoryService.getAllCategories().subscribe(
+      (res) => this.categories = res,
       (err) => this.alertService.error(err)
     );
   }

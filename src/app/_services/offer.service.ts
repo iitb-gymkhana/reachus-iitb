@@ -54,6 +54,10 @@ export class OfferService {
     );
   }
 
+  public getOfferImageUrl(offerImageName) {
+    return `${this.apiBaseUrl}/uploads/${offerImageName}`;
+  }
+
   constructor(
     private http: HttpClient
   ) { }

@@ -1,3 +1,7 @@
 .card-footer-item {
     cursor: pointer;
 }
+
+.card-image {
+    cursor: pointer;
+}

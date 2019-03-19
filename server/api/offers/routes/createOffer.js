@@ -16,6 +16,7 @@ module.exports = {
             output: "stream",
             parse: true,
             allow: "multipart/form-data",
+            maxBytes: 10 * 1024 * 1024
         },
         pre: [
             { method: checkCategoryExists }

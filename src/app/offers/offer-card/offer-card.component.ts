@@ -13,6 +13,9 @@ export class OfferCardComponent implements OnInit {
   @Input() disableActions: boolean;
   @Output() deleteOfferFromArr = new EventEmitter<any>();
 
+  offerImageUrl: string;
+  offerImageModalActive = false;
+
   approveOffer() {
     this.offerService.approveOffer(this.offer._id)
       .subscribe(
@@ -48,13 +51,18 @@ export class OfferCardComponent implements OnInit {
       );
   }
 
+  toggleOfferImageModal() {
+    this.offerImageModalActive = !this.offerImageModalActive;
+  } 
+
   constructor(
     public authService: AuthService,
-    private offerService: OfferService,
+    public offerService: OfferService,
     private alertService: AlertService
   ) { }
 
   ngOnInit() {
+    this.offerImageUrl = this.offerService.getOfferImageUrl(this.offer.offerImageFileName)
   }
 
 }
