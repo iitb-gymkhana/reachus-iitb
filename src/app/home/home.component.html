@@ -1,4 +1,4 @@
-<app-banner title="Categories"></app-banner>
+<!-- <app-banner title="Categories"></app-banner> -->
 
 <section class="section">
   <div class="container">
@@ -10,11 +10,11 @@
       </div>
     </div>
     <div class="columns is-multiline category-container">
-      <div class="column is-4" *ngFor="let category of categories">
+      <div class="column is-4 is-paddingless" *ngFor="let category of categories">
         <div class="card" routerLink="offers/{{category.uniqueIdentifier}}">
           <div class="card-image has-text-centered">
             <figure class="image is-4by3">
-              <img src="https://images.unsplash.com/photo-1524721696987-b9527df9e512?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1490&q=80"
+              <img src="{{category.thumbnail}}"
                 alt="Placeholder image">
               <p class="category-name">{{ category.name }}</p>
             </figure>

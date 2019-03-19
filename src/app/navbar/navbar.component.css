@@ -1,3 +1,7 @@
 .navbar {
   z-index: 0;
 }
+
+.navbar-item:hover {
+  border: 1px solid;
+}

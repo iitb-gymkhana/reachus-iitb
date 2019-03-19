@@ -18,7 +18,7 @@ export class CategoryCardComponent implements OnInit, AfterViewInit {
 
   editCategory() {
     this.isEditable = true;
-    this.categoryValueBackup = new Category(this.category.uniqueIdentifier, this.category.name);
+    this.categoryValueBackup = new Category(this.category.uniqueIdentifier, this.category.name, this.category.thumbnail);
   }
 
   deleteCategory() {
@@ -47,6 +47,7 @@ export class CategoryCardComponent implements OnInit, AfterViewInit {
     this.isEditable = false;
     this.category.uniqueIdentifier = this.categoryValueBackup.uniqueIdentifier;
     this.category.name = this.categoryValueBackup.name;
+    this.category.thumbnail = this.categoryValueBackup.thumbnail;
   }
 
   constructor(

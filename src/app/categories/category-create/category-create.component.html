@@ -1,7 +1,7 @@
 <form #categoryForm="ngForm" (submit)="onSubmit()" class="is-center">
   <div class="field is-horizontal">
     <div class="field-label is-normal">
-      <label class="label">Unique Identifier</label>
+      <label class="label">Unique Identifier*</label>
     </div>
     <div class="field-body">
       <div class="field is-narrow">
@@ -22,12 +22,30 @@
 
   <div class="field is-horizontal">
     <div class="field-label is-normal">
-      <label class="label">Name</label>
+      <label class="label">Name*</label>
     </div>
     <div class="field-body">
       <div class="field is-narrow">
         <p class="control">
           <input class="input" type="text" placeholder="Category name" required [(ngModel)]="category.name" name="name">
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Thumbnail URL</label>
+    </div>
+    <div class="field-body">
+      <div class="field is-narrow">
+        <p class="control">
+          <input class="input" type="url" placeholder="Thumbnail URL" [(ngModel)]="category.thumbnail" name="thumbnail">
+          <span>
+            <ul>
+              <li>| You can find nice thumbnails on <a href="https://unsplash.com/search/photos/{{category.name}}" target="_blank">Unsplash</a></li>
+            </ul>
+          </span>
         </p>
       </div>
     </div>

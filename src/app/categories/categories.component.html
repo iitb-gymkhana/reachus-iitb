@@ -14,7 +14,7 @@
 <section class="section">
   <div class="container">
     <div class="columns is-multiline" *ngIf="tab === 0">
-      <div class="column is-3" *ngFor="let category of categories">
+      <div class="column is-4" *ngFor="let category of categories">
         <app-category-card [category]="category" (deleteCategoryFromArr)="deleteCategoryFromArr($event)"></app-category-card>
       </div>
     </div>

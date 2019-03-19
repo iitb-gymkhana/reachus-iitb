@@ -8,6 +8,8 @@ module.exports = {
     options: {
         handler: async (request, h) => {
             let category = new Category(request.payload)
+
+            category.thumbnail = category.thumbnail.substring(0, category.thumbnail.indexOf('?')) + '?w=300'
     
             await category.save()
     

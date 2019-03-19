@@ -9,14 +9,27 @@
     <form *ngIf="isEditable" #categoryForm="ngForm" (submit)="updateCategory()">
       <div class="field">
         <div class="control">
-          <input class="input" pattern="[a-z]+" [ngClass]="{'is-primary': uniqueIdentifier.valid, 'is-danger': !uniqueIdentifier.valid}" type="text"
-            placeholder="Unique Identifier" [(ngModel)]="category.uniqueIdentifier" #uniqueIdentifier="ngModel" name="uniqueIdentifier" required>
+          <input class="input" pattern="[a-z]+" [ngClass]="{'is-primary': uniqueIdentifier.valid, 'is-danger': !uniqueIdentifier.valid}"
+            type="text" placeholder="Unique Identifier" [(ngModel)]="category.uniqueIdentifier" #uniqueIdentifier="ngModel"
+            name="uniqueIdentifier" required>
         </div>
       </div>
       <div class="field">
         <div class="control">
           <input class="input" [ngClass]="{'is-primary': name.valid, 'is-danger': !name.valid}" type="text" placeholder="Category name"
             [(ngModel)]="category.name" #name="ngModel" name="name" required>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <input class="input" [ngClass]="{'is-primary': thumbnail.valid, 'is-danger': !thumbnail.valid}" type="url"
+            placeholder="Thumbnail URL" [(ngModel)]="category.thumbnail" #thumbnail="ngModel" name="thumbnail" required>
+          <span>
+            <ul>
+              <li>| You can find nice thumbnails on <a href="https://unsplash.com/search/photos/{{category.name}}"
+                  target="_blank">Unsplash</a></li>
+            </ul>
+          </span>
         </div>
       </div>
     </form>
