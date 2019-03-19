@@ -34,6 +34,7 @@
     "bulma-checkradio": "^2.1.0",
     "bulma-divider": "^2.0.1",
     "bulma-fluent": "^0.3.14",
+    "bulma-modal-fx": "^1.1.1",
     "bulma-switch": "^2.0.0",
     "flatpickr": "^4.5.2",
     "jquery": "^3.3.1",

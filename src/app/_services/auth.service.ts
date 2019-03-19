@@ -52,14 +52,21 @@ export class AuthService {
 
   public get isAdmin(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
-
-    return user.admin;
+    
+    if (user) {
+      return user.admin;
+    }
+    return false;
   }
 
   public get isModerator(): Boolean {
     const user = JSON.parse(localStorage.getItem('user'));
 
-    return user.moderator;
+    if (user) {
+      return user.moderator;
+    }
+
+    return false;
   }
 
   public getUsername(): string {

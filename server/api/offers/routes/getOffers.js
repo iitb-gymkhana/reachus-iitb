@@ -46,7 +46,7 @@ module.exports = {
             let offers = []
 
             offers = await Offer.find(query).select('-__v').sort({validTill: sort_order}).lean()
-            console.log(offers)
+
             for (let i = 0; i < offers.length; i++) {
                 offers[i] = await addCategoryDetailsToOffer(offers[i])
             }

@@ -32,12 +32,14 @@
               "node_modules/bulma-switch/dist/css/bulma-switch.min.css",
               "node_modules/animate.css/animate.min.css",
               "node_modules/noty/lib/noty.css",
-              "node_modules/noty/lib/themes/nest.css"
+              "node_modules/noty/lib/themes/nest.css",
+              "node_modules/bulma-modal-fx/dist/css/modal-fx.min.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/moment/min/moment.min.js",
-              "node_modules/noty/lib/noty.min.js"
+              "node_modules/noty/lib/noty.min.js",
+              "node_modules/bulma-modal-fx/dist/js/modal-fx.min.js"
             ]
           },
           "configurations": {

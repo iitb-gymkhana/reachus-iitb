@@ -10,7 +10,7 @@ import { AlertService } from 'src/app/_services/alert.service';
 })
 export class CategoryOffersComponent implements OnInit {
 
-  offers: any;
+  offers: any = [];
 
   constructor(
     private route: ActivatedRoute,
