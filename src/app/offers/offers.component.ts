@@ -28,12 +28,11 @@ export class OffersComponent implements OnInit, AfterViewInit {
 
   fetchAllOffers() {
     const params = {};
+    params['validTill'] = moment().startOf('day').toISOString();
 
-    if (this.tab === 0) {
-      params['validTill'] = moment().toISOString();
-    } else if (this.tab === 1) {
-      params['validTill'] = moment().toISOString();
+    if (this.tab === 1) {
       params['sort'] = 'desc';
+      params['expired'] = true;
     }
 
     if (!(this.authService.isAdmin || this.authService.isModerator)) {

@@ -19,7 +19,7 @@
     </p>
     <span class="has-text-primary">{{ offer.userLdapUsername }}</span>
     <div class="content">
-      <small>Valid till {{offer.validTill | date: 'mediumDate' }} | {{offer.validTill | date: 'shortTime' }}</small>
+      <small>Valid till {{offer.validTill | date: 'mediumDate' }}</small>
       <br>
       <span class="has-text-info" *ngIf="(authService.isAdmin || authService.isModerator)">Status:</span>
       {{offer.status}}

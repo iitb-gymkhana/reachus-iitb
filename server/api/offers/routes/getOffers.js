@@ -15,10 +15,16 @@ module.exports = {
             if (req_query.status) {
                 query.status = req_query.status
             }
-
-            if (req_query.from) {
-                query.to = {
-                    $gte: moment(req_query.from)
+            
+            if (req_query.validTill) {
+                if (req_query.expired) {
+                    query.validTill = {
+                        $lte: moment(req_query.validTill)
+                    }
+                } else {
+                    query.validTill = {
+                        $gte: moment(req_query.validTill)
+                    }
                 }
             }
 
@@ -27,13 +33,6 @@ module.exports = {
                 if (user) {
                     query.user_id = user._id
                 }
-            }
-
-            if (req_query.to) {
-                if (!query.to) {
-                    query.to = { }
-                }
-                query.to['$lt'] = moment(req_query.to)
             }
             
             if (req_query.uniqueIdentifier) {
@@ -44,7 +43,7 @@ module.exports = {
             const sort_order = request.query.sort === 'desc' ? -1 : 1
 
             let offers = []
-
+            
             offers = await Offer.find(query).select('-__v').sort({validTill: sort_order}).lean()
 
             for (let i = 0; i < offers.length; i++) {
