@@ -1,23 +1,26 @@
 <div class="card">
-  <div class="card-content">
-    <p class="title" *ngIf="!isEditable">
-      {{ category.uniqueIdentifier }}
-    </p>
-    <p class="subtitle" *ngIf="!isEditable">
-      {{ category.name }}
-    </p>
-    <form *ngIf="isEditable" #categoryForm="ngForm" (submit)="updateCategory()">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img src="{{category.thumbnail}}" alt="{{category.name}}">
+      <p class="category-name">
+        {{ category.name }}<br>
+        <small class="category-identifier">{{ category.uniqueIdentifier }}</small>
+      </p>
+    </figure>
+
+    <form *ngIf="isEditable" class="category-edit-form animated fadeIn" #categoryForm="ngForm" (submit)="categoryForm.form.valid && updateCategory()">
       <div class="field">
         <div class="control">
-          <input class="input" pattern="[a-z]+" [ngClass]="{'is-primary': uniqueIdentifier.valid, 'is-danger': !uniqueIdentifier.valid}"
-            type="text" placeholder="Unique Identifier" [(ngModel)]="category.uniqueIdentifier" #uniqueIdentifier="ngModel"
+          <input class="input" pattern="[a-z]+"
+            [ngClass]="{'is-primary': uniqueIdentifier.valid, 'is-danger': !uniqueIdentifier.valid}" type="text"
+            placeholder="Unique Identifier" [(ngModel)]="category.uniqueIdentifier" #uniqueIdentifier="ngModel"
             name="uniqueIdentifier" required>
         </div>
       </div>
       <div class="field">
         <div class="control">
-          <input class="input" [ngClass]="{'is-primary': name.valid, 'is-danger': !name.valid}" type="text" placeholder="Category name"
-            [(ngModel)]="category.name" #name="ngModel" name="name" required>
+          <input class="input" [ngClass]="{'is-primary': name.valid, 'is-danger': !name.valid}" type="text"
+            placeholder="Category name" [(ngModel)]="category.name" #name="ngModel" name="name" required>
         </div>
       </div>
       <div class="field">
@@ -32,29 +35,32 @@
           </span>
         </div>
       </div>
+
+      <footer class="card-footer" *ngIf="isEditable">
+        <a class="card-footer-item has-text-success" (click)="categoryForm.form.valid && updateCategory()">
+          <span class="icon">
+            <button type="submit" class="button has-text-primary"><i class="fa fa-check"></i></button>
+          </span>
+        </a>
+        <a class="card-footer-item has-text-grey" (click)="undoCategoryEdit()">
+          <span class="icon">
+            <button type="reset" class="button has-text-grey"><i class="fa fa-times"></i></button>
+          </span>
+        </a>
+      </footer>
     </form>
   </div>
+
   <footer class="card-footer" *ngIf="!isEditable">
     <a class="card-footer-item has-text-info" (click)="editCategory()">
       <span class="icon">
         <i class="fa fa-edit"></i>
       </span>
     </a>
-    <a class="card-footer-item has-text-danger" (confirm)="deleteCategory()" [swal]="{ title: 'Are you sure you want to delete category?', type: 'warning', showCloseButton: true, showCancelButton: true, focusConfirm: false, confirmButtonText: 'Yes, delete it', cancelButtonText: 'No' }">
+    <a class="card-footer-item has-text-danger" (confirm)="deleteCategory()"
+      [swal]="{ title: 'Are you sure you want to delete category?', type: 'warning', showCloseButton: true, showCancelButton: true, focusConfirm: false, confirmButtonText: 'Yes, delete it', cancelButtonText: 'No' }">
       <span class="icon">
         <i class="fa fa-trash-alt"></i>
-      </span>
-    </a>
-  </footer>
-  <footer class="card-footer" *ngIf="isEditable">
-    <a class="card-footer-item has-text-success" (click)="updateCategory()">
-      <span class="icon">
-        <i class="fa fa-check"></i>
-      </span>
-    </a>
-    <a class="card-footer-item has-text-grey" (click)="undoCategoryEdit()">
-      <span class="icon">
-        <i class="fa fa-times"></i>
       </span>
     </a>
   </footer>

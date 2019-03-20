@@ -24,8 +24,7 @@ async function checkPrivileges(request, h) {
     }
 
     const credentials = request.auth.credentials
-    console.log(credentials)
-    console.log(offer)
+
     if (credentials.scope === 'admin' ||
         ObjectId(credentials.id).equals(ObjectId(offer.user_id))) {
             return offer
