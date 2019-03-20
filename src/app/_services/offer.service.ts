@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
+import { Offer } from '../offer';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,15 @@ export class OfferService {
   public createOffer(offer) {
     return this.http.post<{message: string}>(
       `${this.apiBaseUrl}/offers`,
-      offer);
+      offer)
+    ;
+  }
+
+  public updateOffer(offer) {
+    return this.http.patch<{message: string}>(
+      `${this.apiBaseUrl}/offers`,
+      offer
+    );
   }
 
   public getAllOffers(params) {
@@ -22,6 +32,10 @@ export class OfferService {
     return this.http.get(
       `${this.apiBaseUrl}/offers`, options
     );
+  }
+
+  public getOffer(id): Observable<Offer>{
+    return this.http.get<Offer>(`${this.apiBaseUrl}/offers/${id}`);
   }
 
   public deleteOffer(_id) {

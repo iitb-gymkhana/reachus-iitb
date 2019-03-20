@@ -8,6 +8,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ScopeGuard } from './_guards/scope.guard';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { CategoryOffersComponent } from './offers/category-offers/category-offers.component';
+import { EditOfferComponent } from './offers/edit-offer/edit-offer.component';
 
 const routes: Routes = [
   { 
@@ -48,8 +49,21 @@ const routes: Routes = [
   {
     path: 'offers/:category', 
     component: CategoryOffersComponent, 
+    canActivate: [AuthGuard],
     data: {
       title: 'Offers',
+      metatags: {
+        desciption: 'ReachUs Portal',
+        keywords: 'reachus, iitb'
+      }
+    }
+  },
+  {
+    path: 'offers/edit/:id', 
+    component: EditOfferComponent, 
+    canActivate: [AuthGuard],
+    data: {
+      title: 'Edit Offer',
       metatags: {
         desciption: 'ReachUs Portal',
         keywords: 'reachus, iitb'

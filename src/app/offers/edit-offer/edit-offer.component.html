@@ -1,0 +1,179 @@
+<pre>
+  {{ offer | json}}
+</pre>
+<section class="section">
+    <div class="container">
+      <form (submit)="updateOffer()" #offerForm="ngForm">
+        <div class="columns">
+          <div class="column">
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Valid Till</label>
+              </div>
+              <div class="field-body">
+                <p class="control has-icons-left has-icons-right">
+                  <input class="input" type="text" required placeholder="Offer is valid till?" id="date-picker"
+                    data-input>
+                  <span class="icon is-small is-left" title="toggle" data-toggle>
+                    <i class="fas fa-calendar-alt"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="columns">
+          <div class="column">
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Company Name</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <p class="control">
+                    <input type="text" class="input" required placeholder="Name of company" #companyName [(ngModel)]="offer.companyName"
+                      [value]="offer.companyName" name="companyName">
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="columns">
+          <div class="column">
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Offer Details</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <p class="control">
+                    <input type="text" class="input" required placeholder="Offer Details" #offerDetails [(ngModel)]="offer.offerDetails"
+                      [value]="offer.offerDetails" name="offerDetails">
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="columns">
+          <div class="column">
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Contact Info</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <p class="control">
+                    <input type="text" class="input" required placeholder="Contact information" #contact [(ngModel)]="offer.contact"
+                      [value]="offer.contact" name="contact">
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="columns">
+          <div class="column">
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Offer Code</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <p class="control">
+                    <input type="text" class="input" required placeholder="Offer Code" #offerCode [(ngModel)]="offer.offerCode"
+                      [value]="offer.offerCode" name="offerCode">
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="columns">
+          <div class="column">
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Category</label>
+              </div>
+  
+              <div class="field-body">
+                <div class="field is-narrow">
+                  <div class="control">
+                    <div class="select">
+                      <select required #categorySelect [(ngModel)]="offer.category" name="category">
+                        <option value="" disabled selected>-------</option>
+                        <option *ngFor="let category of categories" [value]="category._id">{{category.name}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="columns">
+          <div class="column is-3 is-offset-2">
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label"></label>
+              </div>
+              <div class="field-body">
+                <div class="field is-narrow">
+                  <div class="control">
+                    <div class="file has-name is-boxed" [ngClass]="{'is-success': offerImage}">
+                      <label class="file-label">
+                        <input class="file-input" type="file" name="offerImage" (change)="onOfferImageUploaded($event)">
+                        <span class="file-cta">
+                          <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                          </span>
+                          <span class="file-label">
+                            Upload image
+                          </span>
+                        </span>
+                        <span class="file-name">
+                          {{ offerImage?.name }}
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column is-3 is-offset-1">
+            <figure class="image is-256by256">
+              <img src="{{offerImageSrc}}">
+            </figure>
+          </div>
+        </div>
+  
+        <div class="columns">
+          <div class="column">
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+              </div>
+              <div class="field-body">
+                <div class="field is-narrow">
+                  <div class="control">
+                    <button class="button is-primary" type="submit" [disabled]="!offerForm.form.valid">
+                      Update offer
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </form>
+    </div>
+  </section>
+  

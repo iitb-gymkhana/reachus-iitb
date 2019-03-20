@@ -15,7 +15,7 @@ export class CreateOfferComponent implements OnInit, AfterViewInit {
   categories: any;
   TZ = 'Asia/Kolkata';
   validTill: any;
-  offer = new Offer('', '', '', '', '', '');
+  offer = new Offer('', '', '', '', '', '', '');
   offerImage: any;
   offerImageSrc: any;
 
@@ -34,12 +34,12 @@ export class CreateOfferComponent implements OnInit, AfterViewInit {
         uploadData.append(key, this.offer[key]);
       }
       
-      this.offerService.createOffer(
+      this.offerService.updateOffer(
         uploadData
       ).subscribe(
           (res) => {
             this.alertService.success(res.message);
-            this.offer = new Offer('', '', '', '', '', '');
+            this.offer = new Offer('', '', '', '', '', '', '');
             this.validTill.clear();
           },
           (err) => this.alertService.error(err)

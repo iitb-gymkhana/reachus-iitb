@@ -31,6 +31,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { LoaderComponent } from './loader/loader.component';
 import { CategoryOffersComponent } from './offers/category-offers/category-offers.component';
+import { EditOfferComponent } from './offers/edit-offer/edit-offer.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -53,7 +54,8 @@ export function tokenGetter() {
     AdminPanelComponent,
     FooterComponent,
     LoaderComponent,
-    CategoryOffersComponent
+    CategoryOffersComponent,
+    EditOfferComponent
   ],
   imports: [
     BrowserModule,

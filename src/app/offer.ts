@@ -5,6 +5,7 @@ export class Offer {
     public companyName: string,
     public offerDetails: string,
     public contact: string,
-    public offerCode: string
+    public offerCode: string,
+    public offerImageFileName: string
   ) { }
 }

@@ -34,6 +34,11 @@
     </div>
   </div>
   <footer class="card-footer" *ngIf="!disableActions">
+    <a class="card-footer-item button is-white" *ngIf="!authService.isModerator || authService.isAdmin" routerLink="/offers/edit/{{offer._id}}">
+      <span class="icon">
+        <i class="fa fa-pencil-alt has-text-primary"></i>
+      </span>
+    </a>
     <a class="card-footer-item button is-white" *ngIf="(authService.isAdmin || authService.isModerator) && offer.status !== 'Approved'"
       (click)="approveOffer()">
       <span class="icon">
