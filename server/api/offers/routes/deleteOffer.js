@@ -1,13 +1,16 @@
 const Offer = require('../model/Offer')
 const checkPrivileges = require('../util/offerFunctions').checkPrivileges
 const checkIfOfferFinished = require('../util/offerFunctions').checkIfOfferFinished
+const fs = require('fs')
 
 module.exports = {
     method: 'DELETE',
     path: '/api/offers/{id}',
     options: {
         handler: async (request, h) => {
-            await Offer.deleteOne({ _id: request.params.id })
+            const offer = await Offer.findOneAndDelete({ _id: request.params.id })
+
+            await fs.unlinkSync(__dirname + '/../uploads/' + offer.offerImageFileName)
 
             return { message: 'Offer deleted'}
         },

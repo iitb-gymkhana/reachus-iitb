@@ -34,7 +34,7 @@ export class CreateOfferComponent implements OnInit, AfterViewInit {
         uploadData.append(key, this.offer[key]);
       }
       
-      this.offerService.updateOffer(
+      this.offerService.createOffer(
         uploadData
       ).subscribe(
           (res) => {

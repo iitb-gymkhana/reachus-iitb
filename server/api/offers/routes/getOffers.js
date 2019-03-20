@@ -19,7 +19,7 @@ module.exports = {
             if (req_query.validTill) {
                 if (req_query.expired) {
                     query.validTill = {
-                        $lte: moment(req_query.validTill).endOf('day')
+                        $lt: moment(req_query.validTill).endOf('day')
                     }
                 } else {
                     query.validTill = {
