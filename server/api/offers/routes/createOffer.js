@@ -5,6 +5,7 @@ const checkCategoryExists = require('../util/offerFunctions').checkCategoryExist
 const fs = require('fs')
 const uuidv1 = require('uuid/v1');
 const path = require('path')
+const sharp = require('sharp')
 
 const TZ = 'Asia/Kolkata'
 
@@ -31,8 +32,9 @@ module.exports = {
             let offerIamgeFileName = request.payload.offerImage.hapi.filename
             
             offerIamgeFileName = uuidv1() + path.extname(offerIamgeFileName)
-            await request.payload.offerImage.pipe(fs.createWriteStream(__dirname + "/../uploads/" + offerIamgeFileName))
-            
+            await sharp(request.payload.offerImage._data)
+                .toFile(__dirname + '/../uploads/' + offerIamgeFileName)
+                
             offer.offerImageFileName = offerIamgeFileName
             await offer.save()
             
