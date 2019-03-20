@@ -9,7 +9,7 @@
         </a>
       </div>
     </div>
-    <div class="columns is-multiline category-container">
+    <div class="columns is-multiline category-container" *ngIf="authService.isAuthenticated()">
       <div class="column is-4 is-paddingless" *ngFor="let category of categories">
         <div class="card" routerLink="offers/{{category.uniqueIdentifier}}">
           <div class="card-image has-text-centered">
