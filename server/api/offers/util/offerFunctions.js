@@ -3,6 +3,7 @@ const Category = require('../../categories/model/Category')
 const User = require('../../users/model/User')
 const Boom = require('boom')
 const moment = require('moment')
+const ObjectId = require('mongoose').Types.ObjectId
 
 async function addCategoryDetailsToOffer(offer) {
     const category = await Category.findOne({ _id: offer.category })
@@ -23,9 +24,10 @@ async function checkPrivileges(request, h) {
     }
 
     const credentials = request.auth.credentials
-
+    console.log(credentials)
+    console.log(offer)
     if (credentials.scope === 'admin' ||
-        credentials.id === offer.user_id) {
+        ObjectId(credentials.id).equals(ObjectId(offer.user_id))) {
             return offer
         }
 
