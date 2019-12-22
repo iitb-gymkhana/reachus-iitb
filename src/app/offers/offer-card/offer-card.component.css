@@ -12,3 +12,7 @@
     right: 10px;
     color: white;
 }
+
+#offer-card-content {
+    word-wrap: break-word;
+}

@@ -18,7 +18,7 @@
       {{ offer.categoryName }}
     </p>
     <span class="has-text-primary">{{ offer.userLdapUsername }}</span>
-    <div class="content">
+    <div class="content" id="offer-card-content">
       <small>Valid till {{offer.validTill | date: 'mediumDate' }}</small>
       <br>
       <span class="has-text-info" *ngIf="(authService.isAdmin || authService.isModerator)">Status:</span>

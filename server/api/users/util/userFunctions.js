@@ -75,7 +75,7 @@ async function verifySSOCode(req) {
             }
             res = await request(options)
             res = JSON.parse(res)    
-        } catch {
+        } catch(e) {
             return Boom.badImplementation('Failed to get details from SSO')
         }
         
@@ -100,7 +100,7 @@ async function verifySSOCode(req) {
         )
 
         return user
-    } catch {
+    } catch(e) {
         return Boom.badImplementation('Issues while connecting to SSO')
     }
 }

@@ -24,7 +24,6 @@ module.exports = {
         ],
         handler: async (request, h) => {
             const offer = new Offer(request.payload)
-
             offer.user_id = request.auth.credentials.id
             offer.status = 'Pending Approval'
             offer.validTill = moment(request.payload.validTill).endOf('day')
