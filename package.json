@@ -47,7 +47,7 @@
     "rxjs-compat": "6.2.2",
     "sweetalert2": "^7.26.29",
     "xunk-calendar": "^2.0.1",
-    "yarn": "^1.7.0",
+    "yarn": "^1.22.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
