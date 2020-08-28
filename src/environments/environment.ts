@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiBaseUrl: 'http://localhost:3000/portal/reachus/api',
-  loginUrl: 'https://gymkhana.iitb.ac.in/sso/oauth/authorize/?client_id=uIkqcEZdLGkRdIqrSVMLE0Gt3qaS73ClwoQF260A&response_type=code&scope=profile%20ldap%20send_mail'
+  loginUrl: 'https://gymkhana.iitb.ac.in/sso/oauth/authorize/?client_id=ihPqjthaHdgyJOvoJ4VVDVxxSxpbk0ZbvLb7Y0xQ&response_type=code&scope=profile%20ldap%20send_mail'
 };
 
 /*
