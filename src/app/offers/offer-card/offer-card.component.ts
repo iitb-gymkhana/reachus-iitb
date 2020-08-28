@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../../_services/auth.service';
 import { OfferService } from '../../_services/offer.service';
 import { AlertService } from '../../_services/alert.service';
+import anchorme from 'anchorme';
 
 @Component({
   selector: 'app-offer-card',
@@ -62,7 +63,8 @@ export class OfferCardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.offerImageUrl = this.offerService.getOfferImageUrl(this.offer.offerImageFileName)
+    this.offerImageUrl = this.offerService.getOfferImageUrl(this.offer.offerImageFileName);
+    this.offer.offerDetails = anchorme(this.offer.offerDetails, { attributes: [ { name: 'target', value: '_blank' } ] });
   }
 
 }
