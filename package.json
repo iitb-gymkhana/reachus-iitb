@@ -40,7 +40,7 @@
     "bulma-switch": "^2.0.0",
     "flatpickr": "^4.5.2",
     "jquery": "^3.5.0",
-    "moment": "^2.22.2",
+    "moment": "^2.29.2",
     "ng-http-loader": "^3.1.1",
     "noty": "^3.2.0-beta",
     "rxjs": "6.0.0",
